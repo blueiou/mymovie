@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="my.Books">
+  <head>
+    <title>MyBookl.html</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  <div ng-controller="book.list">
+  
+  <button add-book-button>Add Book
+ </button><br>
+ <ul>
+ <li ng-repeat="book in books">
+书名：{{book.title}}&nbsp;&nbsp;类型：{{book.type}}
+ </li>
+ </ul>
+ 
+  </div>
+  </body>
+  <script src="../script/angular.js" type="text/javascript"></script>
+<script src="../script/modules/bookstores.js" type="text/javascript"></script>
+</html>
