@@ -1,0 +1,147 @@
+﻿
+<div class="panel panel-default" style="position:absolute;bottom:0px;left:210px;right:0px;top:105px;margin:0; overflow-y:auto;overflow-x:hidden">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">学生信息</div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled list-info">
+                            <li>
+                                <span class="text-primary fa fa-user fa-fw"></span><label class="text-primary">姓名：</label>
+                                {{s.FullName}}
+                            </li>
+                            <li>
+                                <span class="text-primary fa fa-envelope fa-fw"></span><label class="text-primary">学号：</label>
+                                {{s.UserName}}
+                            </li>
+                            <li>
+                                <span class="text-primary fa fa-home fa-fw"></span><label class="text-primary">班级：</label>
+                                {{s.ClassId|Fclass}}
+                            </li>
+                            <li>
+                                <span class="text-primary fa fa-phone fa-fw"></span><label class="text-primary">电话：</label>
+                                {{s.PhoneNumber}}
+                            </li>
+                            <li>
+                                <span class="text-primary fa fa-envelope fa-fw"></span><label class="text-primary">邮箱：</label>
+                                {{s.Email}}
+                            </li>
+                            <li>
+                                <span class="text-primary fa fa-comment fa-fw"></span><label class="text-primary">实习单位：</label>
+                                {{s.Company}}
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+                <div class="row padding-top padding-bottom" style="text-align: center;">
+                    <div class="col-md-3 col-sm-3">
+                        <span><i class="text-primary fa fa-edit fa-fw fa-2x "></i></span><br>应签天数
+                        <p class="stat"><span class="label label-primary">{{p.RequestOfCheckInDay}}</span></p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3">
+                        <span><i class="text-success fa fa-check-square-o fa-fw fa-2x "></i></span><br>实签天数
+                        <p class="stat"><span class="label label-success">{{p.NumOfCheckInDay}}</span></p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3">
+                        <span><i class="text-danger fa fa-warning fa-fw fa-2x "></i></span><br>警示次数
+                        <p class="stat"><span class="label label-danger">{{p.NumOfWarned}}</span></p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3">
+                        <span><i class="text-success fa fa-comments-o fa-fw fa-2x "></i></span><br>指导次数
+                        <p class="stat"><span class="label label-success">{{p.NumOfGuided}}</span></p>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-8">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">指导学生</div>
+                <div class="panel-body">
+                    <h4>请根据学生的签到情况给予指导</h4>
+                    <form class=" w5c-form" name="form" w5c-form-validate="vmTea" novalidate role="form">
+                        <div class="form-group">
+                            <textarea class="form-control " rows="6" id="Description" name="Guiding" ng-model="g.Message" ng-required="true"></textarea>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-primary pull-right" ng-click="save()" ng-disabled="form.$invalid||saving"><i class ="fa fa-comments-o fa-fw"></i> 确定</button>
+                </div>
+            </div>
+                    
+                </div>
+
+            </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">签到记录</div>
+                <!--<div class="panel-body">
+                    <p>...</p>
+                </div>-->
+                <!-- List group -->
+                <ul class="list-group list-group-item-info">
+                    <li ng-repeat="d in r.CheckInRecord" ng-click="select(d)" class="list-group-item">
+                        <div class="col-md-4">
+                            <div class="overview pull-left padding-right">
+                                <p class="main-detail h3 text-warning" style="margin-top: 0px;">{{d.Date|date:'MMM d'}}</p>
+                                <p class="sub-detail">{{d.Date|date:'mediumTime'}}</p>
+                                <span class="label label-success">已签到</span> <span class="label label-info" ng-show="$first">New</span>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <p>{{d.Message}}</p>
+                            <a class="btn btn-default btn-sm" href="#">Show Details</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li ng-if="r.CheckInRecord.length==0" class="list-group-item">
+                        暂无签到数据
+                    </li>
+                    <!--<li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>-->
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">老师指导记录</div>
+                <!-- List group -->
+                <ul class="list-group">
+                    <li ng-repeat="d in r.GuideRecord" ng-click="select(d)" class="list-group-item">
+                        <div class="col-md-4">
+                            <div class="overview pull-left padding-right">
+                                <p class="main-detail h3 text-warning" style="margin-top: 0px;">{{d.Date|date:'MMM d'}}</p>
+                                <p class="sub-detail">{{d.Date|date:'mediumTime'}}</p>
+                                <span class="label label-success">已指导</span> <span ng-show="$first" class="label label-info">New</span>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <p>{{d.Message}}</p>
+                            <a class="btn btn-default btn-sm" href="#">Show Details</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li ng-if="r.GuideRecord.length==0" class="list-group-item">
+                        暂无指导数据
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+        </div>

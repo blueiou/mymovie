@@ -5,12 +5,21 @@ import javax.servlet.http.HttpSession;
 
 import com.entity.Page;
 import com.service.StudentBO;
+import com.service.SysGoodsService;
 import com.tools.CheckId;
 
 public class TestSSHAction extends AjaxActionSupport {
 	private StudentBO sBo;
+	private SysGoodsService sGoods;
 	private Page page;
-	private int pagesize=5;
+	private int pagesize=6;
+	@Resource(name="SysGoodsService")
+	public SysGoodsService getsGoods() {
+		return sGoods;
+	}
+	public void setsGoods(SysGoodsService sGoods) {
+		this.sGoods = sGoods;
+	}
 	public StudentBO getsBo() {
 		return sBo;
 	}
@@ -39,9 +48,16 @@ public class TestSSHAction extends AjaxActionSupport {
 			String pagenoString=request.getParameter("pageno");
 			if(CheckId.checkPage(pagenoString))  pageno=Integer.parseInt(pagenoString);
 		} 
-		page=sBo.findpage(pageno, pagesize);
+		
+		/*//page=sBo.findpage(pageno, pagesize);
+		
 		request.setAttribute("page", page);
-		return SUCCESS;
+		return SUCCESS;*/
+		
+		
+		page=sGoods.findpage(pageno, pagesize);
+		request.setAttribute("page", page);
+		return "goodslist";
 	}	
 	
 	

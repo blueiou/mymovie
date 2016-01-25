@@ -1,0 +1,94 @@
+﻿
+<div style="position:absolute;top:60px;left:210px;right:5px;bottom:5px; ">
+    <ol class="breadcrumb">
+        <li><a ui-sref="student"><i class="fa fa-home"></i> 学生首页</a></li>
+        <li class="active"><i class="fa fa-cog"></i> 首页</li>
+    </ol>
+</div>
+<div class="panel panel-default" style="position:absolute;bottom:0px;left:210px;right:0px;top:105px;margin:0;">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">实习通知</div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="fa fa-user"></span>通知1
+                        </li>
+                        <li>
+                            <span class="fa fa-user"></span>通知2
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">实习通知</div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="fa fa-user"></span>通知1
+                        </li>
+                        <li>
+                            <span class="fa fa-user"></span>通知2
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class=" panel-heading">实习任务</div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="text-info fa fa-user"></span> 实习名称：{{practice.PracticeProjectName}}
+                        </li>
+                        <li>
+                            <span class="text-info fa fa-user"></span> 实习专业：
+                        </li>
+                        <li>
+                            <span class="text-info fa fa-user"></span> 开始时间：
+                        </li>
+                        <li>
+                            <span class="text-info fa fa-user"></span> 结束时间：
+                        </li>
+                        <li>
+                            <span class="text-info fa fa-user"></span> 分组数量：
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">分组成员： 指导老师：</div>
+                        <table class="fulltable" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>班级</th>
+                                    <th>电话</th>
+                                    <th>邮箱</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-sm">
+                                <tr ng-repeat="d in list.Data" ng-click="select(d)" ng-class="{'success':dt.detail==d}">
+                                    <td>{{d.ClassId|Fclass}}</td>
+                                    <td>{{d.FullName}}</td>
+                                    <td>{{d.PhoneNumber}}</td>
+                                    <td>{{d.Email}}</td>
+                                </tr>
+                                <tr ng-if="!list.Data">
+                                    <td colspan="6">暂无数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+</div>

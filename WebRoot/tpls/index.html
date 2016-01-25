@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8"/>
+    <title>主页 - 学生外出实习安全管理系统</title>
+  <link rel="stylesheet" href="/PracManager/Content/mhome.css" />
+  </head>
+ <body ng-app="PracticeAPP">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    
+                </button>
+                <a class="navbar-brand" href="/">实习管理系统<img src="" /></a>
+            </div>
+            <div class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav" >
+                    <li><a ui-sref="usermanage" ><i class="fa fa-user fa-stack-1x "></i><br />用户管理</a></li>
+                    <li><a ui-sref="practice" ><i class="fa fa-tasks fa-stack-1x"></i><br />实习管理</a></li>
+                    <li><a ui-sref="supervise" ><i class="fa fa-sitemap fa-stack-1x"></i><br />协同管理</a></li>
+                    <li><a href="#"><i class="fa fa-list-alt fa-stack-1x"></i><br />报表管理</a></li>
+                </ul>
+                
+
+            </div>
+        </div>
+    </div>
+<div ui-view></div>
+<!-- Angular -->
+  <script src="/PracManager/Scripts/angularjs/angular.js"></script>
+  <!-- UI-Router -->
+  <script src="/PracManager/Scripts/angularjs/angular-ui-router.js"></script>
+  <!-- App Script -->
+    <script src="/PracManager/Scripts/app/app.js"></script>
+  </body>
+  
+</html>

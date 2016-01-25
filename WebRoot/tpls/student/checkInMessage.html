@@ -1,0 +1,17 @@
+﻿<div class="modal-header">
+    <h4 class="modal-title">
+        <span class="fa fa-user"> 实习签到</span>
+        <span class="pull-right" style="cursor:pointer;" ng-click="cancel()" title="关闭">
+            <i class="fa fa-times-circle"></i>
+        </span>
+    </h4>
+</div>
+<div class="modal-body" style="max-height:400px;overflow-x:hidden;overflow-y:auto;">
+    <form class="form-horizontal w5c-form" name="form" w5c-form-validate="vmTea" novalidate role="form">
+        <textarea class="form-control " rows="5" id="Description" name="Description" ng-model="c.Message" ng-required="true"></textarea>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+    <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="form.$invalid||saving">确定</button>
+</div>

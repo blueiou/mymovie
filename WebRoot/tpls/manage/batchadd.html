@@ -1,0 +1,58 @@
+﻿
+
+<div class="panel panel-default" style="width: 534px; position: absolute; bottom: 0px; left: 0px; top: 85px; margin: 0; overflow-y: auto; overflow-x: hidden;">
+    <div style="padding:10px;">
+        <p><b>导入说明:</b>请将学生选课名单Excel文件中：学号,姓名,性别,专业,年级,班级共6列数据复制到文本输入框中</p>
+        <form class=" w5c-form" name="form" w5c-form-validate="vmTea" novalidate role="form">
+            <div class="form-group">
+                <textarea class="form-control " rows="18" id="userinfo" name="Guiding" ng-model="userinfo" ng-required="true"></textarea>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary" ng-click="getinfo(userinfo)" ng-disabled="form.$invalid"><i class="fa fa-upload fa-fw"></i> 上传</button>
+    </div>
+</div>
+<div class="panel panel-default" style="position:absolute;bottom:0px;left:544px;right:0px;top:85px;margin:0;">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{list.title}}</h3>
+        
+        <div class="btn-group pull-right" style="margin-top:-23px;" ng-if="!ban">
+            <button type="button" class="btn btn-sm btn-default" ng-click="cancel()"><i class="fa fa-times-circle"></i> 取消</button>
+            <button type="button" class="btn btn-sm btn-primary" ng-click="add()" ng-disabled="form.$invalid||saving"><i class="fa fa-plus"></i> 确认添加</button>
+        </div>
+    </div>
+    <div style="position:absolute;top:38px;bottom:40px;left:0;right:0;overflow:auto;">
+        <table class="fulltable" style="width:100%">
+            <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>专业</th>
+                    <th>年级</th>
+                    <th>班级</th>
+                    <th ng-if="list.isError">错误信息</th>
+                </tr>
+            </thead>
+            <tbody class="table-sm">
+                <tr ng-repeat="d in list.data|paging:list.page.PageIndex:list.page.PageSize" ng-click="select(d)" ng-class="{danger:list.isError}">
+                    <td>{{d.UserName}}</td>
+                    <td>{{d.FullName}}</td>
+                    <td>{{d.Sex}}</td>
+                    <td>{{d.SpecialSub}}</td>
+                    <td>{{d.Grade}}</td>
+                    <td>{{d.ClassName}}</td>
+                    <td>{{d.errorItem}}</td>
+
+                </tr>
+                <tr ng-if="list.data.length==0">
+                    <td colspan="6">暂无数据</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="text-center" style="position:absolute;bottom:0;left:0;right:0">
+        <pagination boundary-links="true" total-items="list.page.TotalCount" items-per-page='list.page.PageSize' ng-model="list.page.PageIndex" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" style="margin:0" class="pagination-sm"></pagination>
+    </div>
+
+</div>

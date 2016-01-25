@@ -1,0 +1,80 @@
+﻿<div class="panel panel-default" style="width: 200px; position: absolute; bottom: 0px; left: 0px; top: 85px; margin: 0; overflow-y: auto; overflow-x: hidden;">
+    <div style="padding:10px;">
+        <label>管理学院</label>
+        <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1"></abn-tree>
+    </div>
+</div>
+<div class="panel panel-default" style="position:absolute;bottom:0px;left:210px;right:0px;top:85px;margin:0;">
+    <div class="panel-heading">
+        <h3 class="panel-title">&nbsp;</h3>
+        <form name="searchform" class="form-inline pull-left" style="margin:-23px 0 0 0;padding:0;">
+            <div class="input-group" dropdown style="width:150px;">
+                <div class="input-group-addon  dropdown-toggle">教研室</div>
+                <input class="form-control input-sm input-normal dropdown-toggle" readonly type="text" placeholder="教研室" value="{{queryInfo.teachingGroupId|FteaGroup}}">
+                <div class="dropdown-menu" role="menu" style="padding:5px;">
+                    <h5>选择教研室： {{queryInfo.teachingGroupId|FteaGroup}}</h5>
+                    <a href="#" ng-click="selectAllTGroups()" style="text-decoration: none">&nbsp;&nbsp;&nbsp;<i ng-class="row.tree_icon" class="indented tree-icon icon-file glyphicon glyphicon-file fa fa-file"> </i> All</a>
+                    <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" style="height: 220px; width: 150px; overflow-y: auto; overflow-x: hidden;"></abn-tree>
+                </div>
+            </div>
+            <div class="form-group" style="width:110px; margin-right:5px;">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user"></i> </div>
+                    <input class="form-control input-sm" type="text" placeholder="姓名" ng-model="queryInfo.name" name="name">
+                </div>
+            </div>
+            <div class="form-group" style="width: 110px; margin-right: 5px;">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user"></i> </div>
+                    <input class="form-control input-sm" type="text" placeholder="工号" ng-model="queryInfo.username" name="username">
+                </div>
+            </div>
+            <div class="form-group" style="width: 120px; margin-right: 5px;">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope"></i> </div>
+                    <input class="form-control input-sm" type="text" placeholder="邮箱" ng-model="queryInfo.email" name="Email">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm" ng-click="search()" ng-disabled="searchform.$invalid"><i class="fa fa-search"></i> 搜索</button>
+
+        </form>
+        <div class="btn-group pull-right" style="margin-top:-23px;" ng-if="!ban">
+            <button type="button" class="btn btn-sm btn-primary" ng-click="edit({})"><i class="fa fa-plus"></i> 添加用户</button>
+        </div>
+    </div>
+    <div style="position:absolute;top:38px;bottom:40px;left:0;right:0;overflow:auto;">
+        <table class="fulltable" style="width:100%">
+            <thead>
+                <tr>
+                    <th>教研室</th>
+                    <th>工号</th>
+                    <th>姓名</th>
+                    <th>手机</th>
+                    <th>邮箱</th>
+                    <th ng-if="!ban">操作</th>
+                </tr>
+            </thead>
+            <tbody class="table-sm">
+                <tr ng-repeat="d in list.Data" ng-click="select(d)" ng-class="{'success':dt.detail==d}">
+                    <td>{{d.TeachingGroupId|FteaGroup}}</td>
+                    <td>{{d.UserName}}</td>
+                    <td>{{d.FullName}}</td>
+                    <td>{{d.PhoneNumber}}</td>
+                    <td>{{d.Email}}</td>
+                    <td ng-if="!ban">
+                        <a href ng-click="edit(d)">编辑</a> |
+                        <!--<a href ng-click="delete(d)" ng-if="d.Enable">禁用</a> |
+                        <a href ng-click="delete(d,false,true)" ng-if="!d.Enable">恢复</a> |-->
+                        <a href ng-click="delete(d,true)">彻底删除 </a>
+                    </td>
+                </tr>
+                <tr ng-if="!list.Data">
+                    <td colspan="6">暂无数据</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center" style="position:absolute;bottom:0;left:0;right:0">
+        <pagination boundary-links="true" total-items="list.TotalCount" items-per-page='list.PageSize' ng-model="list.PageIndex" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" style="margin:0" class="pagination-sm"></pagination>
+    </div>
+</div>

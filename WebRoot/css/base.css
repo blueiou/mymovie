@@ -1,0 +1,26 @@
+.navbar .navbar-nav > li > a.btn-primary, .btn-primary {
+    border-color: #7A9E9F;
+    color: #f4f4f4;
+}
+.navbar .navbar-nav > li > a.btn-primary.btn-fill, .btn-primary.btn-fill {
+    color: #FFFFFF;
+    background-color: #7A9E9F;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.btn, .navbar .navbar-nav > li > a.btn {
+    border-radius: 20px;
+    box-sizing: border-box;
+    border-width: 2px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 7px 18px;
+    border-color: #66615B;
+    color: #66615B;
+    -webkit-transition: all 150ms linear;
+    -moz-transition: all 150ms linear;
+    -o-transition: all 150ms linear;
+    -ms-transition: all 150ms linear;
+    transition: all 150ms linear;
+}

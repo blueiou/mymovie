@@ -1,0 +1,38 @@
+﻿<div class="panel panel-default" style="width: 200px; position: absolute; bottom: 0px; left: 0px; top: 60px; margin: 0; overflow-y: auto; overflow-x: hidden;">
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a class="active" href="/#index.html"><i class="fa fa-home fa-fw"></i> 首页</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> 个人资料<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a ui-sref="">个人资料</a>
+                        </li>
+                        <li>
+                            <a ui-sref="">密码修改</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a ui-sref=""><i class="fa fa-edit fa-fw"></i> 实习指导</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-table fa-fw"></i> 报表管理<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a ui-sref="">学生报表</a>
+                        </li>
+                        <li>
+                            <a ui-sref="">老师报表</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ui-view></div>
