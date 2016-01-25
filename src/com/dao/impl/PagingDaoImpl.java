@@ -8,21 +8,15 @@ import javax.annotation.Resource;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
-import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.springframework.stereotype.Component;
 
-import com.dao.DataPageDaoT;
-import com.dao.SuperDao;
+import com.dao.PagingDao;
 import com.entity.Page;
-import com.entity.Student;
 import com.entity.Tb_datas;
 
-public class DataPageDaoTImlp  implements DataPageDaoT{
+public class PagingDaoImpl implements PagingDao{
 	private HibernateTemplate hibernateTemplate;
 	@Resource
 	public HibernateTemplate getHibernateTemplate() {
@@ -32,8 +26,8 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
-	public Page getpagelist(int pageno ,int pagesize){
+	@Override
+	public Page getPageList(int pageno ,int pagesize,final Class arg1) {
 		Page p = null;
 		//Criteria criteria=getSession().createCriteria(Tb_datas.class);
 		
@@ -43,7 +37,8 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
 				//Criteria criteria=session.createCriteria(Tb_datas.class);
-				Criteria criteria=session.createCriteria(Tb_datas.class);
+				//Class
+				Criteria criteria=session.createCriteria(arg1);
 				return criteria;
 			}
 			
@@ -61,7 +56,7 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 		{
 			pagecount=rowcount/pagesize+1;
 		}
-		List slist=criteria.list();
+		List<Tb_datas> slist=criteria.list();
 		//��ҳ������
 		String sb2=getPageNum(pagecount,pageno,pagesize);
 		 if (p==null) 
@@ -70,9 +65,8 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 			 p=new Page(pagecount,pageno, pagesize, slist,rowcount,sb2);
 			 }
 		return p;
-		
-		
-		}
+	}
+	
 	public String getPageNum(int pagecount,int pageno,int pagesize){
 		StringBuffer bar=new StringBuffer();  
 	//����ǵ�һҳ  
@@ -149,13 +143,12 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 			
 			
 		}
-	
-	public void saveStu(Student stu){
-		getHibernateTemplate().save(stu);
+
+
+
+	@Override
+	public Page getPageList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-/*public static void main(String args[]){
-	
-	
-	
-}*/
 }

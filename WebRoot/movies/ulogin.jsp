@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>所有的组件集合</title>
+    <title>用户登录</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,8 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <script type="text/javascript" ></script>
-<link rel="stylesheet" href="css/bootstrap.css" />
-    <link href="./css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/bootstrap.css" />
     <link rel="stylesheet" href="./css/examples.css" />
     <link rel="stylesheet" href="./css/base.css" />
 <style type="text/css">
@@ -84,17 +83,17 @@ body {
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
                                 <h3 class="title">Welcome</h3>
-                                <form class="register-form">
+                                <form class="register-form" action="ulogin.action" method="post" onsubmit="return checkulogin()">
                                     <label>Email</label>
-                                    <input id=""  type="text" class="form-control" placeholder="用户名">
-
+                                    <input id="uname"  type="text" class="form-control" onchange="checkname()" placeholder="用户名">
+<label id="spuser" style="margin-bottom: -100px;" ></label><br><br>
                                     <label>Password</label>
-                                    <input id="" type="password" class="form-control" placeholder="密码">
-                                    <input id="" type="password" class="form-control" placeholder="重复密码">
-                                    <button class="btn btn-danger btn-block">Register</button>
+                                    <input id="upass" type="password" class="form-control" onchange="" placeholder="密码">
+                                   <!--  <span id='sppass'></span> -->
+                                    <button class="btn btn-danger btn-block" onclick="javascript:">登录</button>
                                 </form>
                                 <div class="forgot">
-                                    <a href="#" class="btn btn-simple btn-danger">Forgot password?</a>
+                                    <a href="#" class="btn btn-simple btn-danger">忘记密码?</a>
                                 </div>
                             </div>
                         </div>
@@ -106,4 +105,7 @@ body {
         </div>
     </div>      
   </body>
+
+  <script type="text/javascript" src="script/jquery1.8.js"></script>
+    <script type="text/javascript" src="./script/ulogin.js"></script>
 </html>
