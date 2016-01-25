@@ -13,7 +13,7 @@
  } 
   
   $(document).ready(function(){
-	  //loadpage();
+	  loadpage();
 		  //验证用户名
 	 }); 
   function checkname(){
@@ -24,7 +24,7 @@
 		 return true;
 	  }
 	  else {
-		  $("#spuser").html("<font color='#EF5F5F'>*用户名只能是字母、数字和下划线</font>");  
+		  $("#spuser").html("<font color='#FF0000'>*用户名只能是字母、数字和下划线，请重新输入</font>");  
 		//  layer.msg("用户名只能是字母、数字和下划线，请重新输入");
 		  return false;
 	  }

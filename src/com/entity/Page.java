@@ -9,7 +9,7 @@ private	int	 pageno ;//µ±Ç°Ò³
 private	int	 pagesize ;
 private	int	pagelast ;
 private	int	 pageNext ;
-private	List stulist;
+private	List<Tb_datas> stulist;
 private int rowcount;
 //private String sbB;
 
@@ -66,13 +66,13 @@ public int getPageNext() {
 public void setPageNext(int pageNext) {
 	this.pageNext = pageNext;
 }
-public List getStulist() {
+public List<Tb_datas> getStulist() {
 	return stulist;
 }
-public void setStulist(List stulist) {
+public void setStulist(List<Tb_datas> stulist) {
 	this.stulist = stulist;
 }
-public Page( int pagecount ,int pageno,int pagesize,List stuList,int rowcount,String sb2){
+public Page( int pagecount ,int pageno,int pagesize,List<Tb_datas> stuList,int rowcount,String sb2){
 	this.pagecount=pagecount;
 	this.pageno=pageno;
 	this.pagesize=pagesize;

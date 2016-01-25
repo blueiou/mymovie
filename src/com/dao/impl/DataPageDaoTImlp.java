@@ -42,7 +42,6 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 			@Override
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
-				//Criteria criteria=session.createCriteria(Tb_datas.class);
 				Criteria criteria=session.createCriteria(Tb_datas.class);
 				return criteria;
 			}
@@ -61,8 +60,8 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 		{
 			pagecount=rowcount/pagesize+1;
 		}
-		List slist=criteria.list();
-		//ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		List<Tb_datas> slist=criteria.list();
+		//·ÖÒ³µ¼º½¶þ
 		String sb2=getPageNum(pagecount,pageno,pagesize);
 		 if (p==null) 
 			 
@@ -75,8 +74,8 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 		}
 	public String getPageNum(int pagecount,int pageno,int pagesize){
 		StringBuffer bar=new StringBuffer();  
-	//ï¿½ï¿½ï¿½ï¿½Çµï¿½Ò»Ò³  
-		//ï¿½ï¿½Ó·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
+	//Èç¹ûÊÇµÚÒ»Ò³  
+		//Ìí¼Ó·ÖÒ³µ¼º½
 		bar.append("<nav><ul class='pagination'>");
 		
 	if(pageno == 1){  
@@ -87,10 +86,10 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 	       .append("<li ><a href='testssh.action?pageno=1'>1</a></li>");  
 	}  
 	//** 
-	// * ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ò»Ò³) 
+	// * ½áÊø(µÚÒ»Ò³) 
 	 //*  
 	  
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ð¡ï¿½ï¿½11  
+	//Èç¹û×ÜÒ³ÊýÐ¡ÓÚ11  
 	if(pagecount <= 11){  
 	    for(int i =2 ; i<pagecount;i++){  
 	        if(pageno==i){  
@@ -99,8 +98,8 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 	            bar.append("<li><a href='testssh.action?pageno="+i+"'>"+i+"</a></li>");  
 	        }  
 	    }  
-	}else{//ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½11  
-	    if(pageno <=6){                         //ï¿½ï¿½Ç°Ò³Ð¡Ò³ï¿½ï¿½ï¿½ï¿½6Ê±  (Ò³ï¿½ï¿½Òªï¿½ï¿½Ç°ï¿½ï¿½Ä½ï¿½ï¿½ï¿½)  
+	}else{//×ÜÒ³Êý´óÓÚ11  
+	    if(pageno <=6){                         //µ±Ç°Ò³Ð¡Ò³µÈÓÚ6Ê±  (Ò³ÂëÒªÓëÇ°ÃæµÄ½ÖÉÏ)  
 	        for(int i=2;i<=7;i++){  
 	            if(pageno==i){  
 	                bar.append("<li class='active'><a href='testssh.action?pageno="+i+"'>" +i+ "<span class='sr-only'>"+pageno+"</span></li>");  
@@ -110,7 +109,7 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 	        }  
 	        bar.append("<li><span>....</span></li>");  
 	        bar.append("<li><a href='testssh.action?pageno="+(pagecount-1)+"'>"+(pagecount-1)+"</a></li>");  
-	    }else if(pageno>=pagecount-5){              //ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³-5Ê± Òªï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½  
+	    }else if(pageno>=pagecount-5){              //µ±Ç°Ò³´óÓÚ×î´óÒ³-5Ê± ÒªÓëºóÃæµÄ½ÓÉÏ  
 	        bar.append("<li><a href='testssh.action?pageno=2'>"+2+"</a></li>");  
 	        bar.append("<li><span>....</span></li>");  
 	        for(int i=pagecount-5-3;i<=pagecount-1;i++){  
@@ -136,7 +135,7 @@ public class DataPageDaoTImlp  implements DataPageDaoT{
 	}  
 	  
 	  
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³  
+	//Èç¹ûÊÇ×îºóÒ»Ò³  
 	if(pageno == pagecount){  
 	  bar.append("<li class='active'><a href='testssh.action?pageno="+pagecount+"'>" +pagecount+ "<span class='sr-only'>"+pageno+"</span></a></li>")
 	       .append("<li class='disabled'><span class='disabled'>Next</span></li>");  

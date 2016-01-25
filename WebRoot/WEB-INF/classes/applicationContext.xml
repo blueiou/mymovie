@@ -59,24 +59,14 @@
 	<bean id="DataPageDaoTImlp" class="com.dao.impl.DataPageDaoTImlp">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
-	<bean id="PagingDaoImpl" class="com.dao.impl.PagingDaoImpl">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />
-	</bean>
 <!-- bo类 -->
-<bean id="SysGoodsBo" class="com.service.SysGoodsService">
-<property name="pagingDaoImpl" ref="PagingDaoImpl"></property>
-
-</bean>
 	<bean id="StudentBO" class="com.service.StudentBO">
 <property name="dataPageDaoT" ref="DataPageDaoTImlp"></property>
 </bean>	
 
 <!-- action 类-->
-
 <bean id="TestSSHAction" class="com.action.TestSSHAction">
 <property name="sBo" ref="StudentBO"></property>
-<property name="sGoods" ref="SysGoodsBo"></property>
-
 </bean>	
 
 

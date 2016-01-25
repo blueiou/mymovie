@@ -8,7 +8,6 @@
 
 <action name="testssh" class="TestSSHAction">
 <result name="success">orginaldata.jsp</result>
-<result name="goodslist">movies/index.jsp </result>
 <result name="error">/error.jsp</result>
 
 </action>
