@@ -4,15 +4,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.Expression;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.dao.PagingDao;
+import com.entity.Goods;
 import com.entity.Page;
 import com.entity.Tb_datas;
 
@@ -27,7 +30,8 @@ public class PagingDaoImpl implements PagingDao{
 		this.hibernateTemplate = hibernateTemplate;
 	}
 	@Override
-	public Page getPageList(int pageno ,int pagesize,final Class arg1) {
+
+	public Page getPageList(int pageno ,int pagesize,final Class arg1,int stamp) {
 		Page p = null;
 		//Criteria criteria=getSession().createCriteria(Tb_datas.class);
 		
@@ -39,6 +43,7 @@ public class PagingDaoImpl implements PagingDao{
 				//Criteria criteria=session.createCriteria(Tb_datas.class);
 				//Class
 				Criteria criteria=session.createCriteria(arg1);
+				//criteria.add(criteria.eq)
 				return criteria;
 			}
 			
@@ -48,6 +53,7 @@ public class PagingDaoImpl implements PagingDao{
 		criteria.setProjection(null);
 		criteria.setFirstResult((pageno-1)*pagesize);
 		criteria.setMaxResults(pagesize);
+		criteria.add(Restrictions.eq("stamp", stamp));
 		int pagecount = 0;
 		if(rowcount%pagesize==0){
 			pagecount=rowcount/pagesize;
@@ -56,7 +62,7 @@ public class PagingDaoImpl implements PagingDao{
 		{
 			pagecount=rowcount/pagesize+1;
 		}
-		List<Tb_datas> slist=criteria.list();
+		List<Goods> slist=criteria.list();
 		//��ҳ������
 		String sb2=getPageNum(pagecount,pageno,pagesize);
 		 if (p==null) 

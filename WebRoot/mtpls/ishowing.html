@@ -1,0 +1,34 @@
+    <div class="container">
+   <div class="row">  
+<div ng-repeat="smv in smvlist">
+<div ng-repeat="s in smv.stulist">
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">{{s.sysname}}</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+   </div> 
+   
+    总共有{{smv.rowcount}}条记录
+           </div>       
+   <hr />
+   <div >
+    
+
+   
+</div>
+    </div>      
+            </div>
+<hr />
+    <h4>Limit the maximum visible buttons</h4>
+    <h6><code>rotate</code> defaulted to <code>true</code>:</h6>
+    <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+    
+    <h6><code>boundary-link-numbers</code> set to <code>true</code> and <code>rotate</code> set to <code>false</code>:</h6>
+    <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
+    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+            

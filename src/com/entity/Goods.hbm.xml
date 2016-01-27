@@ -24,6 +24,14 @@
 <property name="descript" type="java.lang.String">
 <column name="descript" length="100"></column>
 </property>
-
+<property name="stamp" type="java.lang.Integer">
+<column name="stamp" length="10"></column>
+</property>
+<property name="showtime" type="java.lang.String">
+<column name="showtime" length="20"></column>
+</property>
+<property name="uploadtime" type="java.lang.String">
+<column name="uploadtime" length="160"></column>
+</property>
 </class>
 </hibernate-mapping>

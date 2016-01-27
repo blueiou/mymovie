@@ -1,11 +1,33 @@
 package com.entity;
 
-public class Goods {
+public  class Goods {
 
-	public String sysname;
-	public int id;
-	public String descript;
-	public String type;
+	private String sysname;
+	private int id;
+	private String descript;
+	private String type;
+	private int stamp;
+	private String showtime;
+	private String uploadtime;
+	public String getUploadtime() {
+		return uploadtime;
+	}
+	public void setUploadtime(String uploadtime) {
+		this.uploadtime = uploadtime;
+	}
+	
+	public String getShowtime() {
+		return showtime;
+	}
+	public void setShowtime(String showtime) {
+		this.showtime = showtime;
+	}
+	public int getStamp() {
+		return stamp;
+	}
+	public void setStamp(int stamp) {
+		this.stamp = stamp;
+	}
 	public String getSysname() {
 		return sysname;
 	}

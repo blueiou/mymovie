@@ -11,7 +11,7 @@ import com.service.StudentBO;
 import com.service.SysGoodsService;
 import com.tools.CheckId;
 
-public class TestSSHAction extends AjaxActionSupport {
+public class EntrieGoodAction extends AjaxActionSupport {
 	private StudentBO sBo;
 	private SysGoodsService sGoods;
 	private Page page;
@@ -64,23 +64,10 @@ public class TestSSHAction extends AjaxActionSupport {
 	}
 	
 	public String execute() {
-		int  pageno=1;
-		if (request.getParameter("pageno")!=null) {
-			String pagenoString=request.getParameter("pageno");
-			if(CheckId.checkPage(pagenoString))  pageno=Integer.parseInt(pagenoString);
-		} 
 		
-		/*//page=sBo.findpage(pageno, pagesize);
-		
-		request.setAttribute("page", page);
-		return SUCCESS;*/
-		
-		
-		page=sGoods.findPrePage(pageno, pagesize);
-		request.setAttribute("page", page);
 		return "goodslist";
 	}	
-	public String mvlist(){
+	public String mvList(){
 		dataMap=new HashMap<String, Object>();
 		
 		int  pageno=1;
@@ -90,20 +77,17 @@ public class TestSSHAction extends AjaxActionSupport {
 		} 
 		page=sGoods.findShowing(pageno, pagesize);
 		
-		dataMap.put("mvlist", page);
+		dataMap.put("smvlist", page);
 		dataMap.put("success", true);
 		return SUCCESS;
 	}
 	public String preList(){
 	dataMap=new HashMap<String, Object>();
-		
 		int  pageno=getPramString();
-		page=sGoods.findShowing(pageno, pagesize);
-		
-		dataMap.put("mvlist", page);
+		page=sGoods.findPrePage(pageno, pagesize);
+		dataMap.put("pmvlist", page);
 		dataMap.put("success", true);
 		return SUCCESS;
-		
 	}
 	
 	

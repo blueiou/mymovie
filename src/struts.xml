@@ -10,8 +10,22 @@
 <result name="success">orginaldata.jsp</result>
 <result name="goodslist">movies/index.jsp </result>
 <result name="error">/error.jsp</result>
-
+<!-- 显示正在热映和预备上映 -->
 </action>
+<!-- <action name="mvlist" class="TestSSHAction" method="mvlist">
+<result type="json">
+<param name="root"> dataMap</param>
+</result></action> -->
+<action name="smvlist" class="EntrieGoodClass" method="mvList">
+<result type="json">
+<param name="root"> dataMap</param>
+</result>
+</action>
+ <action name="pmvlist" class="EntrieGoodClass" method="preList">
+<result type="json">
+<param name="root"> dataMap</param>
+</result>
+</action> 
 
 </package>
 

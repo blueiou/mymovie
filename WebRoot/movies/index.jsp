@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/ct-paper.css" />
   </head>
   
-  <body>
+  <body ng-app="IndexApp">
   
   <div class="container">
          <div id="navbar">
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                   </button>
-                                  <a class="navbar-brand" href="#">Menu</a>
+                                  <a class="navbar-brand" ui-sref="showing" >Menu</a>
                                 </div>
                             
                                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </nav>
                         
                         </div><!--  end navbar -->
-    <div class="row">
+  <%--   <div class="row">
     <s:iterator value="page.stulist"  var="s">
 
 
@@ -87,11 +87,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 总共有${page.pagecount }页
 当前${page.pageno }/${page.pagecount }页<br>
 
-${page.sb2}
+${page.sb2} --%>
 </div>
+<hr />
+<div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                <li ><a  ui-sref="showing">正在热映</a></li>
+                                <li><a ui-sref="preparatory">预备上映</a></li>
+                                <li><a href="" data-toggle="tab">Messages</a></li>
+                            </ul>
+                            </div>
+                        </div>
 
-        <hr>
+        <div ui-view=""></div>
+        <hr />
   </body>
-  <script type="text/javascript" src="script/bootstrap.js"></script>
   
+  <!-- Angular -->
+  <script src="./script/angularjs/angular.js"></script>
+  <script src="./script/angularjs/angular-animate.js"></script>
+   <script src="./script/ui-bootstrap-tpls-1.1.1.js"></script>
+  <!-- UI-Router -->
+  <script src="./script/angularjs/angular-ui-router.js"></script>
+  <!-- App Script -->
+    <script src="./script/app/apps.js"></script>
 </html>
