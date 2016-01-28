@@ -106,10 +106,13 @@ ${page.sb2} --%>
   
   <!-- Angular -->
   <script src="./script/angularjs/angular.js"></script>
+  <script src="./script/angularjs/angular-resource.js"></script>
   <script src="./script/angularjs/angular-animate.js"></script>
    <script src="./script/ui-bootstrap-tpls-1.1.1.js"></script>
   <!-- UI-Router -->
   <script src="./script/angularjs/angular-ui-router.js"></script>
   <!-- App Script -->
     <script src="./script/app/apps.js"></script>
+    <script src="./script/app/service.js"></script>
+    <script src="./script/app/controller.js"></script>
 </html>

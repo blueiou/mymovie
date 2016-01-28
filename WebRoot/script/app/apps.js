@@ -1,4 +1,4 @@
-   var indexapp = angular.module('IndexApp', ["ui.router",'ngAnimate', 'ui.bootstrap']);
+   var indexapp = angular.module('IndexApp', ["ui.router",'ngAnimate', 'ui.bootstrap','mv.service','mv.controller']);
    indexapp.config(function($stateProvider, $urlRouterProvider) {
       // For any unmatched url, send to /route1
       $urlRouterProvider.otherwise("/index");
@@ -43,8 +43,8 @@
 	   // controller: 'viewStuRecordCtrl'
 	});
     });
-   indexapp.controller('showing',function ($scope,$http,$log){
-   $scope.totalItems = 64;
+  /* indexapp.controller('showing',function ($scope,$http,$log){
+  $scope.totalItems = 64;
 	   $scope.currentPage = 4;
 
 	   $scope.setPage = function (pageNo) {
@@ -64,6 +64,9 @@
 	                          console.log(JSON.stringify(response));
 	                        
 	   
+   
+   
+   });
    });
   indexapp.controller('prepara',function ($scope,$http){
 	   
@@ -72,6 +75,6 @@
 	                           $scope.pmvlist = response; 
 	                        }); 
 	   
-   });
+   });*/
    
    
