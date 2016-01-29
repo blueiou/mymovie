@@ -73,12 +73,21 @@ public void setStulist(List stulist) {
 	this.stulist = stulist;
 }
 public Page( int pagecount ,int pageno,int pagesize,List stuList,int rowcount,String sb2){
+	super();
 	this.pagecount=pagecount;
 	this.pageno=pageno;
 	this.pagesize=pagesize;
 	this.stulist=stuList;
 	this.rowcount=rowcount;
   this.sb2=sb2;
+}
+public Page(int pagecount, int pageno, int pagesize, List stulist, int rowcount) {
+	super();
+	this.pagecount = pagecount;
+	this.pageno = pageno;
+	this.pagesize = pagesize;
+	this.stulist = stulist;
+	this.rowcount = rowcount;
 }
 
 

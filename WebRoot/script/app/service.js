@@ -2,7 +2,7 @@ var services = angular.module('mv.service', ['ngResource']);
 services.factory('smv',function($resource)
 		
 {
-	 var resource = $resource("smvlist.action",
+	 var resource = $resource("smvlist.action?pageno=:pageno",
 		      {
 		        
 		      },
@@ -14,11 +14,18 @@ services.factory('smv',function($resource)
 		        }
 		      }
 		    );
-	 resource.retrievePerson = function () {
+/*	 resource.retrievePerson = function () {
 		 return this.get(
 			        {
 			          //operation: "data.txt"
 			        });
+	    };*/
+	 resource.retrievePerson = function (pageno) {
+	      return this.get(
+	        {
+	          
+	          pageno: pageno
+	        });
 	    };
 	    return resource;
 }

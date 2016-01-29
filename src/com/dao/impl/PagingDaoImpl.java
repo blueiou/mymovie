@@ -68,7 +68,9 @@ public class PagingDaoImpl implements PagingDao{
 		 if (p==null) 
 			 
 			 {
-			 p=new Page(pagecount,pageno, pagesize, slist,rowcount,sb2);
+			//从后台传分页的样式
+			 //p=new Page(pagecount,pageno, pagesize, slist,rowcount,sb2);
+			 p=new Page(pagecount,pageno, pagesize, slist,rowcount);
 			 }
 		return p;
 	}
