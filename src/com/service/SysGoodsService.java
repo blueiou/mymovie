@@ -30,7 +30,6 @@ public class SysGoodsService {
 			else p.setPagelast(pageno);
 			if(pageno>=pagecount||pageno<0) p.setPageNext(pagecount-1);
 			else p.setPageNext(pageno);
-			
 			if (pageno>pagecount) p.setPageno(pagecount);
 			//System.out.print(p.getPageno());
 			return p;
@@ -38,7 +37,6 @@ public class SysGoodsService {
 		}
 		public Page findPrePage(int pageno,int pagesize){
 			if (p==null)  p=new Page();
-			
 					p=pagingDaoImpl.getPageList(pageno, pagesize, Goods.class,0);
 //					int rowcount=p.getRowcount();
 					int pagecount=p.getPagecount();

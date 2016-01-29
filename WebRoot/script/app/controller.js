@@ -1,8 +1,8 @@
 var app=angular.module('mv.controller',[]);
 
 app.controller('showing',function ($scope,$interval,$http,$log,smv){
-	    $scope.totalItems = 64;
-		$scope.currentPage = 4;
+	    //$scope.totalItems = 64;
+		//$scope.currentPage = 4;
 		//传入当前的页码到后台
 		   $scope.setPage = function (pageNo) {
 		     $scope.currentPage = pageNo;		     
@@ -25,6 +25,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,smv){
 			   
 		     $log.log('Page changed to: ' + $scope.currentPage);
 		   };*/
+		   //在还没触发setPage()函数时候
 		   $http.get("smvlist.action").success( function(response) {
 				  console.log(response);			                         		
 				   var smvlist = response.smvlist;				                       				                       
@@ -36,10 +37,12 @@ app.controller('showing',function ($scope,$interval,$http,$log,smv){
 		  // $scope.bigTotalItems = 175;
 		   $scope.bigCurrentPage = 1;
 	   });
+
 	app.controller('prepara',function ($scope,$http){		   
 		   var url="pmvlist.action";
 		   $http.get(url).success( function(response) {
 		                           $scope.pmvlist = response; 
-		                        }); 
+		                        });
+		   
 		   
 	   });
