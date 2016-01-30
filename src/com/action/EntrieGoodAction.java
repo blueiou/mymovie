@@ -16,7 +16,6 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	private SysGoodsService sGoods;
 	private Page page;
 	private Map<String, Object> dataMap;
-	
 	private int pagesize=6;
 	@Resource(name="SysGoodsService")
 	public SysGoodsService getsGoods() {
@@ -90,7 +89,6 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		return SUCCESS;
 	}
 	public void test(){
-		
 		sGoods.test();
 		System.out.print(sGoods.test());
 	}

@@ -22,7 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/ct-paper.css" />
   </head>
-  
+  <style type="text/css">
+  form.tab-form-demo .tab-pane {
+    margin: 20px 20px;
+  }
+</style>
   <body ng-app="IndexApp">
   
   <div class="container">
@@ -88,19 +92,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 当前${page.pageno }/${page.pagecount }页<br>
 
 ${page.sb2} --%>
+<uib-tabset justified="true">
+    <uib-tab heading="正在热映" ui-sref="showing"></uib-tab>
+    <uib-tab heading="预备上映" ui-sref="preparatory"></uib-tab>
+    <uib-tab heading="Long Justified"></uib-tab>
+  </uib-tabset>
+  
 </div>
-<hr />
-<div class="nav-tabs-navigation">
-                            <div class="nav-tabs-wrapper">
-                            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                                <li ><a  ui-sref="showing">正在热映</a></li>
-                                <li><a ui-sref="preparatory">预备上映</a></li>
-                                <li><a href="" data-toggle="tab">Messages</a></li>
-                            </ul>
-                            </div>
-                        </div>
-
-        <div ui-view=""></div>
+ 
+        <div style="margin-top: 45px;" ui-view=""></div>
         <hr />
   </body>
   

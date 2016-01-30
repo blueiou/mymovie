@@ -1668,7 +1668,7 @@ textarea.form-control {
     .nav-tabs > li.active > a:focus {
       background-color: transparent;
       border: 0 none; }
-    .nav-tabs > li.active :after {
+    /* .nav-tabs > li.active :after {
       border-bottom: 11px solid #FFFCF5;
       border-left: 11px solid transparent;
       border-right: 11px solid transparent;
@@ -1676,7 +1676,7 @@ textarea.form-control {
       display: inline-block;
       position: absolute;
       right: 40%;
-      bottom: -1px; }
+      bottom: -1px; } 
     .nav-tabs > li.active :before {
       border-bottom: 11px solid #F1EAE0;
       border-left: 11px solid transparent;
@@ -1686,7 +1686,7 @@ textarea.form-control {
       position: absolute;
       right: 40%;
       bottom: 1px; }
-
+*/
 /*             Navigation Pills               */
 .nav-pills > li + li {
   margin-left: 0; }

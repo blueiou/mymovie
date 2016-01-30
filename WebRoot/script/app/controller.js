@@ -62,3 +62,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,smv){
 		                        });
 			   $scope.bigCurrentPage = 1;
 	   });
+	
+	controller('TabsDemoCtrl', function ($scope, $window) {
+		
+		});
