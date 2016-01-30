@@ -1,7 +1,7 @@
    
    <div class="container">
    <div class="row">
-   
+<!--    
 <div ng-repeat="pmv in pmvlist">
 <div ng-repeat="p in pmv.stulist">
 
@@ -15,6 +15,24 @@
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
-   </div>  </div>      
+   </div>  </div> -->
+   <div ng-repeat="p in pmvlist2">
+
+
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">{{p.sysname}}</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
+   </div>       
+            </div>
+             <center>
+
+    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
+    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+   </center> 
             </div>

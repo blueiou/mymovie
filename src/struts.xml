@@ -26,7 +26,9 @@
 <param name="root"> dataMap</param>
 </result>
 </action> 
+<action name="test" class="EntrieGoodClass" method="test">
 
+</action>
 </package>
 
 <!-- struts2未托管之前 -->

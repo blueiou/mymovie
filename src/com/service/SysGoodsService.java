@@ -50,5 +50,8 @@ public class SysGoodsService {
 					return p;
 
 				}
+		public int test(){
+			return pagingDaoImpl.getCount(1);
+		}
 		
 }

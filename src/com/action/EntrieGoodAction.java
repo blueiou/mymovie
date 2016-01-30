@@ -89,7 +89,11 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		dataMap.put("success", true);
 		return SUCCESS;
 	}
-	
+	public void test(){
+		
+		sGoods.test();
+		System.out.print(sGoods.test());
+	}
 	
 	
 }
