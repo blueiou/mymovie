@@ -56,18 +56,17 @@
 </tx:advice>
 	
 	<!-- 配置数据持久层 --><!-- 公共的继承hibernateTemplate的dao类 -->
-	<bean id="DataPageDaoTImlp" class="com.dao.impl.DataPageDaoTImlp">
+	<bean id="DataPageDaoTImlp" class="com.dao.impl.DataPageDaoTImlp" scope="prototype">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	<bean id="PagingDaoImpl" class="com.dao.impl.PagingDaoImpl">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 <!-- bo类 --> <!-- 配置业务逻辑层 -->
-<bean id="SysGoodsBo" class="com.service.SysGoodsService">
+<bean id="SysGoodsBo" class="com.service.SysGoodsService" scope="prototype">
 <property name="pagingDaoImpl" ref="PagingDaoImpl"></property>
-
 </bean>
-	<bean id="StudentBO" class="com.service.StudentBO">
+	<bean id="StudentBO" class="com.service.StudentBO" scope="prototype">
 <property name="dataPageDaoT" ref="DataPageDaoTImlp"></property>
 </bean>	
 
@@ -78,7 +77,7 @@
 <property name="sGoods" ref="SysGoodsBo"></property>
 </bean>	
 
-<bean id="EntrieGoodClass" class="com.action.EntrieGoodAction">
+<bean id="EntrieGoodClass" class="com.action.EntrieGoodAction" scope="prototype">
 <property name="sBo" ref="StudentBO"></property>
 <property name="sGoods" ref="SysGoodsBo"></property>
 </bean>	

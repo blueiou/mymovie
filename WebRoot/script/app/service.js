@@ -23,7 +23,6 @@ services.factory('smv',function($resource)
 	 resource.retrievePerson = function (pageno) {
 	      return this.get(
 	        {
-	          
 	          pageno: pageno
 	        });
 	    };
@@ -31,4 +30,37 @@ services.factory('smv',function($resource)
 }
 
 );
+services.factory('smvList', ['$resource', function ($resource) {
+    return $resource('smvlist.action', {}, {
+        query: {
+            method: 'GET',
+            params:{pageno:"1"},
+            isArray: false,
+            //url:'smvlist.action?'
+        }
+        
+    });
+}]);
+services.factory('pmvList', ['$resource', function ($resource) {
+    return $resource('pmvlist.action', {}, {
+        query: {
+            method: 'GET',
+            params:{pageno:"1"},
+            isArray: false,
+            //url:'smvlist.action?'
+        }
+        
+    });
+}]);
+services.factory('goodsList', ['$resource', function ($resource) {
+    return $resource('allist.action', {}, {
+        query: {
+            method: 'GET',
+            params:{pageno:"1",m:""},
+            isArray: false,
+            //url:'smvlist.action?'
+        }
+        
+    });
+}]);
 

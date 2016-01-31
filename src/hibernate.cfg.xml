@@ -30,5 +30,6 @@
 	<mapping resource="com/entity/Goods.hbm.xml" />
 	<mapping resource="com/entity/User.hbm.xml" />
 	<mapping resource="com/entity/Role.hbm.xml" />
+	<mapping resource="com/entity/BaseInfo.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

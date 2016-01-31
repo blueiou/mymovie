@@ -16,13 +16,13 @@
     总共有{{smv.rowcount}}条记录
            </div>   -->  
  <!-- 单层获取值 -->          
-   <div ng-repeat="s in smvlist2">
+   <div ng-repeat="s in smvlist.stulist">
             <div class="col-md-4 portfolio-item">
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                 </a>
                 <h3>
-                    <a href="#">{{s.sysname}}</a>
+                    <a href="" ng-click="open('lg')" >{{s.sysname}}</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
@@ -31,15 +31,23 @@
            </div>           
   <center>
 
-    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
+    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
     <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
    </center>      
             </div>
-           
+          
 <hr />
 
 
   <hr />
+   <div  class="btn btn-default" ng-click="open('lg')" >just hit !</div>
+
+  
+  <ul>
+  <li ui-sref-active="active" class="item active">
+    <a ui-sref="app.user({user: 'bilbobaggins'})" href="/users/bilbobaggins">@bilbobaggins</a>
+  </li>
+  
     <!--无省略号分页
      <h4>Limit the maximum visible buttons</h4>
     <h6><code>rotate</code> defaulted to <code>true</code>:</h6>

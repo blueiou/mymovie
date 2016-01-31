@@ -20,11 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="css/ct-paper.css" />
   </head>
   <style type="text/css">
   form.tab-form-demo .tab-pane {
-    margin: 20px 20px;
+    margin: 10px 10px;
   }
 </style>
   <body ng-app="IndexApp">
@@ -95,7 +96,7 @@ ${page.sb2} --%>
 <uib-tabset justified="true">
     <uib-tab heading="正在热映" ui-sref="showing"></uib-tab>
     <uib-tab heading="预备上映" ui-sref="preparatory"></uib-tab>
-    <uib-tab heading="Long Justified"></uib-tab>
+    <uib-tab heading="Long items.add" ui-sref="items.add"></uib-tab>
   </uib-tabset>
   
 </div>

@@ -16,7 +16,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
    </div>  </div> -->
-   <div ng-repeat="p in pmvlist2">
+   <div ng-repeat="p in pmvlist.stulist">
 
 
             <div class="col-md-4 portfolio-item">
@@ -32,7 +32,7 @@
             </div>
              <center>
 
-    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
+    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="pmvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
     <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
    </center> 
             </div>

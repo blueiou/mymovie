@@ -23,12 +23,24 @@ import com.dao.impl.PagingDaoImpl;
 import com.entity.Goods;
 import com.entity.Role;  
 import com.entity.User;  
+import com.tools.CacheClass;
 import com.tools.Md5;
   
 public class CopyOfUserTest {  
   
     public static void main(String[] args) {  
+    	String mString="showing";
+		if (CacheClass.isEmpty(mString)) mString="showing";
+		System.out.print(mString);
+		switch (mString) {
+		case "showing": 	System.out.print(3);
+			break;
+		default: 
+			System.out.print(2);
+			break;
+		}
     	
+    /*	
      CopyOfUserTest test = new CopyOfUserTest(); 
         Criteria criteria=test.getSession().createCriteria(Goods.class);
         ProjectionList pList=Projections.projectionList();
@@ -37,7 +49,7 @@ public class CopyOfUserTest {
 		pList.add(Projections.sum("stamp"));
 		criteria.setProjection(pList);
 		List<Object[]> goods = criteria.list();
-		System.out.print(goods.get(1)[1]);
+		System.out.print(goods.get(1)[1]);*/
 	/*for (Object[] objects : goods) {
 		System.out.println("object:"+objects[0]);
 		System.out.println("object:"+objects[1]);

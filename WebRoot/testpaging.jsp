@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	  <link href="" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
   </head>
   
   <body ng-app="ui.bootstrap.demo">
@@ -36,8 +36,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h6><code>boundary-link-numbers</code> set to <code>true</code> and <code>rotate</code> set to <code>false</code>:</h6>
     <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
     <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
-
-
 <hr>
 <div ng-controller="ModalDemoCtrl">
  <script type="text/ng-template" id="myModalContent.html">
