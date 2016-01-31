@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	  <link href="" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
   </head>
   
@@ -61,8 +62,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
 </div></div>
   </body>
-  <script src="./script/angularjs/angular.js"></script>
-  <script src="./script/angularjs/angular-animate.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
+ <!--  <script src="./script/angularjs/angular.js"></script>
+  <script src="./script/angularjs/angular-animate.js"></script> -->
   <script src="./script/ui-bootstrap-tpls-1.1.1.js"></script>
   <script src="./script/exmaple.js"></script>
 </html>

@@ -21,9 +21,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,smv){
 		      * $resource 传到后台
 		      * console.log(smv.retrievePerson($scope.currentPage));*/
 		   };
-
 		  /* $scope.pageChanged = function() {
-			   
 		     $log.log('Page changed to: ' + $scope.currentPage);
 		   };*/
 		   //在还没触发setPage()函数时候pageno=1
@@ -33,9 +31,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,smv){
 			                          $scope.smvlist2=smvlist.stulist;			                           
 			                           console.log("smvlist2"+smvlist.stulist);		                          
 			                        /*因为其是按照每页十条记录显示的，所以先取出总页数 再*10得到bigTotalItems
-			                           
 			                           */
-			                          
 			                           $scope.bigTotalItems = smvlist.pagecount*10;
 			  });
 		   $scope.bigCurrentPage = 1;
