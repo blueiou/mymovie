@@ -6,8 +6,8 @@
 -->
 <hibernate-mapping>
 <class name="com.entity.Goods" table="good" catalog="db_movie">
-<id name="id" type="java.lang.Integer">
-  <column name="id">  
+<id name="good_id" >
+  <column name="good_id">  
   </column>
   <generator class="uuid"></generator>
 </id>
@@ -22,7 +22,7 @@
 <column name="type" length="45"></column>
 </property>
 <property name="descript" type="java.lang.String">
-<column name="descript" length="100"></column>
+<column name="descript" length="255"></column>
 </property>
 <property name="stamp" type="java.lang.Integer">
 <column name="stamp" length="10"></column>
@@ -33,5 +33,16 @@
 <property name="uploadtime" type="java.lang.String">
 <column name="uploadtime" length="160"></column>
 </property>
+
+<many-to-one name="baseInfo"
+ class="com.entity.BaseInfo"
+ cascade="none"
+ outer-join="auto"
+ update="true"
+ insert="true"
+ access="property"
+ column="id"
+ not-null="true"
+></many-to-one>
 </class>
 </hibernate-mapping>

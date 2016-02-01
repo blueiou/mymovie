@@ -12,11 +12,7 @@
 <result name="error">/error.jsp</result>
 <!-- 显示正在热映和预备上映 -->
 </action>
-<!-- <action name="mvlist" class="TestSSHAction" method="mvlist">
-<result type="json">
-<param name="root"> dataMap</param>
-</result></action> -->
-<action name="smvlist" class="EntrieGoodClass" method="mvList">
+<!-- <action name="smvlist" class="EntrieGoodClass" method="mvList">
 <result type="json">
 <param name="root"> dataMap</param>
 </result>
@@ -25,68 +21,21 @@
 <result type="json">
 <param name="root"> dataMap</param>
 </result>
-</action> 
-<action name="test" class="EntrieGoodClass" method="test">
+</action>  -->
 
-</action>
-<action name="allist" class="EntrieGoodClass" method="sysGoods">
+<!-- <action name="allist" class="EntrieGoodClass" method="sysGoods">
 <result type="json">
 <param name="root"> dataMap</param>
 </result>
-<result name="error">
-test.html
-</result>
+<result name="error">test.html</result>
+</action> -->
+<action name="allist" class="EntrieGoodClass">
+<result type="json"><param name="root"> dataMap</param></result>
+<result name="error">test.html</result>
 </action>
+<action name="test" class="EntrieGoodClass" method="test"></action>
 </package>
 
-<!-- struts2未托管之前 -->
-<!-- <package name="showdata" extends="struts-default,json-default">
-
- <action  name="datalist" class="com.action.ShowDataAction"  method="show">
-<result name="success">/test.jsp</result> 
-<result name="signin">/ulogin.jsp</result> 
-<result name="error">/error.jsp</result>  
-</action>
-<action name="spiltdata" class="com.action.TwoShowAction" method="showData">
-<result name="success">result.jsp</result>
-<result name="signin">/ulogin.jsp</result>
-<result name="error">/error.jsp</result> 
-</action>
-
-<action name="specitfdata" class="com.action.SpecitfResAction">
-<result name="success">specifyRes.jsp</result>
-<result name="signin">/ulogin.jsp</result>
-<result name="error">/error.jsp</result>
-</action>
-datapage 分页显示
-<action name="datapage" class="com.action.OrginalDataAction" >
-<result name="success">orginaldata.jsp</result>
-<result name="error">/error.jsp</result>
-<result name="signin">/ulogin.jsp</result>
-</action>
-
-
-
-删除数据 delete
-<action name="deldata" class="com.action.DeleteDataAction" method="del">
-
-</action>
-update datas
-<action name="upddata" class="com.action.UpdDataAction" method="upd"></action>   
-
-login
-<action name="ulogin" class="com.action.UsLoginAction" method="login">
-<result name="success" type="redirectAction">datapage.action</result>
-<result name="error">/error.jsp</result>
-
-</action>
-check login
-
-<action name="clogin" class="com.action.UsLoginAction" method="clogin"></action>
-添加
-<action name="adddatas" class="com.action.AddDataAction" method="addd"></action>
-</package> -->
-<!--struts2未托管之前 -->
 
 
 

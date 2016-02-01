@@ -6,8 +6,8 @@
 -->
 <hibernate-mapping>
 <class name="com.entity.BaseInfo" table="base_info" catalog="db_movie">
-<id name="id" type="java.lang.Integer">
-  <column name="id">  
+<id name="base_id" >
+  <column name="base_id">  
   </column>
   <generator class="uuid"></generator>
 </id>
@@ -20,5 +20,11 @@
 <property name="language" type="java.lang.String">
 <column name="language" length="10"></column>
 </property>
+
+<set name="goods" table="good" cascade="all" 
+            lazy="true" inverse="true">
+            <key column="id" /><!-- 确定关联的外键列 -->
+            <one-to-many class="com.entity.Goods" />
+</set>
 </class>
 </hibernate-mapping>

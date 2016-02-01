@@ -59,13 +59,22 @@
 	<bean id="DataPageDaoTImlp" class="com.dao.impl.DataPageDaoTImlp" scope="prototype">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
-	<bean id="PagingDaoImpl" class="com.dao.impl.PagingDaoImpl">
+	<bean id="PagingDaoImpl" class="com.dao.impl.PagingDaoImpl" scope="prototype">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="SuperDao" class="com.dao.SuperDao" scope="prototype">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="SysGoodsDaoImpl" class="com.dao.impl.SysGoodsDaoImpl">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 <!-- bo类 --> <!-- 配置业务逻辑层 -->
 <bean id="SysGoodsBo" class="com.service.SysGoodsService" scope="prototype">
 <property name="pagingDaoImpl" ref="PagingDaoImpl"></property>
+<property name="sysGoodsDaoImpl" ref="SysGoodsDaoImpl"></property>
+
 </bean>
+
 	<bean id="StudentBO" class="com.service.StudentBO" scope="prototype">
 <property name="dataPageDaoT" ref="DataPageDaoTImlp"></property>
 </bean>	
@@ -80,6 +89,7 @@
 <bean id="EntrieGoodClass" class="com.action.EntrieGoodAction" scope="prototype">
 <property name="sBo" ref="StudentBO"></property>
 <property name="sGoods" ref="SysGoodsBo"></property>
+
 </bean>	
 
 

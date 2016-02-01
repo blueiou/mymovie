@@ -1,40 +1,20 @@
-package com.entity;
+package com.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-public  class Goods implements Serializable{
+import com.entity.Goods;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2607137354064922704L;
+public class GoodsInfo implements Serializable{
+
 	private String sysname;
-	private String  good_id;
+	private int id;
 	private String descript;
 	private String type;
 	private int stamp;
 	private String showtime;
 	private String uploadtime;
-	private BaseInfo baseInfo;
+	private Goods goods;
 	
-	
-	
-
-	public BaseInfo getBaseInfo() {
-		return baseInfo;
-	}
-	public void setBaseInfo(BaseInfo baseInfo) {
-		this.baseInfo = baseInfo;
-	}
-
-	public String getGood_id() {
-		return good_id;
-	}
-	public void setGood_id(String good_id) {
-		this.good_id = good_id;
-	}
 	public String getUploadtime() {
 		return uploadtime;
 	}
@@ -60,6 +40,12 @@ public  class Goods implements Serializable{
 	public void setSysname(String sysname) {
 		this.sysname = sysname;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getDescript() {
 		return descript;
 	}
@@ -72,9 +58,8 @@ public  class Goods implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Goods() {
-		super();
+	public GoodsInfo(){
+		
 	}
-	
 	
 }

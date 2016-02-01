@@ -26,7 +26,9 @@ app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,smvList
 		   $scope.search = function (){
 			   goodsList.query({pageno:$scope.currentPage,m:"1510"},function(res){
 			   $scope.smvlist=res.smvlist;
-			   //console.log("goodsList:"+res);
+			   $scope.goodsDecri=$scope.smvlist.stulist;
+			   
+			   console.log("$scope.goodsDecri.baseInfo");
 		   });
 		   };
 		   $scope.setPage = function (pageNo) {
@@ -40,7 +42,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,smvList
 			  $scope.open = function(size) {
 			    var modalInstance = $uibModal.open({
 			      animation: $scope.animationsEnabled,
-			      templateUrl: './movies/baseInfo/goodsdescri.html',
+			      templateUrl: './movies/goodsdescri.html',
 			      controller: 'ModalInstanceCtrl',
 			      size: size,
 			      resolve: {
@@ -50,11 +52,11 @@ app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,smvList
 			      }
 			    });
 
-			   /* modalInstance.result.then(function(selectedItem) {
+			    modalInstance.result.then(function(selectedItem) {
 			      $scope.selected = selectedItem;
 			    }, function() {
 			      $log.info('Modal dismissed at: ' + new Date());
-			    });*/
+			    });
 			  };
 
 			  $scope.toggleAnimation = function() {
@@ -109,7 +111,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,smvList
 			   $scope.bigCurrentPage = 1;*/
 	   });
 	
-	app.controller('ModalDemoCtrl', function($scope, $uibModal, $log) {
+	/*app.controller('ModalDemoCtrl', function($scope, $uibModal, $log) {
 
 		  $scope.items = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12', 'item13'];
 
@@ -139,7 +141,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,smvList
 		  $scope.toggleAnimation = function() {
 		    $scope.animationsEnabled = !$scope.animationsEnabled;
 		  };
-		});
+		});*/
 	
 app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, items) {
 

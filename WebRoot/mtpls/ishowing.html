@@ -23,11 +23,12 @@
                 </a>
                 <h3>
                     <a href="" ng-click="open('lg')" >{{s.sysname}}</a>
+                    <a href="" ng-click="open('lg')" >{{s.baseInfo.base_id}}</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
-   </div>    
-    总共有{{smv.rowcount}}条记录
+   </div> 
+     
            </div>           
   <center>
 
@@ -38,6 +39,7 @@
           
 <hr />
 
+    总共有{{smv.rowcount}}条记录
 
   <hr />
    <div  class="btn btn-default" ng-click="open('lg')" >just hit !</div>

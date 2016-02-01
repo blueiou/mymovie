@@ -24,6 +24,8 @@
 
 	<!-- 提交事务 -->
 	<property name="connection.autocommit">true</property>
+	
+	<property name="hibernate.jdbc.batch_size">25</property>
 	<!-- 映射*.hbm.xml -->
 	 <mapping resource="com/entity/tb_datas.hbm.xml"/>
 	<!--<mapping resource="com/entity/student.hbm.xml" /> -->

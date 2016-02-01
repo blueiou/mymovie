@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.management.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;  
@@ -20,25 +22,43 @@ import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 
 import com.dao.impl.PagingDaoImpl;
+import com.entity.BaseInfo;
 import com.entity.Goods;
 import com.entity.Role;  
 import com.entity.User;  
+import com.model.GoodsInfo;
 import com.tools.CacheClass;
+import com.tools.CheckId;
 import com.tools.Md5;
   
 public class CopyOfUserTest {  
   
     public static void main(String[] args) {  
-    	String mString="showing";
-		if (CacheClass.isEmpty(mString)) mString="showing";
-		System.out.print(mString);
-		switch (mString) {
-		case "showing": 	System.out.print(3);
-			break;
-		default: 
-			System.out.print(2);
-			break;
-		}
+String m="55344";
+CopyOfUserTest cy=new CopyOfUserTest();
+System.out.print(CheckId.checkId(m));
+    Session session=cy.getSession();
+Transaction transaction=session.beginTransaction();
+
+
+
+BaseInfo bseBaseInfo=new BaseInfo();
+
+bseBaseInfo.setContry("中国");
+bseBaseInfo.setLanguage("中文");
+//session.save(bseBaseInfo);
+Goods goods=new Goods();
+
+goods.setSysname("我的少女时代");
+goods.setDescript("《我的少女时代》是由陈玉珊执导，宋芸桦、王大陆、李玉玺、简廷芮主演的青春校园爱情电影。");
+/*Set<Goods> goods2=new HashSet<>();
+goods2.add(goods);*/
+goods.setBaseInfo(bseBaseInfo);
+bseBaseInfo.getGoods().add(goods);
+//System.out.print(goods2.iterator().hasNext());
+//bseBaseInfo.getGoods().add(goods);
+session.save(bseBaseInfo);
+transaction.commit();
     	
     /*	
      CopyOfUserTest test = new CopyOfUserTest(); 

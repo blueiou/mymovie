@@ -326,7 +326,16 @@ public class CacheClass {
 		else
 			return false;
 	}
-
+public static boolean isNumValue(String pid){
+	String regStr = "^[+-]?[1-9][0-9]*$|^0$";
+	if(pid.matches(regStr))
+		return true;
+	else
+		   return false;
+	   
+	
+}
+	
 	public static String getStringValue(Object o) {
 		if (o == null)
 			return null;
