@@ -14,8 +14,8 @@
 <!-- <property name="stuid" type="java.lang.Integer">
 <column name="stuid" length="20"></column>
 </property> -->
-<property name="contry" type="java.lang.String">
-<column name="contry" length="50"></column>
+<property name="country" type="java.lang.String">
+<column name="country" length="50"></column>
 </property>
 <property name="language" type="java.lang.String">
 <column name="language" length="10"></column>

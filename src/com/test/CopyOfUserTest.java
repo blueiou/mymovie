@@ -41,16 +41,21 @@ System.out.print(CheckId.checkId(m));
 Transaction transaction=session.beginTransaction();
 
 
-
+/*
 BaseInfo bseBaseInfo=new BaseInfo();
-
-bseBaseInfo.setContry("中国");
-bseBaseInfo.setLanguage("中文");
+bseBaseInfo.setBase_id("40288183529bbd7301529bbd74830001");*/
+/*bseBaseInfo.setContry("中国");
+bseBaseInfo.setLanguage("中文");*/
 //session.save(bseBaseInfo);
 Goods goods=new Goods();
 
-goods.setSysname("我的少女时代");
-goods.setDescript("《我的少女时代》是由陈玉珊执导，宋芸桦、王大陆、李玉玺、简廷芮主演的青春校园爱情电影。");
+goods.setSysname("叶问3");
+goods.setDescript("1959年，叶问（甄子丹饰）与张永成（熊黛林饰）将大儿子叶准送回广东，小儿子叶正继续在香港读书。在与马鲸笙（谭耀文饰）与其老板（泰森饰）所带领的帮派抗争的过程中，叶问带领着自己的弟子保卫了小学，并结识了依靠拉车和在地下赌场斗武为生的张天志（张晋饰），二人惺惺相惜。然而此时，自称 “咏春正宗”的张天志却向叶问公开宣战，要为自己新开的武馆争取名誉。可是张永成突然病危，让叶问不得不肩负起照顾妻儿的责任。面对家庭和武术，叶问究竟会作何选择？他是否会应战张天志，夺回属于他 “咏春正宗”的头衔？");
+BaseInfo bseBaseInfo=(BaseInfo) session.get(BaseInfo.class,"40288183529bbd7301529bbd74830001");
+
+//bseBaseInfo.setBase_id("40288183529bbd7301529bbd74830001");
+
+System.out.print(bseBaseInfo.getCountry()+" "+bseBaseInfo.getBase_id());
 /*Set<Goods> goods2=new HashSet<>();
 goods2.add(goods);*/
 goods.setBaseInfo(bseBaseInfo);

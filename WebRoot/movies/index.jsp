@@ -70,39 +70,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </nav>
                         
                         </div><!--  end navbar -->
-  <%--   <div class="row">
-    <s:iterator value="page.stulist"  var="s">
-
-
-
-
+<uib-tabset justified="true">
+    <uib-tab heading="正在热映" >
+     <div style="margin-top: 45px;" ng-controller="showing">
+         <!-- 单层获取值 -->          
+   <div ng-repeat="s in smvlist.stulist">
             <div class="col-md-4 portfolio-item">
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                 </a>
                 <h3>
-                    <a href="#">${s.sysname}</a>
+                    <a href="" ng-model="exmaple" ng-click="open(s.good_id)" >{{s.sysname}}</a>
+                    
+                   <!--  <a href="" ng-click="open('lg')" >{{s.baseInfo.base_id}}</a> -->
                 </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <p ng-model="exmaple" ng-click="open(s.baseInfo.base_id)">点击了解更多</p>
             </div>
-            </s:iterator>
+   </div> 
+           </div>  
+    </uib-tab>
+    <uib-tab heading="预备上映" >
+    <div ng-controller="prepara" style="margin-top: 45px;"> 
+     <div ng-repeat="p in pmvlist.stulist" >
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="" alt="">
+                </a>
+                <h3>
+                    <a href="#">{{p.sysname}}</a>
+                    
+                </h3>
+                <!-- <p>{{p.showtime}}</p> -->
             </div>
-        <!-- /.row -->
-        总共有${page.rowcount}条记录
-总共有${page.pagecount }页
-当前${page.pageno }/${page.pagecount }页<br>
-
-${page.sb2} --%>
-<uib-tabset justified="true">
-    <uib-tab heading="正在热映" ui-sref="showing"></uib-tab>
-    <uib-tab heading="预备上映" ui-sref="preparatory"></uib-tab>
+   </div>  </div>  
+    </uib-tab>
+    
     <uib-tab heading="Long items.add" ui-sref="items.add"></uib-tab>
   </uib-tabset>
   
 </div>
- 
-        <div style="margin-top: 45px;" ui-view=""></div>
+  <center>
+
+    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
+    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+   </center>      
+            </div>
+          
+<hr />
+        </div>
+        
         <hr />
+        
+  
+
+        
   </body>
   
   <!-- Angular -->

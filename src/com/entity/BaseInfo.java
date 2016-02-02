@@ -1,14 +1,20 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 //影片详情公共部分 1的一方
-public class BaseInfo {
+public class BaseInfo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7560121738505327230L;
+
 	//private int id;
 	private String base_id;
 	
-private String contry;//上映国家
+private String country;//上映国家
 
 private String language;
 
@@ -40,16 +46,18 @@ public void setId(int id) {
 	this.id = id;
 }*/
 
-public String getContry() {
-	return contry;
-}
 
-public void setContry(String contry) {
-	this.contry = contry;
-}
 
 public String getLanguage() {
 	return language;
+}
+
+public String getCountry() {
+	return country;
+}
+
+public void setCountry(String country) {
+	this.country = country;
 }
 
 public void setLanguage(String language) {

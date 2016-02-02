@@ -1,34 +1,44 @@
  <div class="modal-header">
-            <h3 class="modal-title">恩就是这样子的</h3>
+            <h3 class="modal-title">{{goodDescri.sysname}}</h3>
         </div>
         <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-             <hr />
-              <hr />
-               <hr />
-                <hr />
-                 <hr />
-                  <hr />
-                  
-            <p>ikucskahfjkvchaksjdfhweiufyCHsjkdfhsjkdafhskdjcvhxkcjvhskjdhfkjhjhjkhjkhjhjkasdasdsassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+            <table>
+            <tr>
+            <td>上映日期：</td>
+            <td>{{goodDescri.showtime}}</td>
+            </tr>
+            <tr>
+            <td>导演：</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>主演：</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>类型：</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>国家:</td>
+            <td>{{goodDescri.baseInfo.country}}</td>
+            </tr>
+            <tr>
+            <td>版本：</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>片场：</td>
+            <td></td>
+            </tr>
+             <tr>
+            <td>影片剧情：</td>
+            <td></td>
+            </tr>
+            </table>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            
+            <button class="btn btn-fill btn-primary" type="button" ng-click="">购票</button>
+            <button class="btn btn-fill btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>

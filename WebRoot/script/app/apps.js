@@ -2,7 +2,7 @@
    indexapp.config(function($stateProvider, $urlRouterProvider) {
       // For any unmatched url, send to /route1
 	   $urlRouterProvider.when("", "/showing");
-      $urlRouterProvider.otherwise("/ShowMvIndex");
+      $urlRouterProvider.otherwise("/#");
       $stateProvider
         //usermanage url
     //前台显示商品
@@ -49,63 +49,40 @@
 	    templateUrl: '/mymovie/tpls/tmpls/teacher/viewStuRecord.html',
 	   // controller: 'viewStuRecordCtrl'
 	})
-	.state("items.add", {
-    url: "/add",
-    onEnter: ['$stateParams', '$state', '$modal', '$resource', function($stateParams, $state, $modal, $resource) {
-        $modal.open({
-            templateUrl: "testpaging.jsp",
-            /*resolve: {
-              item: function() { new Item(123).get(); }
-            },
-            controller: ['$scope', 'item', function($scope, item) {
-              $scope.dismiss = function() {
-                $scope.$dismiss();
-              };
-
-              $scope.save = function() {
-                item.update().then(function() {
-                  $scope.$close(true);
-                });
-              };
-            }]*/
+/*	 .state('home', {
+      url: '/',
+      templateUrl: './movies/index.jsp',
+      controller: function($scope) {},
+      onEnter: function() {
+        console.log('home: onEnter()');
+      }
+    })*/
+	/* .state('add-notes', {
+      //abstract: true,
+      //parent: 'home',
+		 url: '/descript',
+      onEnter: function($state, $uibModal, $rootScope) {
+        var scope = $rootScope.$new();
+        scope.note = {
+          author: 'Larry',
+          text: 'Type your note here.'
+        };
+        var modal = $uibModal.open({
+          templateUrl: './movies/baseInfo/goodsdescri.html',
+          size: 'lg',
+          resolve:{}
         });
-    }]
-});
-	
+      modal.result.then(function() {
+          console.log('note');
+          console.log(scope.note);
+          // Do something here to save note.
+          //$state.go('showing');
+        });
+      },
+    })*/
+    
       
     });
-  /* indexapp.controller('showing',function ($scope,$http,$log){
-  $scope.totalItems = 64;
-	   $scope.currentPage = 4;
 
-	   $scope.setPage = function (pageNo) {
-	     $scope.currentPage = pageNo;
-	   };
-
-	   $scope.pageChanged = function() {
-	     $log.log('Page changed to: ' + $scope.currentPage);
-	   };
-
-	   $scope.maxSize = 5;
-	   $scope.bigTotalItems = 175;
-	   $scope.bigCurrentPage = 1;
-	   var url="smvlist.action";
-	  $http.get(url).success( function(response) {
-	                           $scope.smvlist = response; 
-	                          console.log(JSON.stringify(response));
-	                        
-	   
-   
-   
-   });
-   });
-  indexapp.controller('prepara',function ($scope,$http){
-	   
-	   var url="pmvlist.action";
-	   $http.get(url).success( function(response) {
-	                           $scope.pmvlist = response; 
-	                        }); 
-	   
-   });*/
    
    

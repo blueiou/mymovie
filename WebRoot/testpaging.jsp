@@ -59,6 +59,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
     <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
 </div></div>
+<hr />
+
+
+<div ng-controller="MainCtrl">
+<ui-view></ui-view>
+
+  <script type="text/ng-template" id="/home.tpl.html">
+    <p>Hello {{name}}!</p>
+    <div id="btn-bar">
+      <button id="btn-add-note" ui-sref="add-note.edit">Add Note</button>
+      <p> {{ state.current.name }} </p>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="/edit.tpl.html">
+    <h2>Edit</h2>
+    <form name="edit-form">
+      <label>
+        Author:
+        <input name="author" ng-model="note.author" type="text">
+      </label>
+      <label>
+        Note:
+        <textarea name="note" ng-model="note.text" rows="3" cols="50"></textarea>
+      </label>
+      <div>
+        <button ui-sref="add-note.preview">Preview</button>
+      </div>
+    </form>
+  </script>
+
+
+</div>
+
+
+
   </body>
    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
@@ -66,4 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script src="./script/angularjs/angular-animate.js"></script> -->
   <script src="./script/ui-bootstrap-tpls-1.1.1.js"></script>
   <script src="./script/exmaple.js"></script>
+  <script src="./script/app/apps.js"></script>
+  <script src="./script/app/controller.js"></script>
+  
 </html>
