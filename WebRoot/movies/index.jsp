@@ -72,7 +72,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div><!--  end navbar -->
 <uib-tabset justified="true">
     <uib-tab heading="正在热映" >
-     <div style="margin-top: 45px;" ng-controller="showing">
+    <div ng-controller="showing">
+     <div style="margin-top: 45px;" >
          <!-- 单层获取值 -->          
    <div ng-repeat="s in smvlist.stulist">
             <div class="col-md-4 portfolio-item">
@@ -87,10 +88,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <p ng-model="exmaple" ng-click="open(s.baseInfo.base_id)">点击了解更多</p>
             </div>
    </div> 
-           </div>  
+           </div> 
+           <center>
+         <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
+    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+    </center>  
+     </div>       
     </uib-tab>
+    
     <uib-tab heading="预备上映" >
-    <div ng-controller="prepara" style="margin-top: 45px;"> 
+    <div ng-controller="prepara">
+    <div  style="margin-top: 45px;"> 
      <div ng-repeat="p in pmvlist.stulist" >
             <div class="col-md-4 portfolio-item">
                 <a href="#">
@@ -102,7 +110,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </h3>
                 <!-- <p>{{p.showtime}}</p> -->
             </div>
-   </div>  </div>  
+   </div>  </div> 
+   <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
+    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+   </div> 
     </uib-tab>
     
     <uib-tab heading="Long items.add" ui-sref="items.add"></uib-tab>
@@ -111,8 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
   <center>
 
-    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
-    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+    
    </center>      
             </div>
           

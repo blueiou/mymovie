@@ -1,11 +1,13 @@
 package com.action;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import com.entity.Goods;
 import com.entity.Page;
+import com.entity.Play;
 import com.service.StudentBO;
 import com.service.SysGoodsService;
 import com.tools.CacheClass;
@@ -20,6 +22,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	private Goods goodDescri;
 	private Map<String, Object> dataMap;
 	private int pagesize=6;
+	private Object reply;
 	@Resource(name="SysGoodsService")
 	public SysGoodsService getsGoods() {
 		return sGoods;
@@ -61,7 +64,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	public void setGoodDescri(Goods goodDescri) {
 		this.goodDescri = goodDescri;
 	}
-	//获取公共数据
+	//获取当前页
 	public int getPramString() {
 		int  pageno=1;
 		if (request.getParameter("pageno")!=null) {
@@ -80,12 +83,13 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		System.out.print(mString);
 		switch (m) {
 		case Functions.GET_GOODS_OPERATION_LIST0:
-			
 			return mvList();
 			case Functions.GET_GOODS_OPERATION_LIST1:
 				return preList();
 			case Functions.GET_GOODS_OPERATION_INFO:
 				return	exmapleById();
+			case Functions.GET_PLAY_INFO:
+				return play();
 		default: 
 			return ERROR;
 		}
@@ -119,6 +123,15 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	if (dataMap==null) 	dataMap=new HashMap<String, Object>();
 		goodDescri=sGoods.findById(request.getParameter("id"));
 		dataMap.put("goodDescri", goodDescri);
+		dataMap.put("success", true);
+		return SUCCESS;
+	}
+	public String play() throws PulginsException{
+		List<Play> plays;
+		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
+		plays=sGoods.findByTime();
+		reply=plays;
+		dataMap.put("reply", reply);
 		dataMap.put("success", true);
 		return SUCCESS;
 	}

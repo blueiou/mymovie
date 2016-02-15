@@ -16,6 +16,7 @@ import com.dao.SuperDao;
 import com.dao.SysGoodsDao;
 import com.entity.Goods;
 import com.entity.Page;
+import com.entity.Play;
 import com.model.GoodsInfo;
 import com.tools.PulginsException;
 
@@ -29,7 +30,7 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
+	Play play=null;
 	@Override
 	public Object findAll() {
 		// TODO Auto-generated method stub
@@ -88,6 +89,17 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		List<Goods> list= getHibernateTemplate().find("from Goods p where p.good_id=?",id);
 		
 		return list;
+	}
+
+	@Override
+	public List getById(String temp) {
+		// TODO Auto-generated method stub
+		
+		if (play==null) play=new Play();
+		List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
+		
+		
+		return plays;
 	}
 
 }

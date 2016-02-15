@@ -8,12 +8,14 @@ import com.dao.impl.PagingDaoImpl;
 import com.dao.impl.SysGoodsDaoImpl;
 import com.entity.Goods;
 import com.entity.Page;
+import com.entity.Play;
 import com.tools.PulginsException;
 
 public class SysGoodsService {
 	private PagingDaoImpl pagingDaoImpl;
 	private SysGoodsDaoImpl sysGoodsDaoImpl;
 	private Goods goods;
+	private Play play;
 	public SysGoodsDaoImpl getSysGoodsDaoImpl() {
 		return sysGoodsDaoImpl;
 	}
@@ -72,4 +74,14 @@ public class SysGoodsService {
 			
 			return goods;
 		}
+		
+		public List<Play> findByTime() throws PulginsException{
+			
+			List<Play> list=sysGoodsDaoImpl.getById("");
+			if (list.size()==0) {
+				throw new PulginsException("没有该场次");
+			}
+			return list;
+		}
+		
 }

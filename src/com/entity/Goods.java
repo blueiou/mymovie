@@ -19,9 +19,18 @@ public  class Goods implements Serializable{
 	private String uploadtime;
 	private BaseInfo baseInfo;
 	
+	//与场次多对一   播放多场同一部电影
+	private Set<Play> play;
 	
 	
 
+	
+	public Set<Play> getPlay() {
+		return play;
+	}
+	public void setPlay(Set<Play> play) {
+		this.play = play;
+	}
 	public BaseInfo getBaseInfo() {
 		return baseInfo;
 	}

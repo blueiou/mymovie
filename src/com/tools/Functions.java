@@ -9,6 +9,13 @@ public final int GET_GOODS_OPERATION_LIST1=GOODS_OPERATION+ 11; //获取商品�
 
 
 public final int GET_GOODS_OPERATION_INFO =GOODS_OPERATION+ 20;     //取某商品详细信息	
+
+
+
+//场地：
+
+public final int GET_PLAY=2000;
+public final int GET_PLAY_INFO=GET_PLAY+10;
 	
 	
 }

@@ -23,13 +23,16 @@ import org.hibernate.criterion.Projections;
 
 import com.dao.impl.PagingDaoImpl;
 import com.entity.BaseInfo;
+import com.entity.Data;
 import com.entity.Goods;
+import com.entity.Play;
 import com.entity.Role;  
 import com.entity.User;  
 import com.model.GoodsInfo;
 import com.tools.CacheClass;
 import com.tools.CheckId;
 import com.tools.Md5;
+import com.tools.MyDate;
   
 public class CopyOfUserTest {  
   
@@ -39,32 +42,38 @@ CopyOfUserTest cy=new CopyOfUserTest();
 System.out.print(CheckId.checkId(m));
     Session session=cy.getSession();
 Transaction transaction=session.beginTransaction();
-
-
-/*
-BaseInfo bseBaseInfo=new BaseInfo();
-bseBaseInfo.setBase_id("40288183529bbd7301529bbd74830001");*/
-/*bseBaseInfo.setContry("中国");
-bseBaseInfo.setLanguage("中文");*/
-//session.save(bseBaseInfo);
-Goods goods=new Goods();
-
-goods.setSysname("叶问3");
-goods.setDescript("1959年，叶问（甄子丹饰）与张永成（熊黛林饰）将大儿子叶准送回广东，小儿子叶正继续在香港读书。在与马鲸笙（谭耀文饰）与其老板（泰森饰）所带领的帮派抗争的过程中，叶问带领着自己的弟子保卫了小学，并结识了依靠拉车和在地下赌场斗武为生的张天志（张晋饰），二人惺惺相惜。然而此时，自称 “咏春正宗”的张天志却向叶问公开宣战，要为自己新开的武馆争取名誉。可是张永成突然病危，让叶问不得不肩负起照顾妻儿的责任。面对家庭和武术，叶问究竟会作何选择？他是否会应战张天志，夺回属于他 “咏春正宗”的头衔？");
+// 参考网址：http://www.cnblogs.com/wangchenyang/archive/2011/08/23/2150323.html
+//已知 表中的某行的信息，插入影片
+/*Goods goods=new Goods();
+goods.setSysname("什么啊");
+goods.setDescript("啊");
+//根据id 获取该信息
 BaseInfo bseBaseInfo=(BaseInfo) session.get(BaseInfo.class,"40288183529bbd7301529bbd74830001");
 
-//bseBaseInfo.setBase_id("40288183529bbd7301529bbd74830001");
-
 System.out.print(bseBaseInfo.getCountry()+" "+bseBaseInfo.getBase_id());
-/*Set<Goods> goods2=new HashSet<>();
-goods2.add(goods);*/
+
 goods.setBaseInfo(bseBaseInfo);
 bseBaseInfo.getGoods().add(goods);
-//System.out.print(goods2.iterator().hasNext());
-//bseBaseInfo.getGoods().add(goods);
+
 session.save(bseBaseInfo);
-transaction.commit();
-    	
+transaction.commit();*/
+ //该电影的场次
+
+/*Play play1=new Play();
+String timeString=new MyDate().toString();
+//获取少的一方的信息
+Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
+
+play1.setGoods(goods);
+play1.setPlay_time("2016-02-14 18:55");
+goods.getPlay().add(play1);
+
+session.save(goods);
+transaction.commit();*/
+
+//分层
+
+Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
     /*	
      CopyOfUserTest test = new CopyOfUserTest(); 
         Criteria criteria=test.getSession().createCriteria(Goods.class);

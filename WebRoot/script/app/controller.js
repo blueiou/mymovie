@@ -15,7 +15,7 @@ app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,smvList
 			   $scope.smvlist=res.smvlist;
 			   $scope.goodsDecri=$scope.smvlist.stulist;
 			   
-			   console.log("$scope.goodsDecri.baseInfo");
+			   console.log(res);
 		   });
 		   };
 		   $scope.setPage = function (pageNo) {
