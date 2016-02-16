@@ -1,7 +1,6 @@
 package com.test;
 
 import com.db.DbConnect;
-import com.entity.Data;
 import com.entity.Tb_datas;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -39,12 +38,12 @@ import org.hibernate.classic.Session;
 
 class MyThread implements Runnable{
 	 
-    private int ticket = 10;  //5ÕÅÆ±
+    private int ticket = 10;  //5ï¿½ï¿½Æ±
  
     public void run() {
         for (int i=0; i<=20; i++) {
             if (this.ticket > 0) {
-                System.out.println(Thread.currentThread().getName()+ "ÕýÔÚÂôÆ±"+this.ticket--);
+                System.out.println(Thread.currentThread().getName()+ "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±"+this.ticket--);
             }
         }
     }
@@ -67,20 +66,20 @@ public class Test {
 	/*
 	 * 
 	 * 
-	 * ÕýÔò±í´ïÊ½£ºÖ»ÄÜÊäÈë×ÖÄ¸,Êý×Ö,ÏÂ»®Ïß
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸,ï¿½ï¿½ï¿½ï¿½,ï¿½Â»ï¿½ï¿½ï¿½
 	 * str.matches("[A-Za-z0-9_]+");
         str.matches("\\w+")
 	 */
 public static void main(String[] args) throws SQLException, Exception {
 	
-	System.out.println("Êä³öµÄTEST.class:"+Test.class);
+	System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½TEST.class:"+Test.class);
 	String driver="com.mysql.jdbc.Driver";
 	String url="jdbc:mysql://rdsxlz2016testpublic.mysql.rds.aliyuncs.com:3306/gllk";
 	String nameString="gllk";
 	String password="gllk2015";
 	
 	Class.forName(driver);
-	System.out.print("¼ÓÔØÇý¶¯³É¹¦");
+	System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
 	Connection connection=(Connection) DriverManager.getConnection(url,nameString,password);
 
 //PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatement("update  lk_user_auth set rmbstate=0 where mobile='18378338373'");
@@ -89,11 +88,11 @@ public static void main(String[] args) throws SQLException, Exception {
 	//preparedStatement.setInt(1, 0);
 	int i= preparedStatement.executeUpdate();
 	if (i>0) {
-		System.out.print("¸üÐÂ³É¹¦");
+		System.out.print("ï¿½ï¿½ï¿½Â³É¹ï¿½");
 	} else {
-		System.out.print("¸üÐÂÊ§°Ü");
+		System.out.print("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 	}*/
-	/*      ²éÑ¯ÓÃ»§*/
+	/*      ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½*/
 //PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatement("select username,encryptedPassword from  lk_user_auth  where purview>100");
 PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatement("select * from  lk_user_auth  limit 6,55");
 	ResultSet rsResult= preparedStatement.executeQuery();
@@ -103,11 +102,11 @@ PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatem
 	String[] hs = new String[7];
 	while (rsResult.next()) {
 		
-	/*	System.out.print("µÚ"+i+"¸öÓÃ»§:"+rsResult.getString("username")+" ");
+	/*	System.out.print("ï¿½ï¿½"+i+"ï¿½ï¿½ï¿½Ã»ï¿½:"+rsResult.getString("username")+" ");
 		System.out.print(rsResult.getString("encryptedPassword")+" ");
 		System.out.print(rsResult.getString("mobile"));	
 		System.out.println();*/
-		String temp="µÚ"+(i+1)+"¸öÓÃ»§:"+rsResult.getString("username")+" "+rsResult.getString("encryptedPassword")+" "+rsResult.getString("mobile")+"\n";
+		String temp="ï¿½ï¿½"+(i+1)+"ï¿½ï¿½ï¿½Ã»ï¿½:"+rsResult.getString("username")+" "+rsResult.getString("encryptedPassword")+" "+rsResult.getString("mobile")+"\n";
 		//hs[i]=temp;
 		tempsString+=temp+"\r\n";
 		//System.out.println(hs[i]);
@@ -117,13 +116,13 @@ PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatem
 	//WriteFile.outFile(hs);
 	WriteFile.writeFile(tempsString);
 	/* MyThread my = new MyThread();
-     new Thread(my, "1ºÅ´°¿Ú").start();
-     new Thread(my, "2ºÅ´°¿Ú").start();
-     new Thread(my, "3ºÅ´°¿Ú").start();*/
+     new Thread(my, "1ï¿½Å´ï¿½ï¿½ï¿½").start();
+     new Thread(my, "2ï¿½Å´ï¿½ï¿½ï¿½").start();
+     new Thread(my, "3ï¿½Å´ï¿½ï¿½ï¿½").start();*/
      //System.out.print("12121_121145657687sdgsf".matches("[A-Za-z0-9_]+"));
      
 	
-	//´´½¨session¹¤³§	
+	//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½	
 	/*SessionFactory factory=new Configuration().configure("/hibernate.cfg.xml").buildSessionFactory();
 	Session session =factory.openSession();
 	Transaction tran=session.beginTransaction();
@@ -145,9 +144,9 @@ PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatem
 			//String dataString="211121111111112222221212212211111111122121111122121121221112";
 			//dataString=dataString.substring(1, 60);
 			//System.out.print(dataString.length());
-			/*int  length = "abcdbe".indexOf("121212121e")+1;//ÒòÎªÊÇ´Ó¿ªÊ¼¼ÆÊý£¬ËùÒÔ¼Ó1
-			int  end   = length+"bc".length()-1;//È¡µÃ½áÊøÎ»ÖÃ
-			System.out.print("¿ªÊ¼Î»ÖÃ£º"+length+"£¬  ½áÊøÎ»ÖÃ£º"+end);*/
+			/*int  length = "abcdbe".indexOf("121212121e")+1;//ï¿½ï¿½Îªï¿½Ç´Ó¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½1
+			int  end   = length+"bc".length()-1;//È¡ï¿½Ã½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+			System.out.print("ï¿½ï¿½Ê¼Î»ï¿½Ã£ï¿½"+length+"ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½"+end);*/
 		//	System.out.print("11121211292121221221212221211212122112112221112211".substring(9));
 	
 			/*		
@@ -162,7 +161,7 @@ PreparedStatement preparedStatement=(PreparedStatement) connection.prepareStatem
 				int n=57;
 				StringBuffer str = new StringBuffer();
 				for (int i = 0; i < n; i++) {
-					// »ñµÃËæ»úÎ»ÖÃµÄ×Ö·û
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½ï¿½Ö·ï¿½
 					char c = array.charAt((int) (Math.random() * length));
 					str.append(c);
 					Data data=new Data();

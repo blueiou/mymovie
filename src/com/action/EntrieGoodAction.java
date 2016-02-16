@@ -2,28 +2,20 @@ package com.action;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Resource;
-
 import com.entity.Goods;
 import com.entity.Page;
 import com.entity.Play;
-import com.service.StudentBO;
 import com.service.SysGoodsService;
 import com.tools.CacheClass;
-import com.tools.CheckId;
 import com.tools.Functions;
 import com.tools.PulginsException;
-import com.util.OutPrintClass;
 public class EntrieGoodAction extends AjaxActionSupport {
-	private StudentBO sBo;
 	private SysGoodsService sGoods;
 	private Page page;
 	private Goods goodDescri;
 	private Map<String, Object> dataMap;
 	private int pagesize=6;
 	private Object reply;
-	@Resource(name="SysGoodsService")
 	public SysGoodsService getsGoods() {
 		return sGoods;
 	}
@@ -36,17 +28,9 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	public void setsGoods(SysGoodsService sGoods) {
 		this.sGoods = sGoods;
 	}
-	public StudentBO getsBo() {
-		return sBo;
-	}
-	@Resource(name="userService")
-	public void setsBo(StudentBO sBo) {
-		this.sBo = sBo;
-	}
 	public int getPagesize() {
 		return pagesize;
 	}
-
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
 	}
@@ -69,7 +53,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		int  pageno=1;
 		if (request.getParameter("pageno")!=null) {
 			String pagenoString=request.getParameter("pageno");
-			if(CheckId.checkPage(pagenoString))  pageno=Integer.parseInt(pagenoString);
+			if(CacheClass.checkPage(pagenoString))  pageno=Integer.parseInt(pagenoString);
 		} 
 		return pageno;
 	}
@@ -80,7 +64,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		else {
 			m=Integer.parseInt(mString);
 		}
-		System.out.print(mString);
+		System.out.print("m的值为："+mString);
 		switch (m) {
 		case Functions.GET_GOODS_OPERATION_LIST0:
 			return mvList();
@@ -88,24 +72,26 @@ public class EntrieGoodAction extends AjaxActionSupport {
 				return preList();
 			case Functions.GET_GOODS_OPERATION_INFO:
 				return	exmapleById();
-			case Functions.GET_PLAY_INFO:
+			case Functions.GET_GOODS_OPERATION_PlayTime:
 				return play();
 		default: 
 			return ERROR;
 		}
 	}	
+	//获取正在上映影片
 	public String mvList(){
 		if (dataMap==null)  dataMap=new HashMap<String, Object>();
 		int  pageno=1;
 		if (request.getParameter("pageno")!=null) {
 			String pagenoString=request.getParameter("pageno");
-			if(CheckId.checkPage(pagenoString))  pageno=Integer.parseInt(pagenoString);
+			if(CacheClass.checkPage(pagenoString))  pageno=Integer.parseInt(pagenoString);
 		} 
 		page=sGoods.findShowing(pageno, pagesize);
 		dataMap.put("smvlist", page);
 		dataMap.put("success", true);
 		return SUCCESS;
 	}
+	//获取预备上映影片
 	public String preList(){
 		if (dataMap==null)  dataMap=new HashMap<String, Object>();
 		int  pageno=getPramString();
@@ -114,25 +100,34 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		dataMap.put("success", true);
 		return SUCCESS;
 	}
-	/*public String */
-	public void test(){
-		sGoods.test();
-		System.out.print(sGoods.test());
-	}
+  //影片详情介绍
 	public String exmapleById() throws PulginsException{
 	if (dataMap==null) 	dataMap=new HashMap<String, Object>();
-		goodDescri=sGoods.findById(request.getParameter("id"));
-		dataMap.put("goodDescri", goodDescri);
-		dataMap.put("success", true);
-		return SUCCESS;
+	
+		if (sGoods.findById(request.getParameter("id"))==null) {
+			System.out.print("enter");
+			return ERROR;
+		}
+		else {
+			goodDescri=sGoods.findById(request.getParameter("id"));
+			dataMap.put("goodDescri", goodDescri);
+			dataMap.put("success", true);
+			return SUCCESS;
+		}
 	}
+	//获取某天放映的电影列表
 	public String play() throws PulginsException{
 		List<Play> plays;
 		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
-		plays=sGoods.findByTime();
+		plays=sGoods.findByTime(request.getParameter("playTime"));
 		reply=plays;
 		dataMap.put("reply", reply);
 		dataMap.put("success", true);
 		return SUCCESS;
+	}
+	/*public String  测试*/
+	public void test(){
+		sGoods.test();
+		System.out.print(sGoods.test());
 	}
 }

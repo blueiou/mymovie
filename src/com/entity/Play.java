@@ -7,9 +7,16 @@ public class Play implements Serializable {
 	private String play_id;
 	private String play_time;
 	private double price;
-	
+	//与影片一对多
 	private Goods goods;
-	
+	//与播放厅 一对多
+	private Hall hall;
+	public Hall getHall() {
+		return hall;
+	}
+	public void setHall(Hall hall) {
+		this.hall = hall;
+	}
 	public double getPrice() {
 		return price;
 	}

@@ -56,7 +56,7 @@ services.factory('goodsList', ['$resource', function ($resource) {
     return $resource('allist.action', {}, {
         query: {
             method: 'GET',
-            params:{pageno:"",m:"",id:""},
+            params:{pageno:"",m:"",id:"",playTime:""},
             isArray: false,
             //url:'smvlist.action?'
         }

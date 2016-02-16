@@ -6,12 +6,7 @@
 <constant name="struts.i18n.encoding" value="utf-8"></constant>
 <package name="showdata" extends="struts-default,json-default">
 
-<action name="testssh" class="TestSSHAction">
-<result name="success">orginaldata.jsp</result>
-<result name="goodslist">movies/index.jsp </result>
-<result name="error">/error.jsp</result>
 <!-- 显示正在热映和预备上映 -->
-</action>
 <!-- <action name="smvlist" class="EntrieGoodClass" method="mvList">
 <result type="json">
 <param name="root"> dataMap</param>

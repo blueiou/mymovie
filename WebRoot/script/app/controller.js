@@ -51,20 +51,22 @@ app.controller('prepara',function ($scope,$interval,$http,goodsList){
 		$scope.search = function (){
 			goodsList.query({pageno:$scope.currentPage,m:"1511"},function(res){
 				   $scope.pmvlist=res.pmvlist;
-				   console.log(res);
 			   });
 			   };
+			   //分页
 		$scope.setPage = function (pageNo) {
 				    $scope.currentPage = pageNo;		     
 				   $scope.search();			   
 					   };
 			   $scope.search();
 	   });
+//商品详情页
 app.controller('GoodsInstance', function($scope, $uibModalInstance, exmaple,goodsList) {
 	
 	  $scope.exmaple = exmaple;
-	  console.log("ID:"+exmaple);
-	  goodsList.query({m:"1520",id:exmaple},function(res){
+	  console.log("商品ID:"+exmaple);
+	 goodsList.query({m:"1520",id:exmaple},function(res){
+		 // goodsList.query({m:"1520"},function(res){
 		  console.log(res);
 		  $scope.goodDescri=res.goodDescri;
 	  });
@@ -77,4 +79,19 @@ app.controller('GoodsInstance', function($scope, $uibModalInstance, exmaple,good
 		  };
 	  
 	});
+//放映时刻表
+app.controller('playtime',function($scope,$interval,$http,goodsList){
+	
+	var time=new Date();
+	console.log(time);
+	$scope.search=function(){
+		goodsList.query({m:"1525",playTime:time},function(res){
+			console.log(res);
+			$scope.list=res.reply;
+		});
+		
+	};
+	$scope.search();
+});
+
 

@@ -70,24 +70,15 @@
 	</bean>
 <!-- bo类 --> <!-- 配置业务逻辑层 -->
 <bean id="SysGoodsBo" class="com.service.SysGoodsService" scope="prototype">
-<property name="pagingDaoImpl" ref="PagingDaoImpl"></property>
 <property name="sysGoodsDaoImpl" ref="SysGoodsDaoImpl"></property>
 
 </bean>
 
-	<bean id="StudentBO" class="com.service.StudentBO" scope="prototype">
-<property name="dataPageDaoT" ref="DataPageDaoTImlp"></property>
-</bean>	
 
 <!-- action 类--><!-- 配置控制层 -->
 
-<bean id="TestSSHAction" class="com.action.TestSSHAction">
-<property name="sBo" ref="StudentBO"></property>
-<property name="sGoods" ref="SysGoodsBo"></property>
-</bean>	
 
 <bean id="EntrieGoodClass" class="com.action.EntrieGoodAction" scope="prototype">
-<property name="sBo" ref="StudentBO"></property>
 <property name="sGoods" ref="SysGoodsBo"></property>
 
 </bean>	

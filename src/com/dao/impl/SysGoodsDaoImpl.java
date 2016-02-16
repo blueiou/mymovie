@@ -26,7 +26,6 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}
-
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
@@ -82,7 +81,7 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		  int ii = Integer.parseInt(String.valueOf(count)); 
 		  return ii;
 	}
-	
+	//根据商品ID查询单个商品详情
 	public List getGoodById(String id) {
 		Goods goods = null;
 		if (goods==null) 	goods=new Goods();
@@ -90,14 +89,13 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		
 		return list;
 	}
-
 	@Override
+	 //查询某天放映的影片
 	public List getById(String temp) {
 		// TODO Auto-generated method stub
-		
 		if (play==null) play=new Play();
-		List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
-		
+		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
+		List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?",temp);
 		
 		return plays;
 	}

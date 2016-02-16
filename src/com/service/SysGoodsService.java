@@ -2,13 +2,13 @@ package com.service;
 
 import java.util.List;
 
-import com.dao.DataPageDao;
 import com.dao.PagingDao;
 import com.dao.impl.PagingDaoImpl;
 import com.dao.impl.SysGoodsDaoImpl;
 import com.entity.Goods;
 import com.entity.Page;
 import com.entity.Play;
+import com.tools.CacheClass;
 import com.tools.PulginsException;
 
 public class SysGoodsService {
@@ -67,6 +67,7 @@ public class SysGoodsService {
 		
 		public Goods findById(String id) throws PulginsException {
 			List<Goods> list=sysGoodsDaoImpl.getGoodById(id);
+			if (CacheClass.isEmpty(id)) return null;
 			if (list.size()==0) {
 				throw new PulginsException("没有查找到该影片");
 			}
@@ -75,9 +76,11 @@ public class SysGoodsService {
 			return goods;
 		}
 		
-		public List<Play> findByTime() throws PulginsException{
+		public List<Play> findByTime(String temp) throws PulginsException{
+			if (CacheClass.isEmpty(temp)) return null;
+			String stempsString=temp.substring(0,10)+"%";//分割传来的时间
+			List<Play> list=sysGoodsDaoImpl.getById(stempsString);
 			
-			List<Play> list=sysGoodsDaoImpl.getById("");
 			if (list.size()==0) {
 				throw new PulginsException("没有该场次");
 			}

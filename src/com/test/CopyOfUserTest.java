@@ -23,8 +23,8 @@ import org.hibernate.criterion.Projections;
 
 import com.dao.impl.PagingDaoImpl;
 import com.entity.BaseInfo;
-import com.entity.Data;
 import com.entity.Goods;
+import com.entity.Hall;
 import com.entity.Play;
 import com.entity.Role;  
 import com.entity.User;  
@@ -37,11 +37,12 @@ import com.tools.MyDate;
 public class CopyOfUserTest {  
   
     public static void main(String[] args) {  
-String m="55344";
+String m="2016-02-16:15:54:11";
 CopyOfUserTest cy=new CopyOfUserTest();
-System.out.print(CheckId.checkId(m));
+System.out.print(new MyDate().toString());
     Session session=cy.getSession();
 Transaction transaction=session.beginTransaction();
+System.out.print("分割后："+m.substring(0,10));
 // 参考网址：http://www.cnblogs.com/wangchenyang/archive/2011/08/23/2150323.html
 //已知 表中的某行的信息，插入影片
 /*Goods goods=new Goods();
@@ -59,21 +60,26 @@ session.save(bseBaseInfo);
 transaction.commit();*/
  //该电影的场次
 
-/*Play play1=new Play();
+Play play1=new Play();
 String timeString=new MyDate().toString();
 //获取少的一方的信息
 Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
 
-play1.setGoods(goods);
-play1.setPlay_time("2016-02-14 18:55");
-goods.getPlay().add(play1);
 
-session.save(goods);
-transaction.commit();*/
+play1.setPlay_time("2016-02-14 18:55");
+play1.setGoods(goods);
+goods.getPlay().add(play1);
+Hall hall=new Hall();
+hall.setRoomname("2号厅");
+play1.setHall(hall);
+//hall.getPlay().add(play1);
+//session.save(goods);
+session.save(hall);
+transaction.commit();
 
 //分层
 
-Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
+//Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
     /*	
      CopyOfUserTest test = new CopyOfUserTest(); 
         Criteria criteria=test.getSession().createCriteria(Goods.class);

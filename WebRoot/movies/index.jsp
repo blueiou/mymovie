@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.* ,com.tools.* " pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,9 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>电影首页</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -22,13 +20,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="css/ct-paper.css" />
+<% String time=new MyDate().getYMD(); %>
+当前时间：<%=time %>
   </head>
   <style type="text/css">
   form.tab-form-demo .tab-pane {
     margin: 10px 10px;
   }
 </style>
-  <body ng-app="IndexApp">
+  <body ng-app="IndexApp" >
   
   <div class="container">
          <div id="navbar">
@@ -44,7 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                   </button>
                                   <a class="navbar-brand" ui-sref="showing" >Menu</a>
                                 </div>
-                            
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                   <ul class="nav navbar-nav">
@@ -115,10 +114,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
    </div> 
     </uib-tab>
-    
-    <uib-tab heading="Long items.add" ui-sref="items.add"></uib-tab>
+    <uib-tab heading="放映时刻表" >
+    <div ng-controller="playtime" >
+    <div ng-repeat="s in list">
+    <a href=""> {{s.goods.sysname}}</a>
+    <a href=""> {{s.play_time}}</a>
+    </div>
+    </div>
+    </uib-tab>
   </uib-tabset>
-  
 </div>
   <center>
 
@@ -130,12 +134,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         
         <hr />
-        
   
-
-        
+<input type="text" value="" id="clock" />
+    <script>
+   function clock() {
+	   document.getElementById("clock").value = new Date().toLocaleString();
+   }
+   //setInterval("clock()",1000);
+   //var int=self.setInterval("clock()",1000);
+    </script>
   </body>
-  
   <!-- Angular -->
   <script src="./script/angularjs/angular.js"></script>
   <script src="./script/angularjs/angular-resource.js"></script>
@@ -147,4 +155,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="./script/app/apps.js"></script>
     <script src="./script/app/service.js"></script>
     <script src="./script/app/controller.js"></script>
+    <!-- other -->
+    
 </html>

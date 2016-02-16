@@ -11,8 +11,11 @@ public class MyDate extends Date {
 	 */
 	private static final long serialVersionUID = 3242778695393509953L;
 	public String toString() {
-		DateFormat df = new SimpleDateFormat("yyyyMMdd:HH:mm:ss:SSS");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss:SSS");
 		return df.format(this);
 	}
-
+	public String getYMD() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
+		return df.format(this);
+	}
 }

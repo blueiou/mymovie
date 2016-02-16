@@ -20,19 +20,19 @@
 	</property>
 	<!-- 插入数据库的方式 -->
 	<property name="hibernate.hbm2ddl.auto">update</property>
-	<property name="show_sql">true</property>
+	<!-- <property name="show_sql">true</property> -->
 
 	<!-- 提交事务 -->
 	<property name="connection.autocommit">true</property>
 
 	<property name="hibernate.jdbc.batch_size">25</property>
 	<!-- 映射*.hbm.xml -->
-	<mapping resource="com/entity/tb_datas.hbm.xml" />
 	<!--<mapping resource="com/entity/student.hbm.xml" /> -->
 	<mapping resource="com/entity/Goods.hbm.xml" />
 	<mapping resource="com/entity/User.hbm.xml" />
 	<mapping resource="com/entity/Role.hbm.xml" />
 	<mapping resource="com/entity/BaseInfo.hbm.xml" />
-	<mapping resource="com/entity/paly.hbm.xml" />
+	<mapping resource="com/entity/Play.hbm.xml" />
+	<mapping resource="com/entity/Hall.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

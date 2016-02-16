@@ -843,4 +843,38 @@ public static boolean isNumValue(String pid){
 		
 		return id_str;
 	}
+	//补充
+	public static boolean checkId(String pid){
+		//int id=-1;
+		 //pid="121212sdas";
+		String regStr = "^[+-]?[1-9][0-9]*$|^0$";
+		if(pid.matches(regStr)){
+			//id=Integer.parseInt(pid);
+			return true;
+		   }else{
+			  // id=1;
+			   //System.out.print(pid);
+			   return false;
+		   }
+	}
+	public static boolean checkPage(String str){
+		boolean result=str.matches("[0-9]+");
+		if (result == true) return true;
+		else return false;
+	}
+
+	public static boolean checkData(String str){
+		boolean result=str.matches("[1-2]+");
+		if (result == true) {
+		return true;}
+		else return false;
+	}
+	/*
+	 * 
+	 * 
+	 */
+	public static boolean checkUN(String str){
+		return str.matches("[A-Za-z0-9_]+");
+		
+	}
 }

@@ -34,5 +34,16 @@
  column="good_id"
  not-null="true"
 ></many-to-one>
+
+<many-to-one name="Hall"
+ class="com.entity.Hall"
+ cascade="none"
+ outer-join="auto"
+ update="true"
+ insert="true"
+ access="property"
+ column="hall_id"
+ not-null="true"
+></many-to-one>
 </class>
 </hibernate-mapping>
