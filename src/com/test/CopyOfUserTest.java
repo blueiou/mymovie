@@ -24,7 +24,6 @@ import org.hibernate.criterion.Projections;
 import com.dao.impl.PagingDaoImpl;
 import com.entity.BaseInfo;
 import com.entity.Goods;
-import com.entity.Hall;
 import com.entity.Play;
 import com.entity.Role;  
 import com.entity.User;  
@@ -37,12 +36,11 @@ import com.tools.MyDate;
 public class CopyOfUserTest {  
   
     public static void main(String[] args) {  
-String m="2016-02-16:15:54:11";
+String m="55344";
 CopyOfUserTest cy=new CopyOfUserTest();
-System.out.print(new MyDate().toString());
+System.out.print(CheckId.checkId(m));
     Session session=cy.getSession();
 Transaction transaction=session.beginTransaction();
-System.out.print("分割后："+m.substring(0,10));
 // 参考网址：http://www.cnblogs.com/wangchenyang/archive/2011/08/23/2150323.html
 //已知 表中的某行的信息，插入影片
 /*Goods goods=new Goods();
