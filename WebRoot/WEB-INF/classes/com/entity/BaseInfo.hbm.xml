@@ -21,7 +21,7 @@
 <column name="language" length="10"></column>
 </property>
 
-<set name="goods" table="good" cascade="all" 
+<set name="goods" table="good" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="id" /><!-- 确定关联的外键列 -->
             <one-to-many class="com.entity.Goods" />

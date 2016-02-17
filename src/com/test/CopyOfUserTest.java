@@ -59,14 +59,14 @@ bseBaseInfo.getGoods().add(goods);
 session.save(bseBaseInfo);
 transaction.commit();*/
  //该电影的场次
-
-Play play1=new Play();
+//当该表含有多个外键，则可只在一个多的外键的地方进行保存即可，如下：只保存hall即可 就不用session.save(其他了).
+/*Play play1=new Play();
 String timeString=new MyDate().toString();
 //获取少的一方的信息
 Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
 
 
-play1.setPlay_time("2016-02-14 18:55");
+play1.setPlay_time("2016-02-15 18:55");
 play1.setGoods(goods);
 goods.getPlay().add(play1);
 Hall hall=new Hall();
@@ -76,6 +76,8 @@ play1.setHall(hall);
 //session.save(goods);
 session.save(hall);
 transaction.commit();
+*/
+
 
 //分层
 

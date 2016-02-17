@@ -18,7 +18,7 @@
 <column name="roomname" length="30"></column>
 </property>
 
-<set name="play" table="play" cascade="all" 
+<set name="play" table="play" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="hall_id" /><!-- 确定关联的外键列 -->
             <one-to-many class="com.entity.Play" />

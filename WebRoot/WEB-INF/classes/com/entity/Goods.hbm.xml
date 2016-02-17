@@ -45,7 +45,7 @@
  not-null="true"
 ></many-to-one>
 
-<set name="play" table="play" cascade="all" 
+<set name="play" table="play" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="good_id" /><!-- 确定关联的外键列 -->
             <one-to-many class="com.entity.Play" />
