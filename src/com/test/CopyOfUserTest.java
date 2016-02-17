@@ -1,5 +1,6 @@
 package com.test;
 
+import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,12 +23,18 @@ import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 
 import com.dao.impl.PagingDaoImpl;
+import com.dao.impl.SysUserDaoImpl;
+import com.db.DbConnect;
 import com.entity.BaseInfo;
 import com.entity.Goods;
 import com.entity.Play;
 import com.entity.Role;  
 import com.entity.User;  
+import com.entity.UserInfo;
+import com.entity.UserVGood;
+import com.model.GoodVPlayVHall;
 import com.model.GoodsInfo;
+import com.mysql.jdbc.PreparedStatement;
 import com.tools.CacheClass;
 import com.tools.CheckId;
 import com.tools.Md5;
@@ -35,12 +42,37 @@ import com.tools.MyDate;
   
 public class CopyOfUserTest {  
   
-    public static void main(String[] args) {  
+    public static void main(String[] args) throws Exception {  
 String m="55344";
 CopyOfUserTest cy=new CopyOfUserTest();
 System.out.print(CheckId.checkId(m));
     Session session=cy.getSession();
 Transaction transaction=session.beginTransaction();
+/* 
+UserInfo userInfo=new UserInfo();
+
+userInfo.setContent("不是乱码");
+User user=(User) session.get(User.class, "402881845277a4ff015277a500770003");
+userInfo.setUser(user);
+Goods goods=(Goods) session.get(Goods.class, "4028818552e3f60c0152e3f60dae0001");
+userInfo.setGoods(goods);
+goods.getUserInfo().add(userInfo);
+userInfo.setUser(user);
+session.save(userInfo);
+transaction.commit();*/
+     DbConnect dbConnect=new DbConnect();
+     SysUserDaoImpl userDaoImpl=new SysUserDaoImpl();
+     
+     userDaoImpl.getContentById("4028818552e3f60c0152e3f60dae0001");
+     
+  /* PreparedStatement psPreparedStatement= dbConnect.getPreparedStatemen("select distinct  content from uservgood where good_id=?");
+   psPreparedStatement.setString(1, "4028818552e3f7720152e3f7746f0001");
+   ResultSet rsResultSet=psPreparedStatement.executeQuery();
+   while (rsResultSet.next()) {
+	
+	   System.out.println(rsResultSet.getString("content"));
+}
+   dbConnect.closeconn();*/
 // 参考网址：http://www.cnblogs.com/wangchenyang/archive/2011/08/23/2150323.html
 //已知 表中的某行的信息，插入影片
 /*Goods goods=new Goods();
@@ -87,9 +119,8 @@ session.save(hall);
 transaction.commit();
 */
 
-
 //分层
-
+String hqlString="select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?";
 //Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
     /*	
      CopyOfUserTest test = new CopyOfUserTest(); 

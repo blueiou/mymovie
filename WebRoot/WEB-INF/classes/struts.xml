@@ -28,6 +28,11 @@
 <result type="json"><param name="root"> dataMap</param></result>
 <result name="error">test.html</result>
 </action>
+
+<action name="sysuserm" class="SysUserManagementAction">
+<result type="json"> <param name="root"> map</param></result>
+<result name="error">test.html</result>
+</action>
 <action name="test" class="EntrieGoodClass" method="test"></action>
 
 </package>

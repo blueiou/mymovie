@@ -103,7 +103,6 @@ public class EntrieGoodAction extends AjaxActionSupport {
   //影片详情介绍
 	public String exmapleById() throws PulginsException{
 	if (dataMap==null) 	dataMap=new HashMap<String, Object>();
-	
 		if (sGoods.findById(request.getParameter("id"))==null) {
 			System.out.print("enter");
 			return ERROR;
@@ -127,7 +126,8 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	}
 	/*public String  测试*/
 	public void test(){
-		sGoods.test();
-		System.out.print(sGoods.test());
+		reply=sGoods.findByTime2();
+		dataMap.put("REPLY", reply);
+		dataMap.put("success", true);
 	}
 }

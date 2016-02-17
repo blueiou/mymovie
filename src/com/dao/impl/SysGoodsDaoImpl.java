@@ -17,6 +17,7 @@ import com.dao.SysGoodsDao;
 import com.entity.Goods;
 import com.entity.Page;
 import com.entity.Play;
+import com.model.GoodVPlayVHall;
 import com.model.GoodsInfo;
 import com.tools.PulginsException;
 
@@ -90,14 +91,20 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		return list;
 	}
 	@Override
-	 //查询某天放映的影片
+	 //查询某天放映的影片--关联了映射关系的查询
 	public List getById(String temp) {
 		// TODO Auto-generated method stub
 		if (play==null) play=new Play();
 		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
 		List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?",temp);
-		
 		return plays;
 	}
-
+	@Override
+	public List getById() {
+		// TODO Auto-generated method stub
+		GoodVPlayVHall goodVPlayVHall=new GoodVPlayVHall();
+		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
+		List<GoodVPlayVHall> plays=getHibernateTemplate().find("select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?","%2016-02-17%");
+		return plays;
+	}
 }

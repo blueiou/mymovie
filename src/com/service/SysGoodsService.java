@@ -8,6 +8,7 @@ import com.dao.impl.SysGoodsDaoImpl;
 import com.entity.Goods;
 import com.entity.Page;
 import com.entity.Play;
+import com.model.GoodVPlayVHall;
 import com.tools.CacheClass;
 import com.tools.PulginsException;
 
@@ -85,6 +86,10 @@ public class SysGoodsService {
 				throw new PulginsException("没有该场次");
 			}
 			return list;
+		}
+		public List<GoodVPlayVHall> findByTime2(){
+			List<GoodVPlayVHall> goodVPlayVHalls=sysGoodsDaoImpl.getById();
+			return goodVPlayVHalls;
 		}
 		
 }

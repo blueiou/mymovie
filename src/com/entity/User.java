@@ -13,9 +13,18 @@ public class User implements Serializable{
 	 	private String userid;  
 	     private String username;  
 	     private String password;  
+	     private UserInfo userInfo;
 	     
-	 	private Set roles = new HashSet();  
-	   
+	
+
+		private Set roles = new HashSet(); 
+		
+		public UserInfo getUserInfo() {
+			return userInfo;
+		}
+		public void setUserInfo(UserInfo userInfo) {
+			this.userInfo = userInfo;
+		}
 	     public User() {  
 	         super();  
 	     }  

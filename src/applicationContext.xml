@@ -56,9 +56,6 @@
 </tx:advice>
 	
 	<!-- 配置数据持久层 --><!-- 公共的继承hibernateTemplate的dao类 -->
-	<bean id="DataPageDaoTImlp" class="com.dao.impl.DataPageDaoTImlp" scope="prototype">
-	<property name="hibernateTemplate" ref="hibernateTemplate" />
-	</bean>
 	<bean id="PagingDaoImpl" class="com.dao.impl.PagingDaoImpl" scope="prototype">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
@@ -68,20 +65,24 @@
 	<bean id="SysGoodsDaoImpl" class="com.dao.impl.SysGoodsDaoImpl">
 	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
+	<bean id="SysUserDaoImpl" class="com.dao.impl.SysUserDaoImpl">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 <!-- bo类 --> <!-- 配置业务逻辑层 -->
 <bean id="SysGoodsBo" class="com.service.SysGoodsService" scope="prototype">
 <property name="sysGoodsDaoImpl" ref="SysGoodsDaoImpl"></property>
 
 </bean>
 
-
+<bean id="SysUserBo" class="com.service.SysUsersService" scope="prototype">
+<property name="sysUserDaoImpl" ref="SysUserDaoImpl"></property>
+</bean>
 <!-- action 类--><!-- 配置控制层 -->
-
-
 <bean id="EntrieGoodClass" class="com.action.EntrieGoodAction" scope="prototype">
 <property name="sGoods" ref="SysGoodsBo"></property>
-
 </bean>	
 
-
+<bean id="SysUserManagementAction" class="com.action.SysUserManagementAction" scope="prototype">
+<property name="sUser" ref="SysUserBo"></property>
+</bean>
 </beans>

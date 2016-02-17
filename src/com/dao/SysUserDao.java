@@ -1,9 +1,10 @@
 package com.dao;
 
-import com.entity.Users;
+import com.entity.User;
+
 
 
 
 public interface SysUserDao {
-	public Users login(String na, String pa);
+	public User login(String na, String pa);
 }

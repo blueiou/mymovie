@@ -13,7 +13,6 @@
 </id>
 <!-- <property name="stuid" type="java.lang.Integer">
 <column name="stuid" length="20"></column>
-
 </property> -->
 <property name="sysname" type="java.lang.String">
 <column name="sysname" length="50"></column>
@@ -33,7 +32,7 @@
 <property name="uploadtime" type="java.lang.String">
 <column name="uploadtime" length="160"></column>
 </property>
-
+<!-- 其中的name要在Goods实体类中为BaseInfo的一个实例对象 -->
 <many-to-one name="baseInfo"
  class="com.entity.BaseInfo"
  cascade="none"
@@ -43,12 +42,17 @@
  access="property"
  column="id"
  not-null="true"
+ lazy="false"
 ></many-to-one>
-
 <set name="play" table="play" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="good_id" /><!-- 确定关联的外键列 -->
-            <one-to-many class="com.entity.Play" />
+            <one-to-many class="com.entity.Play"  />
+</set>
+<set name="userInfo" table="user_info" cascade="all-delete-orphan" 
+            lazy="true" inverse="true">
+            <key column="good_id" /><!-- 确定关联的外键列 -->
+            <one-to-many class="com.entity.UserInfo"  />
 </set>
 </class>
 </hibernate-mapping>

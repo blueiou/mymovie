@@ -2,7 +2,7 @@ package com.db;
 
 public class DbParams {
 	private static final String driver="com.mysql.jdbc.Driver";
-	private static final String url="jdbc:mysql://localhost:3306/datatest";
+	private static final String url="jdbc:mysql://localhost:3306/db_movie";
 	private static String name="root";
 	private static String password="123456";
 	public static String getName() {

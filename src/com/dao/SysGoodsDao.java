@@ -17,4 +17,5 @@ public interface SysGoodsDao {
 	Page getPageList(int pageno, int pagesize,Class arg1,int stamp);
 	public List getGoodById(String  id) ;
 	List getById(String temp);
+	List getById();
 }

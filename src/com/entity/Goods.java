@@ -22,9 +22,15 @@ public  class Goods implements Serializable{
 	//与场次多对一   播放多场同一部电影
 	private Set<Play> play;
 	
-	
+	private Set<UserInfo> userInfo;
 
 	
+	public Set<UserInfo> getUserInfo() {
+		return userInfo;
+	}
+	public void setUserInfo(Set<UserInfo> userInfo) {
+		this.userInfo = userInfo;
+	}
 	public Set<Play> getPlay() {
 		return play;
 	}
