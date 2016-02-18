@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MyDate extends Date {
-
 	/**
 	 * 
 	 */
@@ -17,5 +16,15 @@ public class MyDate extends Date {
 	public String getYMD() {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
 		return df.format(this);
+	}
+	public String getYMDHMS(){
+		
+		DateFormat dfDateFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+		return dfDateFormat.format(this);
+	}
+	public static int getRandomN(){
+		
+		int i=10+(int) (Math.random()*90);
+		return i;
 	}
 }

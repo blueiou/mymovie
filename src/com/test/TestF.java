@@ -1,6 +1,12 @@
 package com.test;
 
+import java.util.Random;
+
+import com.entity.Play;
+import com.mysql.fabric.xmlrpc.base.Data;
+import com.tools.CacheClass;
 import com.tools.Md5;
+import com.tools.MyDate;
 
 public class TestF {
 	 public static void main(String[] args) {
@@ -16,8 +22,9 @@ public class TestF {
 	               System.out.println("d[" + i + "][" + j +"] = " + d[i][j]);
 	                   }
 	       }*/
-		 
-		 System.out.print(Md5.getMD5("PAjiyeon"));
+		 String fileName = "122.png";
+		 String fileName2 = "2018"+fileName.split("\\.")[0]; 
+		 System.out.print(new Play().getGoods().getGood_id());
 
 	    }
 }

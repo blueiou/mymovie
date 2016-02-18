@@ -36,9 +36,21 @@
             <td></td>
             </tr>
             </table>
+          
         </div>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+            用户影评：
+            </div>
+            <div class="panel-body" ng-repeat="uissue in userissue">
+            <table>
+           <tr> <td>用户 <font color="red">{{uissue.name}}:</font></td>
+           <td>{{uissue.msg}}</td>
+            </tr>
+            </table>
+            </div>
+            </div>
         <div class="modal-footer">
-            
-            <button class="btn btn-fill btn-primary" type="button" ng-click="">购票</button>
+            <button class="btn btn-fill btn-primary" type="button" ng-click="">购票4</button>
             <button class="btn btn-fill btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>

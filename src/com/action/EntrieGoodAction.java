@@ -34,7 +34,6 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
 	}
-
 		public Page getPage() {
 		return page;
 	}
@@ -64,7 +63,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		else {
 			m=Integer.parseInt(mString);
 		}
-		System.out.print("m的值为："+mString);
+		//System.out.print("m的值为："+mString);
 		switch (m) {
 		case Functions.GET_GOODS_OPERATION_LIST0:
 			return mvList();
@@ -74,6 +73,8 @@ public class EntrieGoodAction extends AjaxActionSupport {
 				return	exmapleById();
 			case Functions.GET_GOODS_OPERATION_PlayTime:
 				return play();
+				case Functions.GET_GOODS_OPERATION_PlayTime_ById:
+					return playByMid();
 		default: 
 			return ERROR;
 		}
@@ -114,11 +115,21 @@ public class EntrieGoodAction extends AjaxActionSupport {
 			return SUCCESS;
 		}
 	}
-	//获取某天放映的电影列表
+	//获取某天放映的全部电影列表
 	public String play() throws PulginsException{
 		List<Play> plays;
 		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
 		plays=sGoods.findByTime(request.getParameter("playTime"));
+		reply=plays;
+		dataMap.put("reply", reply);
+		dataMap.put("success", true);
+		return SUCCESS;
+	}
+	//获取某天放映的tedin电影列表
+	public String playByMid() throws PulginsException{
+		List<Play> plays;
+		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
+		plays=sGoods.findByTimeMid(request.getParameter("playTime"), request.getParameter("mid"));
 		reply=plays;
 		dataMap.put("reply", reply);
 		dataMap.put("success", true);

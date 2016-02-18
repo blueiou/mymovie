@@ -76,15 +76,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <!-- 单层获取值 -->          
    <div ng-repeat="s in smvlist.stulist">
             <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
+             <a href="">
+                    <img class="img-responsive" src="{{s.playbillurl}}"  ng-click="open(s.good_id)">
+               </a>
                 <h3>
                     <a href="" ng-model="exmaple" ng-click="open(s.good_id)" >{{s.sysname}}</a>
                     
                    <!--  <a href="" ng-click="open('lg')" >{{s.baseInfo.base_id}}</a> -->
                 </h3>
-                <p ng-model="exmaple" ng-click="open(s.baseInfo.base_id)">点击了解更多</p>
+               <!--  <p ng-model="exmaple" ng-click="open(s.baseInfo.base_id)">点击了解更多</p> -->
             </div>
    </div> 
            </div> 

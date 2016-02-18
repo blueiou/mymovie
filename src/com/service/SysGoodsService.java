@@ -76,17 +76,26 @@ public class SysGoodsService {
 			
 			return goods;
 		}
-		
+		 //查询某天放映的影片--关联了映射关系的查询
 		public List<Play> findByTime(String temp) throws PulginsException{
 			if (CacheClass.isEmpty(temp)) return null;
 			String stempsString=temp.substring(0,10)+"%";//分割传来的时间
 			List<Play> list=sysGoodsDaoImpl.getById(stempsString);
-			
 			if (list.size()==0) {
 				throw new PulginsException("没有该场次");
 			}
 			return list;
 		}
+		//查询单个商品的上映时间表 
+		public List findByTimeMid(String temp,String mid) throws PulginsException{
+			if (CacheClass.isEmpty(temp)||CacheClass.isEmpty(mid)) return null;
+			String stempsString=temp.substring(0,10)+"%";//分割传来的时间
+			List list=sysGoodsDaoImpl.getByMId(stempsString, mid);
+			if (list.size()==0) {
+				throw new PulginsException("没有该场次");
+			}
+			return list;
+		}   
 		public List<GoodVPlayVHall> findByTime2(){
 			List<GoodVPlayVHall> goodVPlayVHalls=sysGoodsDaoImpl.getById();
 			return goodVPlayVHalls;

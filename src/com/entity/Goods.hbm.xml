@@ -32,6 +32,9 @@
 <property name="uploadtime" type="java.lang.String">
 <column name="uploadtime" length="160"></column>
 </property>
+<property name="playbillurl" type="java.lang.String">
+<column name="playbillurl" length="150"></column>
+</property>
 <!-- 其中的name要在Goods实体类中为BaseInfo的一个实例对象 -->
 <many-to-one name="baseInfo"
  class="com.entity.BaseInfo"

@@ -53,10 +53,8 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 			}
 		}
 		);
-		
 	/*	分页*/
 	   int rowcount=getCount(stamp);
-	   System.out.print("rowcount:"+rowcount);
 		criteria.setProjection(null);
 		criteria.setFirstResult((pageno-1)*pagesize);
 		criteria.setMaxResults(pagesize);
@@ -99,12 +97,26 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?",temp);
 		return plays;
 	}
-	@Override
-	public List getById() {
+	//查询单个商品的上映时间表 
+	public List getByMId(String temp,String mid) {
+		// TODO Auto-generated method stub
+		//if (play==null) play=new Play();
+		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
+		//List<Play> plays=getHibernateTemplate().find("select g.sysname,p.play_time,p.price,p.goods  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
+		List<Play> plays=getHibernateTemplate().find("select p.play_time,p.price,g.sysname  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
+		//List<Play> plays=getHibernateTemplate().find(" from Play p,Goods g where g.good_id=? ",mid);
+		return plays;
+	}
+/*	public List getById() {
 		// TODO Auto-generated method stub
 		GoodVPlayVHall goodVPlayVHall=new GoodVPlayVHall();
 		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
-		List<GoodVPlayVHall> plays=getHibernateTemplate().find("select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?","%2016-02-17%");
+		List<GoodVPlayVHall> plays=this.getHibernateTemplate().find("select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?","%2016-02-17%");
 		return plays;
+	}*/
+	@Override
+	public List getById() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

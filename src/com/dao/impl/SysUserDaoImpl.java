@@ -32,22 +32,22 @@ private DbConnect dbConnect;
 		 dbConnect=new DbConnect();
 		  PreparedStatement psPreparedStatement=null;
 		try {
-			psPreparedStatement = dbConnect.getPreparedStatemen("select distinct  content from uservgood where good_id=?");
+			//psPreparedStatement = dbConnect.getPreparedStatemen("select distinct  content from uservgood where good_id=?");
+			psPreparedStatement = dbConnect.getPreparedStatemen("select distinct  u.username,ug.content from uservgood ug,users u where ug.userid=u.userid and  good_id=?");
 			psPreparedStatement.setString(1, mid);
 			   ResultSet rsResultSet=psPreparedStatement.executeQuery();
 			   while (rsResultSet.next()) {
 				    SysGoodsData sysGoodsData=new SysGoodsData();
-				    sysGoodsData.setMsg(rsResultSet.getString(1));
+				    sysGoodsData.setName(rsResultSet.getString(1));
+				    sysGoodsData.setMsg(rsResultSet.getString(2));
 				    list1.add(sysGoodsData);
-				   System.out.println("sysGoodsData="+sysGoodsData.msg);
+				   System.out.println("sysGoodsData="+sysGoodsData.getMsg());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 			 dbConnect.closeconn();
-		 
 		return list1;
 	}
 	
