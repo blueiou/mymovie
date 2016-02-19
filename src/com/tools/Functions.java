@@ -9,7 +9,7 @@ public final int GET_GOODS_OPERATION_LIST1=GOODS_OPERATION+ 11; //1511 获取商
 
 
 public final int GET_GOODS_OPERATION_INFO =GOODS_OPERATION+ 20;     //1520 取某商品详细信息	
-public final int GET_GOODS_OPERATION_PlayTime_ById =GOODS_OPERATION+ 21;     //1521 取某商品详细信息	
+public final int GET_GOODS_OPERATION_PlayTime_ById =GOODS_OPERATION+ 21;     //1521 获取某天放映的特定的电影时间列表	
 
 
 public final int GET_GOODS_OPERATION_PlayTime=GOODS_OPERATION+25;  //1525 获取某天放映的电影列表

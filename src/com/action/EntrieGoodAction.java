@@ -40,7 +40,6 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	public void setPage(Page page) {
 		this.page = page;
 	}
-	
 	public Goods getGoodDescri() {
 		return goodDescri;
 	}
@@ -63,7 +62,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		else {
 			m=Integer.parseInt(mString);
 		}
-		//System.out.print("m的值为："+mString);
+		System.out.print("m的值为："+mString);
 		switch (m) {
 		case Functions.GET_GOODS_OPERATION_LIST0:
 			return mvList();
@@ -127,13 +126,14 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	}
 	//获取某天放映的tedin电影列表
 	public String playByMid() throws PulginsException{
-		List<Play> plays;
+		List plays;
 		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
 		plays=sGoods.findByTimeMid(request.getParameter("playTime"), request.getParameter("mid"));
 		reply=plays;
 		dataMap.put("reply", reply);
 		dataMap.put("success", true);
-		return SUCCESS;
+	return "playbyid";
+	//	return SUCCESS;
 	}
 	/*public String  测试*/
 	public void test(){

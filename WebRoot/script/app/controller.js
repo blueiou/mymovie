@@ -63,7 +63,9 @@ app.controller('prepara',function ($scope,$interval,$http,goodsList){
 	   });
 //商品详情页
 app.controller('GoodsInstance', function($scope, $uibModalInstance, exmaple,goodsList,usersListG) {
-	
+var time=new Date();
+	$scope.time=time;
+	console.log("输出的时间"+time);
 	  $scope.exmaple = exmaple;
 	  console.log("商品ID:"+exmaple);
 	 goodsList.query({m:"1520",id:exmaple},function(res){

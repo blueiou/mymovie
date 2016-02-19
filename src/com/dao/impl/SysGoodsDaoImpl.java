@@ -19,6 +19,7 @@ import com.entity.Page;
 import com.entity.Play;
 import com.model.GoodVPlayVHall;
 import com.model.GoodsInfo;
+import com.model.PlayByMid;
 import com.tools.PulginsException;
 
 public class SysGoodsDaoImpl  implements SysGoodsDao {
@@ -100,10 +101,10 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 	//查询单个商品的上映时间表 
 	public List getByMId(String temp,String mid) {
 		// TODO Auto-generated method stub
-		//if (play==null) play=new Play();
 		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
 		//List<Play> plays=getHibernateTemplate().find("select g.sysname,p.play_time,p.price,p.goods  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
-		List<Play> plays=getHibernateTemplate().find("select p.play_time,p.price,g.sysname  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
+		//List<Play> plays=getHibernateTemplate().find("select p.play_time,p.price,g.sysname  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
+		List<PlayByMid> plays=getHibernateTemplate().find("select new com.model.PlayByMid(g.sysname,p.play_time,p.price)  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
 		//List<Play> plays=getHibernateTemplate().find(" from Play p,Goods g where g.good_id=? ",mid);
 		return plays;
 	}

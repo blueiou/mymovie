@@ -51,6 +51,13 @@
             </div>
             </div>
         <div class="modal-footer">
-            <button class="btn btn-fill btn-primary" type="button" ng-click="">购票4</button>
+        <form action="allist.action" method="post" id="form1">
+        <input type="hidden" value="1521" name="m" >
+        <input type="hidden" value="{{time}}" name="playTime" >
+        <input type="hidden" value="{{goodDescri.good_id}}" name="mid">
+            <input class="btn btn-fill btn-primary" type="submit"  value="购票" /></form>
             <button class="btn btn-fill btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
+        
+        
+        

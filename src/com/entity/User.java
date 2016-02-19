@@ -7,16 +7,11 @@ import java.util.Set;
 
 public class User implements Serializable{
 	 private String email;
-
 	 private Date createDate;
-
 	 	private String userid;  
 	     private String username;  
 	     private String password;  
 	     private UserInfo userInfo;
-	     
-	
-
 		private Set roles = new HashSet(); 
 		
 		public UserInfo getUserInfo() {

@@ -2,13 +2,16 @@ package com.dao.impl;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import javax.jws.soap.SOAPBinding.Use;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.db.DbConnect;
+import com.entity.Role;
+import com.entity.User;
 import com.entity.UserInfo;
 import com.model.SysGoodsData;
 import com.mysql.jdbc.PreparedStatement;
@@ -25,6 +28,56 @@ private DbConnect dbConnect;
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
+	
+	public User login(String na, String pa) {
+		   String f_name= "from User u where u.username=? and u.password=?"; 
+	List<User> userlist=	hibernateTemplate.find(f_name, new String[]{na,pa});
+	if (userlist.size()==0) 	return null;
+	User users=userlist.get(0);
+	String f_role="from  Role r where r.roleid in (select roleid from User_role where userid=?)";
+	List<Role> rolelist=	hibernateTemplate.find(f_role, users.getUserid());
+	Set<String> u1Roles = new HashSet<String>();
+	for (int i = 0; i < rolelist.size(); i++) {
+		Role roles=rolelist.get(i);
+		u1Roles.add(roles.getRolename());
+	}
+	users.setRoles(u1Roles);
+	return users;
+	}
+	public User uLogin(String na, String pa){
+		  String f_name= "from User u where u.username=? and u.password=?";  
+			List<User> userlist=	hibernateTemplate.find(f_name, new String[]{na,pa});
+			if (userlist.size()==0) {System.out.println("没有查到到该用户");	return null;}
+			else {User user=userlist.get(0);
+			return user;
+			}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//查找用户对某影片的评论
 	public List getContentById(String mid){
 		//UserInfo userInfo=new UserInfo();
@@ -41,7 +94,6 @@ private DbConnect dbConnect;
 				    sysGoodsData.setName(rsResultSet.getString(1));
 				    sysGoodsData.setMsg(rsResultSet.getString(2));
 				    list1.add(sysGoodsData);
-				   System.out.println("sysGoodsData="+sysGoodsData.getMsg());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

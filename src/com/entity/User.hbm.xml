@@ -15,7 +15,7 @@
             <key column="userid" />  
             <many-to-many column="roleid" class="com.entity.Role" />  
         </set> 
-        <!-- 
+        <!-- 多对多生成了另一个表
          <set name="good" table="uservgood" >
          <key column="userid"> </key>
          <many-to-many column="good_id" class="com.entity.Goods"> </many-to-many>

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+
 public class DelServlet extends HttpServlet {
 
 	/**
@@ -70,7 +72,7 @@ public class DelServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String[] checkall=request.getParameterValues("checkbox");
-		System.out.println("为啥没有啊");
+		System.out.println("为啥没锟叫帮拷");
 		for (int i = 0; i < checkall.length; i++) {
 			System.out.println(checkall[i]);
 		}

@@ -1,6 +1,8 @@
 package com.service;
 import java.util.List;
+
 import com.dao.impl.SysUserDaoImpl;
+import com.entity.User;
 import com.tools.CacheClass;
 public class SysUsersService {
 	private SysUserDaoImpl sysUserDaoImpl;
@@ -14,5 +16,8 @@ public class SysUsersService {
 		if (CacheClass.isEmpty(mid)) return null;
 		return sysUserDaoImpl.getContentById(mid);
 		
+	}
+	public User findUserUnit(String na,String pa){
+		return sysUserDaoImpl.uLogin(na, pa);
 	}
 }

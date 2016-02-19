@@ -6,13 +6,7 @@ public class UserInfo {
 	private String u_id;
 	private String m_id;
 	private User	user;
-	private Goods goods;
-	public Goods getGoods() {
-		return goods;
-	}
-	public void setGoods(Goods goods) {
-		this.goods = goods;
-	}
+	//private Goods goods;
 	public User getUser() {
 		return user;
 	}
