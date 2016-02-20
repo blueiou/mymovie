@@ -1,14 +1,19 @@
 package com.dao.impl;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
-
+import javax.ws.rs.core.Application;
+import org.springframework.context.support.ClassPathXmlApplicationContext; 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -99,22 +104,31 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		return plays;
 	}
 	//查询单个商品的上映时间表 
-	public List getByMId(String temp,String mid) {
+	public List getByMId(String mid,String stemp) {
 		// TODO Auto-generated method stub
-		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
-		//List<Play> plays=getHibernateTemplate().find("select g.sysname,p.play_time,p.price,p.goods  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
-		//List<Play> plays=getHibernateTemplate().find("select p.play_time,p.price,g.sysname  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
-		List<PlayByMid> plays=getHibernateTemplate().find("select new com.model.PlayByMid(g.sysname,p.play_time,p.price)  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
-		//List<Play> plays=getHibernateTemplate().find(" from Play p,Goods g where g.good_id=? ",mid);
+		//List<PlayByMid> plays=getHibernateTemplate().find("select new com.model.PlayByMid(g.sysname,p.play_time,p.price)  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
+		//把查询出来的存放在数据模型的PlayByMid 中
+		String hqlString="select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price,p.Hall.roomname,p.Hall.version,p.goods.baseInfo.language) from Play p where p.goods.good_id=? and p.play_time like ?";
+		List<PlayByMid> plays=getHibernateTemplate().find(hqlString,mid,stemp);
 		return plays;
 	}
-/*	public List getById() {
-		// TODO Auto-generated method stub
-		GoodVPlayVHall goodVPlayVHall=new GoodVPlayVHall();
-		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
-		List<GoodVPlayVHall> plays=this.getHibernateTemplate().find("select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?","%2016-02-17%");
-		return plays;
-	}*/
+	public void test() {
+		List<PlayByMid> plays=this.getHibernateTemplate().find("select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price) from Play p where p.Goods.good_id=? and p.play_time like ?","40288183529b5f4f01529b5f50840002","2016-02-19%");
+		//return plays;
+	}
+	
+	public List findByProperty(String propertyName, Object value,String temp) {
+        try {
+            String queryString = "from "+temp+" as model where model."
+                    + propertyName + "= ?";
+            Query queryObject = ((Session) this.getHibernateTemplate()).createQuery(queryString);
+            queryObject.setParameter(0, value);
+             
+            return queryObject.list();
+        } catch (RuntimeException re) {
+            throw re;
+        }
+    }
 	@Override
 	public List getById() {
 		// TODO Auto-generated method stub

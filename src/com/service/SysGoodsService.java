@@ -62,10 +62,7 @@ public class SysGoodsService {
 					return p;
 
 				}
-		public int test(){
-			return pagingDaoImpl.getCount(1);
-		}
-		
+	
 		public Goods findById(String id) throws PulginsException {
 			List<Goods> list=sysGoodsDaoImpl.getGoodById(id);
 			if (CacheClass.isEmpty(id)) return null;
@@ -87,10 +84,10 @@ public class SysGoodsService {
 			return list;
 		}
 		//查询单个商品的上映时间表 
-		public List findByTimeMid(String temp,String mid) throws PulginsException{
+		public List findByTimeMid(String mid,String temp) throws PulginsException{
 			if (CacheClass.isEmpty(temp)||CacheClass.isEmpty(mid)) return null;
 			String stempsString=temp.substring(1,11)+"%";//分割传来的时间
-			List list=sysGoodsDaoImpl.getByMId(stempsString, mid);
+			List list=sysGoodsDaoImpl.getByMId(mid,stempsString);
 			if (list.size()==0) {
 				throw new PulginsException("没有该场次");
 			}
@@ -99,6 +96,9 @@ public class SysGoodsService {
 		public List<GoodVPlayVHall> findByTime2(){
 			List<GoodVPlayVHall> goodVPlayVHalls=sysGoodsDaoImpl.getById();
 			return goodVPlayVHalls;
+		}
+		public int test(){
+			return pagingDaoImpl.getCount(1);
 		}
 		
 }

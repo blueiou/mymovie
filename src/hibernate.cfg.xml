@@ -20,7 +20,7 @@
 	</property>
 	<!-- 插入数据库的方式 -->
 	<property name="hibernate.hbm2ddl.auto">update</property>
-	<property name="show_sql">false</property> 
+	<property name="show_sql">false</property>
 
 	<!-- 提交事务 -->
 	<property name="connection.autocommit">true</property>
@@ -35,5 +35,6 @@
 	<mapping resource="com/entity/Play.hbm.xml" />
 	<mapping resource="com/entity/Hall.hbm.xml" />
 	<mapping resource="com/entity/UserInfo.hbm.xml" />
+	<mapping resource="com/entity/Ticket.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

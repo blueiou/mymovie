@@ -12,9 +12,14 @@
   <generator class="native"></generator>
 </id>
 <property name="roomname" type="java.lang.String">
-<column name="roomname" length="30"></column>
+<column name="roomname" length="20"></column>
 </property>
-
+<property name="version" type="java.lang.String">
+<column name="version" length="10"></column>
+</property>
+<property name="seat" type="java.lang.Integer">
+<column name="seat" length="11"></column>
+</property>
 <set name="play" table="play" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="hall_id" /><!-- 确定关联的外键列 -->

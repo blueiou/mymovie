@@ -47,6 +47,7 @@
  not-null="true"
  lazy="false"
 ></many-to-one>
+<!-- 与场次一对多    多个电影在多个时间段的场次-->
 <set name="play" table="play" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="good_id" /><!-- 确定关联的外键列 -->

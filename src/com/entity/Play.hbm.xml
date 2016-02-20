@@ -13,7 +13,6 @@
 </id>
 <!-- <property name="stuid" type="java.lang.Integer">
 <column name="stuid" length="20"></column>
-
 </property> -->
 <property name="play_time" type="java.lang.String">
 <column name="play_time" length="50"></column>
@@ -21,10 +20,11 @@
 <property name="price" type="java.lang.Double">
 <column name="price" length="45"></column>
 </property>
+<property name="sell_num" type="java.lang.Integer">
+<column name="sell_num" length="10"></column>
+</property>
 
-
-
-<many-to-one name="Goods"
+<many-to-one name="goods"
  class="com.entity.Goods"
  cascade="none"
  outer-join="auto"
@@ -35,8 +35,7 @@
  not-null="true"
   lazy="false"
 ></many-to-one>
-
-<many-to-one name="Hall"
+<many-to-one name="hall"
  class="com.entity.Hall"
  cascade="none"
  outer-join="auto"
@@ -47,5 +46,12 @@
  not-null="true"
   lazy="false"
 ></many-to-one>
+<!-- 与电影票一对多 -->
+
+<set name="tickets" table="ticket_info" cascade="all-delete-orphan" 
+            lazy="true" inverse="true">
+            <key column="play_id" /><!-- 确定关联的外键列 -->
+            <one-to-many class="com.entity.Ticket"  />
+</set>
 </class>
 </hibernate-mapping>

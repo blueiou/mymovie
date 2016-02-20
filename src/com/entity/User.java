@@ -12,8 +12,16 @@ public class User implements Serializable{
 	     private String username;  
 	     private String password;  
 	     private UserInfo userInfo;
+	     //与角色 多对多
 		private Set roles = new HashSet(); 
+		private Set<Ticket> tickets;//与电影票一对多
 		
+		public Set<Ticket> getTickets() {
+			return tickets;
+		}
+		public void setTickets(Set<Ticket> tickets) {
+			this.tickets = tickets;
+		}
 		public UserInfo getUserInfo() {
 			return userInfo;
 		}

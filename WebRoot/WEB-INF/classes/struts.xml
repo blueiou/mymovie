@@ -27,7 +27,7 @@
 <action name="allist" class="EntrieGoodClass">
 <result type="json"><param name="root"> dataMap</param></result>
 <result name="error">test.html</result>
-<result name="playbyid">playbyid.jsp</result>
+<result name="playbyid">movies/baseInfo/playbyid.jsp</result>
 </action>
 
 <action name="sysuserm" class="SysUserManagementAction">

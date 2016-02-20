@@ -124,11 +124,11 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		dataMap.put("success", true);
 		return SUCCESS;
 	}
-	//获取某天放映的tedin电影列表
+	//获取某天放映的特定的电影列表
 	public String playByMid() throws PulginsException{
 		List plays;
 		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
-		plays=sGoods.findByTimeMid(request.getParameter("playTime"), request.getParameter("mid"));
+		plays=sGoods.findByTimeMid(request.getParameter("mid").trim(), request.getParameter("playTime").trim());
 		reply=plays;
 		dataMap.put("reply", reply);
 		dataMap.put("success", true);

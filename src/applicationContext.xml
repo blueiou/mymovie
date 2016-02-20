@@ -52,9 +52,7 @@
     <tx:method name="save*" propagation="REQUIRED"  />
     <tx:method name="find*" propagation="NOT_SUPPORTED" read-only="true" />
 </tx:attributes>
-
 </tx:advice>
-	
 	<!-- 配置数据持久层 --><!-- 公共的继承hibernateTemplate的dao类 -->
 	<bean id="PagingDaoImpl" class="com.dao.impl.PagingDaoImpl" scope="prototype">
 	<property name="hibernateTemplate" ref="hibernateTemplate" />
@@ -81,7 +79,6 @@
 <bean id="EntrieGoodClass" class="com.action.EntrieGoodAction" scope="prototype">
 <property name="sGoods" ref="SysGoodsBo"></property>
 </bean>	
-
 <bean id="SysUserManagementAction" class="com.action.SysUserManagementAction" scope="prototype">
 <property name="sUser" ref="SysUserBo"></property>
 </bean>

@@ -1,12 +1,47 @@
 package com.model;
 
-public class PlayByMid {
+import java.io.Serializable;
+
+public class PlayByMid implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1453185555076008952L;
 
 	private String sysname;
 	
 	private String playtime;
 	
 	private double price;
+
+	private String roomname;
+	private String version;
+	private String language;
+	
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getRoomname() {
+		return roomname;
+	}
+
+	public void setRoomname(String roomname) {
+		this.roomname = roomname;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
 	public String getSysname() {
 		return sysname;
@@ -42,6 +77,27 @@ public class PlayByMid {
 	public PlayByMid() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public PlayByMid(String sysname, String playtime, double price,
+			String roomname, String version) {
+		super();
+		this.sysname = sysname;
+		this.playtime = playtime;
+		this.price = price;
+		this.roomname = roomname;
+		this.version = version;
+	}
+
+	public PlayByMid(String sysname, String playtime, double price,
+			String roomname, String version, String language) {
+		super();
+		this.sysname = sysname;
+		this.playtime = playtime;
+		this.price = price;
+		this.roomname = roomname;
+		this.version = version;
+		this.language = language;
 	}
 	
 	
