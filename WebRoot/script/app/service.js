@@ -15,9 +15,10 @@ services.factory('usersListG',['$resource',function($resource){
 	return $resource('sysuserm.action',{},{
 		query:{
 			method:'get',
-			Params:{m:"",mid:""},
+			Params:{m:"",mid:"",uname:"",pass:""},
 	        isArray:false,
 		}
+	
 	})
 	
 }]);

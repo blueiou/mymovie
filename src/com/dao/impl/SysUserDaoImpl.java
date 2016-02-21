@@ -44,15 +44,15 @@ private DbConnect dbConnect;
 	users.setRoles(u1Roles);
 	return users;
 	}
-	public User uLogin(String na, String pa){
+	public List uLogin(String na, String pa){
 		  String f_name= "from User u where u.username=? and u.password=?";  
-			List<User> userlist=	hibernateTemplate.find(f_name, new String[]{na,pa});
-			if (userlist.size()==0) {System.out.println("没有查到到该用户");	return null;}
-			else {User user=userlist.get(0);
-			return user;
-			}
+			List<User> userlist=this.hibernateTemplate.find(f_name, new String[]{na,pa});
+		/*	if (userlist.size()==0) {System.out.println("没有查到到该用户");	return null;}
+			else {User user=userlist.get(0);}*/
+			return userlist;
 		
 	}
+
 	
 	
 	

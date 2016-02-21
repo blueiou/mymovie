@@ -108,7 +108,7 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		// TODO Auto-generated method stub
 		//List<PlayByMid> plays=getHibernateTemplate().find("select new com.model.PlayByMid(g.sysname,p.play_time,p.price)  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
 		//把查询出来的存放在数据模型的PlayByMid 中
-		String hqlString="select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price,p.Hall.roomname,p.Hall.version,p.goods.baseInfo.language) from Play p where p.goods.good_id=? and p.play_time like ?";
+		String hqlString="select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price,p.hall.roomname,p.hall.version,p.goods.baseInfo.language) from Play p where p.goods.good_id=? and p.play_time like ?";
 		List<PlayByMid> plays=getHibernateTemplate().find(hqlString,mid,stemp);
 		return plays;
 	}

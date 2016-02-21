@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib uri="/struts-tags"  prefix="s"%>
+ <%@ include file="../menu.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -17,9 +18,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="css/ct-paper.css" />
+<!-- <link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"> -->
+
+
 <% String time=new MyDate().getYMD(); %>
 当前时间：<%=time %>
   </head>
@@ -29,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
 </style>
   <body ng-app="IndexApp" >
-  
-  <div class="container">
-         <div id="navbar">
+ 
+  <div class="container" style="margin-top: 50px;">
+     <%--     <div id="navbar">
                             <nav class="navbar navbar-default">
                               <div class="container-fluid">
                                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -68,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               </div><!-- /.container-fluid -->
                             </nav>
                         
-                        </div><!--  end navbar -->
+                        </div><!--  end navbar --> --%>
 <uib-tabset justified="true">
     <uib-tab heading="正在热映" >
     <div ng-controller="showing">
@@ -152,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- UI-Router -->
   <script src="./script/angularjs/angular-ui-router.js"></script>
   <!-- App Script -->
-    <script src="./script/app/apps.js"></script>
+    <script src="./script/app/app.js"></script>
     <script src="./script/app/service.js"></script>
     <script src="./script/app/controller.js"></script>
     <!-- other -->

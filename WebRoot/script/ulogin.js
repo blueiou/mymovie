@@ -34,13 +34,18 @@
 		var upass=$("#upass").val();
 		$.ajax({
 			 type: "post", 
-			 url: "clogin.action", 
-			 dataType: "html",  
+			 url: "testU.action", 
+			 dataType: "json",  
 			 data: "uname="+uname+"&upass="+upass, 
-			 success: function(result){ 
-			 var res = String($.trim(result)); 
-			 if(res=="true"){
-				 
+			 //data: "m=1520&id=40288183529b5f4f01529b5f50840002", 
+			 success: function(result){
+				 var res =[];
+			 res = result.user.roles; 
+			 var str="generalUser";
+			 var str2=res[0].rolename;
+			 if(str==str2) {window.location.href="movies/index.jsp";}
+			
+			/* if(res=="true"){
 				 $("#spuser").html("");
 				 document.login.submit();
 				 return true;
@@ -48,12 +53,14 @@
 			 else if(res=="false"){ 
 				 $("#spuser").html("<font color='#FF0000'>*用户名或密码错误</font>");
 				 return false;
-			 }
-			 } 
+			 }*/
+			 },
+			    error: function() {
+			        //请求出错处理
+			    }
 			 }); 
 		 
-	
-		return false;
+		//return false;
 	}
   
   function checkulogin() {

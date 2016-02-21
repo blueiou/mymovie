@@ -18,19 +18,13 @@ public class SysUserManagementAction extends AjaxActionSupport{
 	private SysUsersService sUser;
    private Object reply=null;
    private Map<String, Object> map;
-  // HttpSession session=request.getSession();
+ 
 	public SysUsersService getsUser() {
 	return sUser;
 }
 public void setsUser(SysUsersService sUser) {
 	this.sUser = sUser;
 }
-	public Map<String, Object> getMap() {
-		return map;
-	}
-	public void setMap(Map<String, Object> map) {
-		this.map = map;
-	}
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
@@ -46,7 +40,6 @@ public void setsUser(SysUsersService sUser) {
 		case Functions.USERINFO_OPERATION_ISSUE: //用户评价
 			System.out.println("enter");
 			return userIssue();
-
 		default:
 			break;
 		}
@@ -58,17 +51,52 @@ public void setsUser(SysUsersService sUser) {
 		map.put("reply", reply);
 		return SUCCESS;
 	}
-	public void testU(){
+	public String  testU(){
+		  HttpSession session=request.getSession();
 		map=new HashMap<String, Object>();
-		User user=sUser.findUserUnit(request.getParameter("uname"), request.getParameter("pass"));
-	Set	role=new HashSet<>();
-	role=user.getRoles();
-	Iterator iterator=role.iterator();// 获得一个迭代子
-	while (iterator.hasNext()) {
-		Role role2=(Role) iterator.next();
-		System.out.println(" "+role2);
+		User user=sUser.findUserUnit(request.getParameter("uname"), request.getParameter("upass"));
 		
-	}
+		if (user==null) {
+			map.put("user", null);
+			map.put("success", false);
+			return SUCCESS;
+		}
+		else if (user!=null) {
+			session.setAttribute("uid", user.getUserid());
+			session.setAttribute("uname", user.getUsername());
+			session.setAttribute("urole", user.getRoles());
+			//session.setAttribute("urole", value);
+			map.put("user", user);
+			map.put("success", true);
+			return SUCCESS;
+		}
+		return SUCCESS;
+		/*Set<Role>	role=new HashSet<>();
+		Set<String> roleNameSet=new HashSet<>();//存放遍历出来名字
+		role=user.getRoles();
+		Iterator iterator=role.iterator();// 获得一个迭代子
+		while (iterator.hasNext()) {
+			Role role2=(Role) iterator.next();
+			System.out.println(" role2.getRolename()"+role2.getRolename());
+			roleNameSet.add(role2.getRolename());
+		}
+		if (roleNameSet.contains("generalUser")&&!roleNameSet.contains("manager")&&!roleNameSet.contains("administrator")) {
+			System.out.println("user");
+			return "user";
+		}
+		else if (roleNameSet.contains("manager")&&!roleNameSet.contains("administrator")){
+			System.out.println("manager");
+			return "manager";
+		}
+        else if (roleNameSet.contains("manager")&&roleNameSet.contains("administrator")){
+			
+			return "choose";
+		}
+        else if (roleNameSet.contains("administrator")){
+        	System.out.println("administrator");
+			return "administrator";
+		}*/
+		//return ERROR;
 	/*	switch (key) {
 		case value:
 			
@@ -77,8 +105,13 @@ public void setsUser(SysUsersService sUser) {
 		default:
 			break;
 		}*/
-		
-		
 	//	return SUCCESS;
+	}
+	
+	public Map<String, Object> getMap() {
+		return map;
+	}
+	public void setMap(Map<String, Object> map) {
+		this.map = map;
 	}
 }

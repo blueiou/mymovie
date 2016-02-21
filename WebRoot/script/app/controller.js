@@ -1,5 +1,5 @@
 var app=angular.module('mv.controller',['ui.bootstrap', 'ui.router']);
-
+//********************影片管理
 app.controller('showing',function ($scope,$interval,$http,$log,$uibModal,goodsList){
 		//传入当前的页码到后台
 	$scope.currentPage=1;
@@ -96,6 +96,21 @@ app.controller('playtime',function($scope,$interval,$http,goodsList){
 		});
 	};
 	$scope.search();
+});
+
+//*****************用户管理
+
+
+app.controller('ulogin',function($scope,$interval,$http,usersListG){
+	$scope.login=function(){
+		usersListG.query({uname:"",pass:""},function(res)
+		{
+			console.log("登录返回的结果");
+			console.log(res);
+		}
+		
+		)
+	}
 });
 
 

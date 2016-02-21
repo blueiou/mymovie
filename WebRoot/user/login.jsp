@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,com.tools.CacheClass" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,7 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <script type="text/javascript" ></script>
-<link rel="stylesheet" href="./css/bootstrap.css" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/examples.css" />
     <link rel="stylesheet" href="./css/base.css" />
 <style type="text/css">
@@ -32,17 +33,13 @@ body {
   font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
   }
 </style>
-
   </head>
-  
   <body>
   <div class="col-md-8 col-md-offset-2">
   <button class="btn btn-primary" >Default</button>
   <button class="btn btn-fill btn-primary">Primary</button>
   </div> 	
   <div class="col-sm-3"><input type="checkbox" class="checkbox" /></div>
-  
-  
      <nav class="navbar navbar-ct-transparent navbar-fixed-top" role="navigation-demo" id="register-navbar">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,20 +54,6 @@ body {
     
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navigation-example-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href="#" class="btn btn-simple">Components</a>
-            </li>
-            <li>
-                <a href="#" class="btn btn-simple">Tutorial</a>
-            </li>
-            <li>
-                <a href="#" target="_blank" class="btn btn-simple"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-                <a href="#" target="_blank" class="btn btn-simple"><i class="fa fa-facebook"></i></a>
-            </li>
-           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-->
     </nav> 
@@ -83,17 +66,15 @@ body {
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
                                 <h3 class="title">Welcome</h3>
-                                <form class="register-form" action="ulogin.action" method="post" onsubmit="return checkulogin()">
+                                <form class="register-form">
                                     <label>Email</label>
-                                    <input id="uname"  type="text" class="form-control" onchange="checkname()" placeholder="用户名">
-<label id="spuser" style="margin-bottom: -100px;" ></label><br><br>
+                                    <input id="uname" name=""  type="text" class="form-control" placeholder="用户名">
                                     <label>Password</label>
-                                    <input id="upass" type="password" class="form-control" onchange="" placeholder="密码">
-                                   <!--  <span id='sppass'></span> -->
-                                    <button class="btn btn-danger btn-block" onclick="javascript:">登录</button>
+                                    <input id="upass" name=""  type="password" class="form-control" placeholder="密码">
+                                    <button class="btn btn-danger btn-block" onclick="loginSubmit()">登录</button>
                                 </form>
                                 <div class="forgot">
-                                    <a href="#" class="btn btn-simple btn-danger">忘记密码?</a>
+                                    <a href="#" class="btn btn-simple btn-danger">Forgot password?</a>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +86,54 @@ body {
         </div>
     </div>      
   </body>
-
-  <script type="text/javascript" src="script/jquery1.8.js"></script>
-    <script type="text/javascript" src="./script/ulogin.js"></script>
+<script type="text/javascript" src="script/jquery1.8.js"></script>
+  <script type="text/javascript" >
+  function loginSubmit(){
+		var uname=$("#uname").val();
+		var upass=$("#upass").val();
+		$.ajax({
+			
+			 type: "post", 
+			 async:true,
+			 url: "testU.action", 
+			 dataType:"json",  
+			 timeout: 1000,  
+             cache: false, 
+			 data:"uname="+uname+"&upass="+upass, 
+			 //data: "m=1520&id=40288183529b5f4f01529b5f50840002", 
+			 success:function(result){
+			 if(result.success==true){
+				 var res =[];
+			 res = result.user.roles; 
+			 var str="generalUser";
+			 var str2=res[0].rolename;
+			 if(str==str2) {window.location.href="movies/index.jsp";}
+			 }
+			 else if(result.success==false){
+				 alert("用户名账户或密码错误");
+			 }
+			/* if(res=="true"){
+				 $("#spuser").html("");
+				 document.login.submit();
+				 return true;
+			 }
+			 else if(res=="false"){ 
+				 $("#spuser").html("<font color='#FF0000'>*用户名或密码错误</font>");
+				 return false;
+			 }*/
+			 
+		 
+	},
+    error:function(XMLHttpRequest, textStatus, errorThrown) {   
+      /*   alert(XMLHttpRequest.status);  
+        alert(XMLHttpRequest.readyState);  
+        alert(textStatus); */ 
+        //请求出错处理
+        alert("连接服务器出错");
+    } 
+		});
+  }
+  
+  
+  </script>
 </html>
