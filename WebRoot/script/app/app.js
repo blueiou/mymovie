@@ -83,6 +83,7 @@
     
       
     });
+var SeatApp=angular.module('SeatApp',['mv.controller']);
 
    
    

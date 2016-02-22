@@ -3,13 +3,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    
-    <title>menu</title>
 <!-- Bootstrap Core CSS -->
- 
     <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet" /> 
- <%--    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"> --%>
- 
+   <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"> 
     <!-- Custom CSS -->
      <!-- jQuery -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/ct-paper.css" />
