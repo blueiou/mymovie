@@ -49,6 +49,13 @@
 	    templateUrl: '/mymovie/tpls/tmpls/teacher/viewStuRecord.html',
 	   // controller: 'viewStuRecordCtrl'
 	})
+	//显示在线选择座位
+	.state('bookseat',{
+    	  url:'/bookSeat',
+	templateUrl:''
+    	  
+    	  
+      })
 /*	 .state('home', {
       url: '/',
       templateUrl: './movies/index.jsp',

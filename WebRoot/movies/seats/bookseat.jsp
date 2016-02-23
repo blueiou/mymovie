@@ -1,4 +1,16 @@
-<!doctype html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%
+/* request.setCharacterEncoding("UTF-8");
+response.setCharacterEncoding("UTF-8"); */
+String room=new String(request.getParameter("room").getBytes("ISO-8859-1"),"utf-8");
+String time=(String)request.getParameter("time");
+
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html class="no-js">
   <head>
     <meta charset="utf-8">
@@ -22,7 +34,9 @@
     <div class="container">
     <div ng-include="'views/main.html'" ng-controller="chooseSeat"></div>
     </div>
-
+<%=room%>
+<input type="text" value="<%=room%>" ng-model='room'/>
+{{room}}
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <!-- bower:js -->
     <script src="../../script/angularjs/angular.js"></script>

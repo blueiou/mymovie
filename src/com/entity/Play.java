@@ -28,6 +28,7 @@ public class Play implements Serializable {
 	public void setSell_num(int sell_num) {
 		this.sell_num = sell_num;
 	}
+	
 	public Hall getHall() {
 		return hall;
 	}

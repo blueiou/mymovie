@@ -21,9 +21,9 @@
 <column name="seat" length="11"></column>
 </property>
 <set name="play" table="play" cascade="all-delete-orphan" 
-            lazy="true" inverse="true">
+            lazy="true" inverse="true" >
             <key column="hall_id" /><!-- 确定关联的外键列 -->
-            <one-to-many class="com.entity.Play" />
+            <one-to-many class="com.entity.Play"  />
 </set>
 </class>
 </hibernate-mapping>

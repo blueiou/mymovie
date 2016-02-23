@@ -2,23 +2,36 @@ package com.model;
 
 import java.io.Serializable;
 
-public class PlayByMid implements Serializable{
-
+public class PlayByMid  implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1453185555076008952L;
-
 	private String sysname;
-	
 	private String playtime;
-	
 	private double price;
-
 	private String roomname;
 	private String version;
 	private String language;
-	
+	private String good_idString;
+	private String play_idString;
+
+	public String getGood_idString() {
+		return good_idString;
+	}
+
+	public void setGood_idString(String good_idString) {
+		this.good_idString = good_idString;
+	}
+
+	public String getPlay_idString() {
+		return play_idString;
+	}
+
+	public void setPlay_idString(String play_idString) {
+		this.play_idString = play_idString;
+	}
+
 	public String getLanguage() {
 		return language;
 	}
@@ -98,6 +111,20 @@ public class PlayByMid implements Serializable{
 		this.roomname = roomname;
 		this.version = version;
 		this.language = language;
+	}
+
+	public PlayByMid(String sysname, String playtime, double price,
+			String roomname, String version, String language,
+			String good_idString, String play_idString) {
+		super();
+		this.sysname = sysname;
+		this.playtime = playtime;
+		this.price = price;
+		this.roomname = roomname;
+		this.version = version;
+		this.language = language;
+		this.good_idString = good_idString;
+		this.play_idString = play_idString;
 	}
 	
 	

@@ -114,8 +114,57 @@ app.controller('ulogin',function($scope,$interval,$http,usersListG){
 });
 /*******************订单管理*/
 //座位选择
-app.controller('chooseSeat', function ($scope) {
-    // Init layout
+app.controller('chooseSeat', function ($scope,tmList) {
+	/*$scope.room="hao";
+	$scope.time;*/
+	 $scope.search = function (){
+		tmList.query({m:"1710",room:"1号厅",playTime:"2016-02-23 09:55:00"},function(res){
+		console.log(res);
+			$scope.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+		    $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8];
+		    // Set reserved and selected
+		    var reserved = res.seat;//已出售，不可选
+		    var selected = [];//
+		    // seat onClick
+		    $scope.seatClicked = function(seatPos) {
+		        console.log("Selected Seat: " + seatPos);
+		        var index = selected.indexOf(seatPos);
+		        var removere=reserved.indexOf(seatPos);//若返回1 则说明选择到了该不可选的位置，那么selected则不可添加
+		        console.log(removere);
+		        if(index != -1) {
+		            // seat already selected, remove
+		            selected.splice(index, 1);
+		        } else if(removere==-1){   //设置无法选择的座位
+		            // new seat, push
+		            selected.push(seatPos);
+		        }
+		    }
+		    // get seat status
+		    $scope.getStatus = function(seatPos) {
+		        if(reserved.indexOf(seatPos) > -1) {
+		            return 'reserved';
+		        }
+		        else if(selected.indexOf(seatPos) > -1) {
+		            return 'selected';
+		        }
+		    };
+		    // clear selected
+		    $scope.clearSelected = function() {
+		        selected = [];
+		    }
+		    // show selected
+		    $scope.showSelected = function() {
+		        if(selected.length > 0) {
+		            alert("所选的座位为: \n" + selected);
+		        } else {
+		            alert("没有选择座位");
+		        }
+		    }
+		    $scope.selected=selected;
+		});
+	 }
+	 $scope.search();
+   /* // Init layout
     $scope.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8];
     // Set reserved and selected
@@ -157,7 +206,7 @@ app.controller('chooseSeat', function ($scope) {
             alert("没有选择座位");
         }
     }
-
+*/
 });
 
 

@@ -23,7 +23,6 @@
 <property name="sell_num" type="java.lang.Integer">
 <column name="sell_num" length="10"></column>
 </property>
-
 <many-to-one name="goods"
  class="com.entity.Goods"
  cascade="none"

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.ws.rs.core.Application;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext; 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -108,13 +109,14 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		// TODO Auto-generated method stub
 		//List<PlayByMid> plays=getHibernateTemplate().find("select new com.model.PlayByMid(g.sysname,p.play_time,p.price)  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
 		//把查询出来的存放在数据模型的PlayByMid 中
-		String hqlString="select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price,p.hall.roomname,p.hall.version,p.goods.baseInfo.language) from Play p where p.goods.good_id=? and p.play_time like ?";
+		String hqlString="select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price,p.hall.roomname,p.hall.version,p.goods.baseInfo.language,p.goods.good_id,p.play_id) from Play p where p.goods.good_id=? and p.play_time like ?";
 		List<PlayByMid> plays=getHibernateTemplate().find(hqlString,mid,stemp);
 		return plays;
 	}
-	public void test() {
-		List<PlayByMid> plays=this.getHibernateTemplate().find("select new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price) from Play p where p.Goods.good_id=? and p.play_time like ?","40288183529b5f4f01529b5f50840002","2016-02-19%");
-		//return plays;
+	public List test() {
+		String hqlString="select t.u_seat from Ticket t  inner join  t.play tp inner join  tp.hall tph  where  tph.roomname=? and tp.play_time=?";
+		List plays=this.getHibernateTemplate().find(hqlString,"2号厅","2016-02-23 09:55:00");
+		return plays;
 	}
 	
 	public List findByProperty(String propertyName, Object value,String temp) {

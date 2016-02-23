@@ -52,7 +52,6 @@ Transaction transaction=session.beginTransaction();
 MyDate date=new MyDate();
 /* 
 UserInfo userInfo=new UserInfo();
-
 userInfo.setContent("不是乱码");
 User user=(User) session.get(User.class, "402881845277a4ff015277a500770003");
 userInfo.setUser(user);
@@ -62,7 +61,6 @@ goods.getUserInfo().add(userInfo);
 userInfo.setUser(user);
 session.save(userInfo);
 transaction.commit();*/
-     
   /* PreparedStatement psPreparedStatement= dbConnect.getPreparedStatemen("select distinct  content from uservgood where good_id=?");
    psPreparedStatement.setString(1, "4028818552e3f7720152e3f7746f0001");
    ResultSet rsResultSet=psPreparedStatement.executeQuery();
@@ -102,9 +100,9 @@ transaction.commit();*/
 /*Play play1=new Play();
 String timeString=new MyDate().toString();
 //获取少的一方的信息
-Goods goods=(Goods) session.get(Goods.class, "40288183529bbd7301529bbd748f0002");
+Goods goods=(Goods) session.get(Goods.class, "4028818552e3f7720152e3f7746f0001");
 
-play1.setPlay_time("2016-02-21 18:55");
+play1.setPlay_time("2016-02-23 09:55");
 play1.setGoods(goods);
 goods.getPlay().add(play1);
 Hall hall=(Hall) session.get(Hall.class, 1);
@@ -113,15 +111,14 @@ hall.getPlay().add(play1);
 //session.save(goods);
 session.save(hall);
 transaction.commit();*/
-
 //增加电影票  一个场次可发放多张电影票，一个用户可买多张电影票   当每增加一张票的时候，play表中的 sell_num 也应加1，即卖出去的电影票
-     /*Ticket ticket1=new Ticket();
+  /*   Ticket ticket1=new Ticket();
      ticket1.setTicket_id(date.getYMDHMS()+date.getRandomN());
      ticket1.setCode(date.getYMDHMS()+date.getRandomN());
-     ticket1.setCurrPrice(50.0);
-     ticket1.setU_seat("5排6座");
+     ticket1.setCurrPrice(70.0);
+     ticket1.setU_seat("B2");
      //获取场次 
-     Play play1=(Play) session.get(Play.class, "4028818552ecd7940152ecd795cb0001");//星球大战
+     Play play1=(Play) session.get(Play.class, "40288183530bccce01530bcccff80001");//星球大战
      //获取用户
      User user1=(User) session.get(User.class, "402881845277b20f015277b210430001");//lanqian
      ticket1.setPlay(play1);
@@ -129,8 +126,13 @@ transaction.commit();*/
      ticket1.setUser(user1);
      user1.getTickets().add(ticket1);
      session.save(ticket1);
-     session.save(play1);
+    // session.save(play1);
      transaction.commit();*/
+//查询已经被选位置时，是根据场次ID查询[该时间段]的[放映厅]所剩余的位置 
+String[] reserved;
+
+
+
 //分层
 //Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
     /*	

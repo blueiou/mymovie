@@ -31,7 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
 </style>
   <body ng-app="IndexApp" >
- 
   <div class="container" style="margin-top: 50px;">
      <%--     <div id="navbar">
                             <nav class="navbar navbar-default">

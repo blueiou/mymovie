@@ -7,8 +7,12 @@ services.factory('goodsList', ['$resource', function ($resource) {
             params:{pageno:"",m:"",id:"",playTime:""},
             isArray: false,
             //url:'smvlist.action?'
+        },
+        update:{
+        	method:'POST',
+        	params:{g_id:"",p_id:"",u_id:""},
+        	isArray:false,
         }
-        
     });
 }]);
 services.factory('usersListG',['$resource',function($resource){
@@ -16,6 +20,18 @@ services.factory('usersListG',['$resource',function($resource){
 		query:{
 			method:'get',
 			Params:{m:"",mid:"",uname:"",pass:""},
+	        isArray:false,
+		}
+	
+	})
+	
+}]);
+//票务管理
+services.factory('tmList',['$resource',function($resource){
+	return $resource('tm.action',{},{
+		query:{
+			method:'get',
+			Params:{m:"",playTime:"",room:""},
 	        isArray:false,
 		}
 	

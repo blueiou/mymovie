@@ -21,5 +21,17 @@ public final int USERINFO_OPERATION = 100;   //用户基本信息
 
 public final int USERINFO_OPERATION_ISSUE=USERINFO_OPERATION+10086; //10186用户影片评价 
 
-	
+
+
+//*********************票务管理**********************************
+
+public final int TICKET_OPERATION=1700;   //从选座位开始
+public final int TICKET_OPERATION_SEARCH_SEAT=TICKET_OPERATION+10;// 1710查询可预订的位置
+
+
+
+
+
+
+
 }
