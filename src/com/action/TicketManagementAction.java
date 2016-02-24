@@ -1,5 +1,6 @@
 package com.action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,14 +32,14 @@ public void setMap(Map<String, Object> map) {
 	
 	
 	
-	public String execute(){
+	public String execute() throws Exception{
 		String mString=request.getParameter("m");
 		int m=-1;
 		if (CacheClass.isEmpty(mString)||!CacheClass.isNumValue(mString)) m=1510;
 		else {
 			m=Integer.parseInt(mString);
 		}
-		System.out.print("m的值为："+mString);
+		System.out.print("tm 中m的值为："+mString);
 		switch (m) {
 		case Functions.TICKET_OPERATION_SEARCH_SEAT:               //1710
 			return getSeats();
@@ -46,12 +47,14 @@ public void setMap(Map<String, Object> map) {
 			return ERROR;
 		}
 	}
-	public String getSeats(){
+	//只需要传递厅号和时间来即可看到相应的位置
+	public String getSeats() throws UnsupportedEncodingException{
 		map=new HashMap<String,Object>();
-	//reply=sTicket.findByTimeRoom(request.getParameter("room"), request.getParameter("playTime"));
-	reply=sTicket.findByTimeRoom("2号厅","2016-02-23 09:55:00");
-	System.out.println(sTicket.findByTimeRoom("1号厅","2016-02-23 09:55:00"));
-		map.put("seat", sTicket.findByTimeRoom("1号厅","2016-02-23 09:55:00"));
+	reply=sTicket.findByTimeRoom(new String(request.getParameter("room").getBytes("ISO-8859-1"),"utf-8"), request.getParameter("playTime"));
+	//reply=sTicket.findByTimeRoom(request.getParameter("play_id"));//多遍历一次的
+	System.out.println(reply);
+	
+		map.put("seat", reply);
 		map.put("success", true);
 		return SUCCESS;
 	}

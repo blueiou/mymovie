@@ -15,7 +15,7 @@ public class PlayByMid  implements Serializable {
 	private String language;
 	private String good_idString;
 	private String play_idString;
-
+    
 	public String getGood_idString() {
 		return good_idString;
 	}

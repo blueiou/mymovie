@@ -31,7 +31,7 @@ services.factory('tmList',['$resource',function($resource){
 	return $resource('tm.action',{},{
 		query:{
 			method:'get',
-			Params:{m:"",playTime:"",room:""},
+			Params:{m:"",playTime:"",room:"",play_id:""},
 	        isArray:false,
 		}
 	

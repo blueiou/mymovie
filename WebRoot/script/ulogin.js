@@ -15,6 +15,7 @@
   $(document).ready(function(){
 	  //loadpage();
 		  //验证用户名
+	  alert("恩");
 	 }); 
   function checkname(){
 	  var username = $("#uname").val();

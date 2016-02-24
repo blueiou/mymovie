@@ -32,9 +32,16 @@ public class TestApplication {
 	
 	System.out.println(test1.contains("re"));
 	}*/
-	sysGoodsDaoImpl.test();
-	System.out.println(sysTicketDaoImpl.getSeats("1号厅","2016-02-23 09:55:00"));
-	System.out.println(sysTicketService.findByTimeRoom("2号厅","2016-02-23 09:55:00"));
+	/*遍历显示hibernate返回的object[]*/
+	 /*for (int i = 0; i < list.size(); i++) {
+		 System.out.println(list[i]);
+	}*/
+	/*for (Object[] o : list) {
+		System.out.println((String)o[0]);
+		System.out.println(o[1]);
+	}*/
+	System.out.println(sysTicketDaoImpl.getSeats(1,"2016-02-24 09:55:00"));
+	System.out.println(sysTicketService.findByTimeRoom("40288183530bcfba01530bcfbc360001"));
 	
 	}
 	

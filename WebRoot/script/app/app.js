@@ -23,39 +23,43 @@
 	    controller: 'prepara'
 	})
 	
-    .state('usermanage.teacher', {
-        url: '/teachers',
-        templateUrl: '/mymovie/tpls/manage/teacherlist.html',
-        //controller: 'teacherlistCtrl'
-    })
-    .state('usermanage.batch', {
-        url: '/batchadd',
-        templateUrl: '/mymovie/tpls/manage/batchadd.html',
-       // controller: 'batchaddCtrl'
-    })
-     //--------------teacherIndex
-	.state('teacher', {
-	    url: '/teacher/index',
-	    templateUrl: '/mymovie/tpls/tmpls/teacher/index.html',
-	   // controller: 'teacherIndexCtrl'
-	})
-	.state('teacher.guide', {
-	    url: 'teacher/guide',
-	    templateUrl: '/mymovie/tpls/tmpls/teacher/guide.html',
-	   //controller: 'teacherGuideCtrl'
-	})
-	.state('teacher.viewstu', {
-	    url: '/guide/?PracticeId&RequestOfCheckInDay&NumOfGuided&NumOfCheckInDay&NumOfWarned',
-	    templateUrl: '/mymovie/tpls/tmpls/teacher/viewStuRecord.html',
-	   // controller: 'viewStuRecordCtrl'
+	.state('test',{
+		url: '/guide/?PracticeId&RequestOfCheckInDay&NumOfGuided&NumOfCheckInDay&NumOfWarned',
+	    templateUrl: './movies/seats/test.html',
+	    controller:"chooseSeat",
+	    resolve:{
+	    	msggg:function(){
+	    		return "shenm ";
+	    	}
+	    }
 	})
 	//显示在线选择座位
 	.state('bookseat',{
-    	  url:'/bookSeat',
-	templateUrl:''
-    	  
-    	  
-      })
+    	  url:'/bookseat/:id/:room/:time',
+	templateUrl:'./movies/seats/test.html',
+	controller:"chooseSeat",
+	/*resolve:{
+		basedata:"tmList",
+		showseat:function($http,$stateParams){
+			return $http.get("tm.action?play_id="+$stateParams.id+"&m=1710").then(function(items) {
+				console.log(items);
+				return items;
+			  });
+			return $http.get("tm.action?play_id="+$stateParams.id+"&m=1710").$promise.then(function(result){
+				console.log(result);
+				return result;
+			});
+			return basedata.query({
+                play_id:$stateParams.id
+                }).$promise.then(function (response) {
+                           return response;
+                       });
+		}
+	
+	}*/
+	
+      });
+   });
 /*	 .state('home', {
       url: '/',
       templateUrl: './movies/index.jsp',
@@ -89,8 +93,8 @@
     })*/
     
       
-    });
-var SeatApp=angular.module('SeatApp',['mv.controller']);
+  
+/*var SeatApp=angular.module('SeatApp',['mv.controller']);*/
 
    
    

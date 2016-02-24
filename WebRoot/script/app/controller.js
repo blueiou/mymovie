@@ -68,11 +68,14 @@ var time=new Date();
 	console.log("输出的时间"+time);
 	  $scope.exmaple = exmaple;
 	  console.log("商品ID:"+exmaple);
+	  
+	  $scope.showtime='asd';
 	 goodsList.query({m:"1520",id:exmaple},function(res){
 		 // goodsList.query({m:"1520"},function(res){
 		  console.log(res);
 		  $scope.goodDescri=res.goodDescri;
 	  });
+	 
 	 //获取用户评价
 	 usersListG.query({m:"10186",mid:exmaple},function(res){
  $scope.userissue=res.reply;
@@ -113,13 +116,17 @@ app.controller('ulogin',function($scope,$interval,$http,usersListG){
 	};
 });
 /*******************订单管理*/
-//座位选择
-app.controller('chooseSeat', function ($scope,tmList) {
+//座位选择                                                                                              $interval
+app.controller('chooseSeat', function ($scope,$http,$stateParams,tmList) {
 	/*$scope.room="hao";
 	$scope.time;*/
+	var playid=$stateParams.id;
+	var room=$stateParams.room;
+	var time=$stateParams.time.substring(0,19);
+	console.log(room);
+	console.log(time);
 	 $scope.search = function (){
-		tmList.query({m:"1710",room:"1号厅",playTime:"2016-02-23 09:55:00"},function(res){
-		console.log(res);
+		tmList.query({m:"1710",room:room,playTime:time},function(res){
 			$scope.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 		    $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8];
 		    // Set reserved and selected
@@ -164,7 +171,10 @@ app.controller('chooseSeat', function ($scope,tmList) {
 		});
 	 }
 	 $scope.search();
-   /* // Init layout
+});
+app.controller('chooseSeat2', function ($scope,$http,$interval,tmList) {
+	//初始的状态为：
+ // Init layout
     $scope.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     $scope.cols = [1, 2, 3, 4, 5, 6, 7, 8];
     // Set reserved and selected
@@ -206,8 +216,6 @@ app.controller('chooseSeat', function ($scope,tmList) {
             alert("没有选择座位");
         }
     }
-*/
+
 });
-
-
 

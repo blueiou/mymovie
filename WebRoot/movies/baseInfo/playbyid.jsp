@@ -46,15 +46,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>商品ID>><s:property value="#n.good_idString"/></td> 
 <td>场次ID>><s:property value="#n.play_idString"/></td> --%> 
 <%-- <td><a href="movies/seats/bookseat.jsp?room=${n.roomname}&time=${n.playtime}">选择座位</a></td>  --%>
-<td><a href="movies/seats/bookseat.jsp?room=${n.roomname}&time=${n.playtime}">选择座位</a></td> 
-
+<td><a ui-sref="bookseat({id:'${n.play_idString}',room:'${n.roomname}',time:'${n.playtime}'})">选择座位</a></td> 
+<%-- <td><a ui-sref="bookseat({id:'${n.play_idString}'})">选择座位</a></td>  --%>
  </tr>
  </s:iterator>
  </table>
    </div>
-   <a ui-sref="bookseat">正在上映</a>
+   <div ui-sref="test">这是测试</div>
    <div ui-view></div>
-    <script src="./script/angularjs/angular.js"></script>
+   <%--  <script src="./script/angularjs/angular.js"></script> --%>
+    <script src="./script/angularjs/angular.min.js"></script>
     <script src="./script/angularjs/angular-resource.js"></script>
   <script src="./script/angularjs/angular-animate.js"></script>
    <script src="./script/ui-bootstrap-tpls-1.1.1.js"></script>

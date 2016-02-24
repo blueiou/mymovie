@@ -86,7 +86,7 @@ public class SysGoodsService {
 		//查询单个商品的上映时间表 
 		public List findByTimeMid(String mid,String temp) throws PulginsException{
 			if (CacheClass.isEmpty(temp)||CacheClass.isEmpty(mid)) return null;
-			String stempsString=temp.substring(1,11)+"%";//分割传来的时间
+			String stempsString=temp.substring(1,11)+"%";//分割传来的时间.与查询全部时候的不同
 			List list=sysGoodsDaoImpl.getByMId(mid,stempsString);
 			if (list.size()==0) {
 				throw new PulginsException("没有该场次");

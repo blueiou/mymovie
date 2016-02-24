@@ -23,18 +23,16 @@ String time=(String)request.getParameter("time");
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="seats/styles/main.css">
+    <link rel="stylesheet" href="movies/seats/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="IndexApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
     <div class="container">
-    <div ng-include="'views/main.html'" ng-controller="chooseSeat2"></div>
+    <div ng-include="'movies/seats/views/main.html'" ng-controller="chooseSeat"></div>
     </div>
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <!-- bower:js -->
     <!-- endbower -->
@@ -44,15 +42,4 @@ String time=(String)request.getParameter("time");
         <script src="scripts/controllers/main.js"></script> -->
         <!-- endbuild -->
 </body>
-    <script src="../../script/angularjs/angular.js"></script>
-    <script src="../../script/angularjs/angular-resource.js"></script>
-  <script src="../../script/angularjs/angular-animate.js"></script>
-   <script src="../../script/ui-bootstrap-tpls-1.1.1.js"></script>
-  <!-- UI-Router -->
-  <script src="../../script/angularjs/angular-ui-router.js"></script> 
-  <!-- UI-Router -->
-    <script src="../../script/app/app.js"></script>
- 
-    <script src="../../script/app/service.js"></script>
-       <script src="../../script/app/controller.js"></script>
 </html>
