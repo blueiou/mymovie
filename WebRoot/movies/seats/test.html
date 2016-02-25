@@ -1,9 +1,8 @@
    <div class="content" >
-    <h2 class="title">Seat Reservation System using AngularJS</h2>
+    <h4 class="title">>选择座位</h4>
 
-    <p>Screen this way! :)</p>
 
-    <table class="seatLayout">
+    <table class="">
         <tr>
             <td class="padding-bottom"></td>
             <td class="padding-bottom" ng-repeat="col in cols track by $index" ng-bind="col"></td>
@@ -23,7 +22,14 @@
         <img src="images/seat/seat_reserved.png" class="padding-left">  Reserved
         <img src="images/seat/seat_selected.png" class="padding-left">  Selected
     </div>
-<pre>{{selected}}</pre>
+<pre>{{selected}} {{playid}} {{price}}</pre>
+<form action="tm.action" method="post">
+<input type="hidden" value="1725" name="m"/>
+<input type="hidden" value="{{selected}}" name="seat"/>
+<input type="hidden" value="{{price}}" name="price"/>
+<input type="hidden" value="{{playid}}" name="playid"/>
+<input type="submit" value="提交"/>
+</form>
     <div class="buttons">
         <button ng-click="clearSelected()">Clear</button>
         <button ng-click="showSelected()">Show selected seats!</button>

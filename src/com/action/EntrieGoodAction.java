@@ -124,7 +124,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		dataMap.put("success", true);
 		return SUCCESS;
 	}
-	//获取某天放映的特定的电影列表
+	//获取某天放映的<特定>的电影列表
 	public String playByMid() throws PulginsException{
 		List plays;
 		if (dataMap==null) 	dataMap=new HashMap<String, Object>();

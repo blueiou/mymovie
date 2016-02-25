@@ -63,6 +63,14 @@ public class Ticket implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public Ticket(String ticket_id) {
+		this.ticket_id=ticket_id;
+		// TODO Auto-generated constructor stub
+	}
+	public Ticket() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

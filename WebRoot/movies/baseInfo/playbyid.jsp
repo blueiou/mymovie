@@ -22,15 +22,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body ng-app="IndexApp">
   <div class="container">
  <p>今日上映  :</p>
-  <table class="table"> 
+  <table class="table table-hover"> 
   <thead>
-  <tr>
-  <th>放映时间</th>
-  <th>语言</th>
-  <th>版本</th>
-  <th>片长</th>
-  <th>影厅空位</th>
-  <th>价格</th>
+  <tr class="success">
+  <th class="column t-price">放映时间</th>
+  <th class="column t-price">语言</th>
+  <th class="column t-price">版本</th>
+  <th class="column t-price">片长</th>
+  <th class="column t-price">影厅空位</th>
+  <th class="column t-price">价格</th>
   </tr>
   </thead>
    <s:iterator value="dataMap.reply" id="n">
@@ -46,13 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td>商品ID>><s:property value="#n.good_idString"/></td> 
 <td>场次ID>><s:property value="#n.play_idString"/></td> --%> 
 <%-- <td><a href="movies/seats/bookseat.jsp?room=${n.roomname}&time=${n.playtime}">选择座位</a></td>  --%>
-<td><a ui-sref="bookseat({id:'${n.play_idString}',room:'${n.roomname}',time:'${n.playtime}'})">选择座位</a></td> 
+<td><a ui-sref="bookseat({id:'${n.play_idString}',room:'${n.roomname}',time:'${n.playtime}',price:'${n.price}'})">选择座位</a></td> 
 <%-- <td><a ui-sref="bookseat({id:'${n.play_idString}'})">选择座位</a></td>  --%>
  </tr>
  </s:iterator>
  </table>
    </div>
-   <div ui-sref="test">这是测试</div>
    <div ui-view></div>
    <%--  <script src="./script/angularjs/angular.js"></script> --%>
     <script src="./script/angularjs/angular.min.js"></script>
@@ -63,7 +62,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script src="./script/angularjs/angular-ui-router.js"></script> 
   <!-- UI-Router -->
     <script src="./script/app/app.js"></script>
- 
     <script src="./script/app/service.js"></script>
        <script src="./script/app/controller.js"></script>
   </body>

@@ -1,5 +1,6 @@
 package com.tools;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -877,7 +878,15 @@ public static boolean isNumValue(String pid){
 		return str.matches("[A-Za-z0-9_]+");
 		
 	}
-	
-	
-	
+	public static  String encodingString(String s) throws UnsupportedEncodingException{
+		String ss=null;
+	if(!isEmpty(s))	ss=new String(s.getBytes("ISO-8859-1"),"utf-8");
+		return ss;
+	}
+	//分割字符串   传来的座位是这样的字符串
+	public static String[] splitString(String aString){
+		String bStrings=aString.trim().substring(2,aString.length()-2);
+		String[] cStrings=bStrings.split("\",\"");
+		return cStrings;
+	}
 }

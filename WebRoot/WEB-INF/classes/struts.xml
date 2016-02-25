@@ -38,6 +38,9 @@
 <action name="tm" class="TicketManagementAction">
 <result type="json"> <param name="root">map</param></result>
 <result name="error">test.html</result>
+<result name="showorder" type="redirect">user/index.jsp</result>
+<result name="needlogin" type="redirect">user/login.jsp</result>
+
 </action>
 
 

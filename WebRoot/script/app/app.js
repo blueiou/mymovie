@@ -35,7 +35,7 @@
 	})
 	//显示在线选择座位
 	.state('bookseat',{
-    	  url:'/bookseat/:id/:room/:time',
+    	  url:'/bookseat/:id/:room/:time/:price',
 	templateUrl:'./movies/seats/test.html',
 	controller:"chooseSeat",
 	/*resolve:{
@@ -60,40 +60,6 @@
 	
       });
    });
-/*	 .state('home', {
-      url: '/',
-      templateUrl: './movies/index.jsp',
-      controller: function($scope) {},
-      onEnter: function() {
-        console.log('home: onEnter()');
-      }
-    })*/
-	/* .state('add-notes', {
-      //abstract: true,
-      //parent: 'home',
-		 url: '/descript',
-      onEnter: function($state, $uibModal, $rootScope) {
-        var scope = $rootScope.$new();
-        scope.note = {
-          author: 'Larry',
-          text: 'Type your note here.'
-        };
-        var modal = $uibModal.open({
-          templateUrl: './movies/baseInfo/goodsdescri.html',
-          size: 'lg',
-          resolve:{}
-        });
-      modal.result.then(function() {
-          console.log('note');
-          console.log(scope.note);
-          // Do something here to save note.
-          //$state.go('showing');
-        });
-      },
-    })*/
-    
-      
-  
 /*var SeatApp=angular.module('SeatApp',['mv.controller']);*/
 
    

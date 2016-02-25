@@ -26,10 +26,6 @@ public class TestApplication {
 	SysTicketService sysTicketService=(SysTicketService) act.getBean("SysTicketBo");
 /*	SysUserDaoImpl sysUserDaoImpl=(SysUserDaoImpl) act.getBean("SysUserDaoImpl");
 	
-	Set<String> test1=new HashSet<>();
-	test1.add("admin");
-	test1.add("teacher");
-	
 	System.out.println(test1.contains("re"));
 	}*/
 	/*遍历显示hibernate返回的object[]*/
@@ -40,9 +36,9 @@ public class TestApplication {
 		System.out.println((String)o[0]);
 		System.out.println(o[1]);
 	}*/
-	System.out.println(sysTicketDaoImpl.getSeats(1,"2016-02-24 09:55:00"));
-	System.out.println(sysTicketService.findByTimeRoom("40288183530bcfba01530bcfbc360001"));
+Play play1=(Play)sysTicketDaoImpl.getForeignkey(Play.class, "40288183530bccce01530bcccff80001");
 	
+	System.out.println();
 	}
 	
 	

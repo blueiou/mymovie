@@ -120,9 +120,10 @@ app.controller('ulogin',function($scope,$interval,$http,usersListG){
 app.controller('chooseSeat', function ($scope,$http,$stateParams,tmList) {
 	/*$scope.room="hao";
 	$scope.time;*/
-	var playid=$stateParams.id;
+	$scope.playid=$stateParams.id;
 	var room=$stateParams.room;
 	var time=$stateParams.time.substring(0,19);
+	$scope.price=$stateParams.price;
 	console.log(room);
 	console.log(time);
 	 $scope.search = function (){

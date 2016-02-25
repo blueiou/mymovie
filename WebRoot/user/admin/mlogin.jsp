@@ -101,7 +101,7 @@ body {
 			 dataType: "json",  
 			 data: "uname="+uname+"&upass="+upass, 
 			 //data: "m=1520&id=40288183529b5f4f01529b5f50840002", 
-			 success: function(result){
+			 success:function(result){
 				 var res =[];
 			 res = result.user.roles; 
 			 var str="administrator";
@@ -117,7 +117,7 @@ body {
 				 $("#spuser").html("<font color='#FF0000'>*用户名或密码错误</font>");
 				 return false;
 			 }*/
-			 },error: function(XMLHttpRequest, textStatus, errorThrown) {
+			 },error:function(XMLHttpRequest, textStatus, errorThrown) {
 				 alert(XMLHttpRequest.status);
 				 alert(XMLHttpRequest.readyState);
 				 alert(textStatus);

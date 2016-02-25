@@ -4,25 +4,35 @@ public class TestString {
 
 	final static double PI=3.1415;
 	public static void main(String[] args) {
+		
+		String a="['I6','I7','I8']";
+		
+		
+		String bStrings=a.substring(2,a.length()-2);
+		String[] cStrings=bStrings.split("\',\'");
+		System.out.println(bStrings);
+		for (String string : cStrings) {
+			System.out.println(string);
+		}
 		/*StaticTest st1=new StaticTest();
     	StaticTest st2=new StaticTest();
-    	st1.method2("HAN");*/
+    	st1.method2("HAN");
 		
-		/*****¶¨ÒåÒªÓÃÓÚ×ªÖÃµÄ¶şÎ¬Êı×é*******/
+		*//*****ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½×ªï¿½ÃµÄ¶ï¿½Î¬ï¿½ï¿½ï¿½ï¿½*******//*
 		int arr2D[][]={{1,2,3},{4,5,6},{7,8,9}};
 		
-		/*****¹¹Ôì½á¹ûĞÂ¶şÎ¬Êı×éÓÃÓÚ´æ·Å×ªÖÃ½á¹û*******/
-		/*¶¨Òå½á¹ûÊı×é±äÁ¿£¬×¢Òâ Ò»¶¨ÒªÏÈ¿ª±ÙÒ»¸öÄÚ´æ£¬
-		·ñÔòÖ»ÊÇµØÖ·´«µİ£¬Ò²¾ÍÊÇËµÁ½¸öÊı×éÃûÊµ¼ÊÉÏÖ¸ÏòµÄÊÇÍ¬Ò»¿éÄÚ´æ*/
-		//¶ø¹¹Ôì¶şÎ¬Êı×é¿ÉÒÔÎªÎ¬¶ÈÀ´½øĞĞ£¬²»Ò»¶¨ÊÇÒ»¸ö¾ØÕó£¬¼´Ã¿Ò»ĞĞµÄ³¤¶È²»Ò»¶¨ÏàÍ¬
-		int result_arr[][]=new int[arr2D.length][];//ÏÈÊµÏÖµÚÒ»Î¬
-		for(int i=0 ; i<arr2D.length;i++){ //ÔÙÊµÏÖµÚ¶şÎ¬
+		*//*****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½×ªï¿½Ã½ï¿½ï¿½*******//*
+		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ Ò»ï¿½ï¿½Òªï¿½È¿ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú´æ£¬
+		ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Çµï¿½Ö·ï¿½ï¿½ï¿½İ£ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½Ú´ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬¼ï¿½Ã¿Ò»ï¿½ĞµÄ³ï¿½ï¿½È²ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Í¬
+		int result_arr[][]=new int[arr2D.length][];//ï¿½ï¿½Êµï¿½Öµï¿½Ò»Î¬
+		for(int i=0 ; i<arr2D.length;i++){ //ï¿½ï¿½Êµï¿½ÖµÚ¶ï¿½Î¬
 			result_arr[i]=new int[arr2D[i].length];
 		}
 		
 //		int result_arr[][]=Arrays.copyOf(arr2D, arr2D.length);
-		//ÉÏÃæÕâ¸öÃüÁîĞĞĞĞ²»Í¨£¡
-		/*****Êä³öÓÃÓÚ×ªÖÃµÄ¶şÎ¬Êı×é*******/
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ²ï¿½Í¨ï¿½ï¿½
+		*//*****ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ÃµÄ¶ï¿½Î¬ï¿½ï¿½ï¿½ï¿½*******//*
 		for (int x[]:arr2D){
         	for(int e:x){
         		System.out.print(e+" ");
@@ -31,21 +41,21 @@ public class TestString {
         }
 		System.out.println();
 		
-        /*******½øĞĞÔªËØµ¹ÖÃ******/
+        *//*******ï¿½ï¿½ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½******//*
         for(int i=0 ; i<arr2D.length;i++){
         	for(int j=0; j<arr2D[i].length;j++){
-        		result_arr[j][i]=arr2D[i][j]; //×ªÖÃºËĞÄ
+        		result_arr[j][i]=arr2D[i][j]; //×ªï¿½Ãºï¿½ï¿½ï¿½
         	}	
         }
         
-        /*****show the result in the result matrix*******/
+        *//*****show the result in the result matrix*******//*
         for (int x[]:result_arr){
         	for(int e:x){
         		System.out.print(e+" ");
         	}
         	System.out.println();
         }
-        
+        */
 	}
 
 

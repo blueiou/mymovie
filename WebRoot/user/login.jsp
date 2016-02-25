@@ -8,16 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>用户登录</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
-	
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <script type="text/javascript" ></script>
@@ -68,9 +65,9 @@ body {
                                 <h3 class="title">Welcome</h3>
                                 <form class="register-form">
                                     <label>Email</label>
-                                    <input id="uname" name=""  type="text" class="form-control" placeholder="用户名">
+                                    <input id="uname" name="uname"  type="text" class="form-control" placeholder="用户名">
                                     <label>Password</label>
-                                    <input id="upass" name=""  type="password" class="form-control" placeholder="密码">
+                                    <input id="upass" name="upass"  type="password" class="form-control" placeholder="密码">
                                     <button class="btn btn-danger btn-block" onclick="loginSubmit()">登录</button>
                                 </form>
                                 <div class="forgot">
@@ -92,45 +89,38 @@ body {
 		var uname=$("#uname").val();
 		var upass=$("#upass").val();
 		$.ajax({
-			
-			 type: "post", 
-			 async:true,
-			 url: "testU.action", 
-			 dataType:"json",  
-			 timeout: 1000,  
-             cache: false, 
+			 type:"POST", 
+			 async:false,
+			 url:"testU.action", 
+			 dataType:"json",
+			/*  contentType:"jsonp", */
+             cache:false, 
 			 data:"uname="+uname+"&upass="+upass, 
 			 //data: "m=1520&id=40288183529b5f4f01529b5f50840002", 
 			 success:function(result){
-			 if(result.success==true){
-				 var res =[];
-			 res = result.user.roles; 
-			 var str="generalUser";
-			 var str2=res[0].rolename;
-			 if(str==str2) {window.location.href="movies/index.jsp";}
-			 }
-			 else if(result.success==false){
-				 alert("用户名账户或密码错误");
-			 }
-			/* if(res=="true"){
-				 $("#spuser").html("");
-				 document.login.submit();
-				 return true;
-			 }
-			 else if(res=="false"){ 
-				 $("#spuser").html("<font color='#FF0000'>*用户名或密码错误</font>");
-				 return false;
-			 }*/
-			 
-		 
-	},
-    error:function(XMLHttpRequest, textStatus, errorThrown) {   
-      /*   alert(XMLHttpRequest.status);  
-        alert(XMLHttpRequest.readyState);  
-        alert(textStatus); */ 
-        //请求出错处理
-        alert("连接服务器出错");
-    } 
+			     if(result.success==true)
+			     {
+			             var res =[];
+			             res = result.user.roles; 
+			             var str="generalUser";
+			             var str2=res[0].rolename;
+			             if(str==str2)
+			              { 
+			                 alert("合法用户");
+			                 window.location.href="http://localhost:8080/mymovie/movies/index.jsp";
+			               }
+			    }
+			            if(result.success==false)
+			            {
+			                 alert("用户名账户或密码错误");
+			             }
+	},error:function(data) {   
+	       /*  alert(XMLHttpRequest.status);  
+	        alert(XMLHttpRequest.readyState);  
+	        alert(textStatus);  */
+	        //请求出错处理
+	        alert("连接服务器出错");
+	    }  
 		});
   }
   

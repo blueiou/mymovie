@@ -23,8 +23,11 @@ public class MyDate extends Date {
 		DateFormat dfDateFormat=new SimpleDateFormat("yyyyMMddHHmmss");
 		return dfDateFormat.format(this);
 	}
+	public String getYMDHM(){
+		DateFormat dFormat=new SimpleDateFormat("yyyyMMddHHmm");
+		return dFormat.format(this);
+	}
 	public static int getRandomN(){
-		
 		int i=10+(int) (Math.random()*90);
 		return i;
 	}
