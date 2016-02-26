@@ -1,8 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
 <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel="stylesheet" /> 
    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"> 
@@ -10,9 +8,7 @@
      <!-- jQuery -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/ct-paper.css" />
     <!-- Bootstrap Core JavaScript -->
-  </head>
   
-  <body>
   <nav class="navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,6 +29,7 @@
       <% 
       String uname=(String)session.getAttribute("uname");
             		//out.print(uname);
+            		session.setMaxInactiveInterval(900);
       if(session.getAttribute("uname")==null)
       {
       %>
@@ -65,5 +62,3 @@
         <!-- /.container -->
     </nav>
 
-  </body>
-</html>

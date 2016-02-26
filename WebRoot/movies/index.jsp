@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div ng-repeat="s in smvlist.goodlist">
             <div class="col-md-4 portfolio-item">
              <a href="">
-                    <img class="img-responsive" src="{{s.playbillurl}}"  ng-click="open(s.good_id)"> 
+                    <img class="img-rounded img-responsive" src="{{s.playbillurl}}"  ng-click="open(s.good_id)"> 
                    <!--  <img class="img-responsive" src="http://placehold.it/700x400"  ng-click="open(s.good_id)">-->
                </a>
                 <h5>
@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div ng-repeat="p in pmvlist.goodlist" >
             <div class="col-md-4">
                 <a href="#">
-                    <img class="img-responsive" src="" alt="">
+                    <img class="img-rounded img-responsive" src="" alt="">
                 </a>
                 <h3>
                     <a href="#">{{p.sysname}}</a>

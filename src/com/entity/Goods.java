@@ -10,16 +10,16 @@ public  class Goods implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 2607137354064922704L;
-	private String sysname;
-	private String  good_id;
-	private String descript;
-	private String type;
-	private int stamp;
-	private String showtime;
+	private String sysname;//影片名称
+	private String  good_id;//影片ID
+	private String descript;//影片详情
+	private String type;//影片类型
+	private int stamp;//正在上映或预备上映
+	private String showtime;//上映时间
 	private String uploadtime;
-	private BaseInfo baseInfo;
+	private BaseInfo baseInfo;//影片基本信息
 	
-	private String playbillurl;
+	private String playbillurl;//图片地址
 	
 	//与场次多对一   播放多场同一部电影
 	private Set<Play> play;

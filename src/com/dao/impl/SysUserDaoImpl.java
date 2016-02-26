@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.jws.soap.SOAPBinding.Use;
+
+
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -13,6 +14,7 @@ import com.db.DbConnect;
 import com.entity.Role;
 import com.entity.User;
 import com.entity.UserInfo;
+import com.model.OrdersInfo;
 import com.model.SysGoodsData;
 import com.mysql.jdbc.PreparedStatement;
 import com.service.SysGoodsService;
@@ -29,7 +31,7 @@ private DbConnect dbConnect;
 		this.hibernateTemplate = hibernateTemplate;
 	}
 	
-	public User login(String na, String pa) {
+/*	public User login(String na, String pa) {
 		   String f_name= "from User u where u.username=? and u.password=?"; 
 	List<User> userlist=	hibernateTemplate.find(f_name, new String[]{na,pa});
 	if (userlist.size()==0) 	return null;
@@ -43,7 +45,7 @@ private DbConnect dbConnect;
 	}
 	users.setRoles(u1Roles);
 	return users;
-	}
+	}*/
 	public List uLogin(String na, String pa){
 		  String f_name= "from User u where u.username=? and u.password=?";  
 			List<User> userlist=this.hibernateTemplate.find(f_name, new String[]{na,pa});
@@ -54,7 +56,13 @@ private DbConnect dbConnect;
 	}
 
 	
-	
+	public List<OrdersInfo> searchOrder(String uid){
+		String hqlString="select new com.model.OrdersInfo(t.play.goods.sysname,t.play.goods.showtime,t.statue) from Ticket t where t.user.userid=?";
+		
+		List<OrdersInfo> orderlList=this.hibernateTemplate.find(hqlString,uid);
+		return orderlList;
+		
+	}
 	
 	
 	

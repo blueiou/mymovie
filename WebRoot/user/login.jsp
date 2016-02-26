@@ -91,11 +91,11 @@ body {
 		$.ajax({
 			 type:"POST", 
 			 async:false,
-			 url:"testU.action", 
+			 url:"sysuserm.action", 
 			 dataType:"json",
 			/*  contentType:"jsonp", */
              cache:false, 
-			 data:"uname="+uname+"&upass="+upass, 
+			 data:"m=150&uname="+uname+"&upass="+upass, 
 			 //data: "m=1520&id=40288183529b5f4f01529b5f50840002", 
 			 success:function(result){
 			     if(result.success==true)

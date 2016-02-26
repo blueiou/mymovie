@@ -24,32 +24,24 @@ private Object reply;
 public void setMap(Map<String, Object> map) {
 	this.map = map;
 }
-
 	public SysTicketService getsTicket() {
 		return sTicket;
 	}
-
 	public void setsTicket(SysTicketService sTicket) {
 		this.sTicket = sTicket;
 	}
-	
-
 	public String getPlayid() {
 		return playid;
 	}
-
 	public void setPlayid(String playid) {
 		this.playid = playid;
 	}
-
 	public double getPrice() {
 		return price;
 	}
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
 	public String execute() throws Exception{
 		String mString=request.getParameter("m").trim();
 		int m=-1;

@@ -7,6 +7,8 @@ import java.util.Set;
 import com.dao.impl.SysUserDaoImpl;
 import com.entity.Role;
 import com.entity.User;
+import com.model.OrdersInfo;
+import com.model.PublicData;
 import com.tools.CacheClass;
 import com.tools.PulginsException;
 public class SysUsersService {
@@ -22,6 +24,7 @@ public class SysUsersService {
 		return sysUserDaoImpl.getContentById(mid);
 		
 	}
+	
 	public User findUserUnit(String na,String pa){
 		if (CacheClass.isEmpty(na)||CacheClass.isEmpty(pa)) {
 			new PulginsException("非法参数");
@@ -47,4 +50,19 @@ public class SysUsersService {
 	}
 		
 }
+	public PublicData findOrderInfo(String uid){
+		PublicData publicData=null;
+		if (!CacheClass.isEmpty(uid)) {
+			publicData=new PublicData();
+			List<OrdersInfo> list=sysUserDaoImpl.searchOrder(uid);
+			if (list.size()>0) {
+				publicData.setOrdersInfo(list);
+				return publicData;
+			}
+		}
+		else {
+			new PulginsException("非法参数");return null;
+		}
+		return null;
+	}
 }

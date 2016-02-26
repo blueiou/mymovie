@@ -18,7 +18,8 @@ public final int GET_GOODS_OPERATION_PlayTime=GOODS_OPERATION+25;  //1525 获取
 
 //**********************用户操作*********************************
 public final int USERINFO_OPERATION = 100;   //用户基本信息
-
+public final int USERINFO_OPERATION_LOGIN=USERINFO_OPERATION+50;    //150用户登录
+public final int USERINFO_OPERATION_QUERY_ORDER=USERINFO_OPERATION+100; //200查询订单
 public final int USERINFO_OPERATION_ISSUE=USERINFO_OPERATION+10086; //10186用户影片评价 
 
 
