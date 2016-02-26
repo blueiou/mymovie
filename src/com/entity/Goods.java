@@ -19,18 +19,20 @@ public  class Goods implements Serializable{
 	private String uploadtime;
 	private BaseInfo baseInfo;
 	
+	private String playbillurl;
+	
 	//与场次多对一   播放多场同一部电影
 	private Set<Play> play;
 	
-	private Set<UserInfo> userInfo;
+	//private Set<UserInfo> userInfo;
 
+	public String getPlaybillurl() {
+		return playbillurl;
+	}
+	public void setPlaybillurl(String playbillurl) {
+		this.playbillurl = playbillurl;
+	}
 	
-	public Set<UserInfo> getUserInfo() {
-		return userInfo;
-	}
-	public void setUserInfo(Set<UserInfo> userInfo) {
-		this.userInfo = userInfo;
-	}
 	public Set<Play> getPlay() {
 		return play;
 	}
@@ -89,6 +91,12 @@ public  class Goods implements Serializable{
 	}
 	public Goods() {
 		super();
+	}
+	public Goods(String sysname, String good_id, String descript) {
+		super();
+		this.sysname = sysname;
+		this.good_id = good_id;
+		this.descript = descript;
 	}
 	
 	

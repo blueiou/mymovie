@@ -32,6 +32,9 @@
 <property name="uploadtime" type="java.lang.String">
 <column name="uploadtime" length="160"></column>
 </property>
+<property name="playbillurl" type="java.lang.String">
+<column name="playbillurl" length="150"></column>
+</property>
 <!-- 其中的name要在Goods实体类中为BaseInfo的一个实例对象 -->
 <many-to-one name="baseInfo"
  class="com.entity.BaseInfo"
@@ -44,15 +47,16 @@
  not-null="true"
  lazy="false"
 ></many-to-one>
+<!-- 与场次一对多    多个电影在多个时间段的场次-->
 <set name="play" table="play" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
             <key column="good_id" /><!-- 确定关联的外键列 -->
             <one-to-many class="com.entity.Play"  />
 </set>
-<set name="userInfo" table="user_info" cascade="all-delete-orphan" 
+<!-- <set name="userInfo" table="user_info" cascade="all-delete-orphan" 
             lazy="true" inverse="true">
-            <key column="good_id" /><!-- 确定关联的外键列 -->
+            <key column="good_id" />确定关联的外键列
             <one-to-many class="com.entity.UserInfo"  />
-</set>
+</set> -->
 </class>
 </hibernate-mapping>

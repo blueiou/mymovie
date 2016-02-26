@@ -1,45 +1,66 @@
-   var myapp = angular.module('PracticeAPP', ["ui.router"])
-    myapp.config(function($stateProvider, $urlRouterProvider) {
+   var indexapp = angular.module('IndexApp', ["ui.router",'ngAnimate', 'ui.bootstrap','mv.service','mv.controller']);
+   indexapp.config(function($stateProvider, $urlRouterProvider) {
       // For any unmatched url, send to /route1
-      $urlRouterProvider.otherwise("/index")
+	   $urlRouterProvider.when("", "/#");
+      $urlRouterProvider.otherwise("/#");
       $stateProvider
         //usermanage url
-    //后台管理人员
-        .state('usermanage', {
-	    url: '/manageIndex',
-	    templateUrl: '/mymovie/tpls/manage/index.html',
+    //前台显示商品
+        .state('showing', {
+	    url: '/ShowMvIndex',
+	    templateUrl: './mtpls/ishowing.html',
 	    //template:"<div  style='position:absolute;top:65px;left:5px;right:5px;bottom:5px; '><ul class='nav nav-tabs' style='margin-left: -5px; margin-right: -5px;'>  <li ><a ui-sref='usermanage.student'> 学生用户</a> </li> </ul></div>",
-	    //controller: 'userManageCtrl'
+	    controller: 'showing'
 	})
-	.state('usermanage.student', {
-	    url: '/students',
-	    templateUrl: '/mymovie/tpls/manage/userlist.html',
-	    //controller: 'studentlistCtrl'
+	.state('showing.descri',{
+		//templateUrl: './movies/baseInfo/goodsdescri.html',
+	    template:"<div  style='position:absolute;top:65px;left:5px;right:5px;bottom:5px; '><ul class='nav nav-tabs' style='margin-left: -5px; margin-right: -5px;'>  <li ><a ui-sref='usermanage.student'> 学生用户</a> </li> </ul></div>",
+	    //controller: 'ModalDemoCtrl'
 	})
-    .state('usermanage.teacher', {
-        url: '/teachers',
-        templateUrl: '/mymovie/tpls/manage/teacherlist.html',
-        //controller: 'teacherlistCtrl'
-    })
-    .state('usermanage.batch', {
-        url: '/batchadd',
-        templateUrl: '/mymovie/tpls/manage/batchadd.html',
-       // controller: 'batchaddCtrl'
-    })
-     //--------------teacherIndex
-	.state('teacher', {
-	    url: '/teacher/index',
-	    templateUrl: '/mymovie/tpls/tmpls/teacher/index.html',
-	   // controller: 'teacherIndexCtrl'
+	.state('preparatory', {
+	    url: '/PreMvIndex',
+	    templateUrl: './mtpls/prepara.html',
+	    controller: 'prepara'
 	})
-	.state('teacher.guide', {
-	    url: 'teacher/guide',
-	    templateUrl: '/mymovie/tpls/tmpls/teacher/guide.html',
-	   //controller: 'teacherGuideCtrl'
+	
+	.state('test',{
+		url: '/guide/?PracticeId&RequestOfCheckInDay&NumOfGuided&NumOfCheckInDay&NumOfWarned',
+	    templateUrl: './movies/seats/test.html',
+	    controller:"chooseSeat",
+	    resolve:{
+	    	msggg:function(){
+	    		return "shenm ";
+	    	}
+	    }
 	})
-	.state('teacher.viewstu', {
-	    url: '/guide/?PracticeId&RequestOfCheckInDay&NumOfGuided&NumOfCheckInDay&NumOfWarned',
-	    templateUrl: '/mymovie/tpls/tmpls/teacher/viewStuRecord.html',
-	   // controller: 'viewStuRecordCtrl'
-	})
-    })
+	//显示在线选择座位
+	.state('bookseat',{
+    	  url:'/bookseat/:id/:room/:time/:price',
+	templateUrl:'./movies/baseInfo/bookseat.html',
+	controller:"chooseSeat",
+	/*resolve:{
+		basedata:"tmList",
+		showseat:function($http,$stateParams){
+			return $http.get("tm.action?play_id="+$stateParams.id+"&m=1710").then(function(items) {
+				console.log(items);
+				return items;
+			  });
+			return $http.get("tm.action?play_id="+$stateParams.id+"&m=1710").$promise.then(function(result){
+				console.log(result);
+				return result;
+			});
+			return basedata.query({
+                play_id:$stateParams.id
+                }).$promise.then(function (response) {
+                           return response;
+                       });
+		}
+	
+	}*/
+	
+      });
+   });
+/*var SeatApp=angular.module('SeatApp',['mv.controller']);*/
+
+   
+   

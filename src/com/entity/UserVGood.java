@@ -3,19 +3,12 @@ package com.entity;
 import java.io.Serializable;
 
 public class UserVGood implements Serializable{
-
 	private String userid;
 	private String good_id;
-	
 	private String content;
-
-
-	
-
 	public String getUserid() {
 		return userid;
 	}
-
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}

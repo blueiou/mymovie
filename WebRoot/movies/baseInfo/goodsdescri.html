@@ -36,9 +36,30 @@
             <td></td>
             </tr>
             </table>
+          
         </div>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+            用户影评：
+            </div>
+            <div class="panel-body" ng-repeat="uissue in userissue">
+            <table>
+           <tr> <td>用户 <font color="red">{{uissue.name}}:</font></td>
+           <td>{{uissue.msg}}</td>
+            </tr>
+            </table>
+            </div>
+            </div>
         <div class="modal-footer">
-            
-            <button class="btn btn-fill btn-primary" type="button" ng-click="">购票</button>
-            <button class="btn btn-fill btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <!-- 只显示该场电影的今天的上映场次 -->
+        <form action="allist.action" method="post" id="form1">
+        <input type="hidden" value="1521" name="m" >
+        <input type="hidden" value="{{time}}" name="playTime" >
+        <input type="hidden" value="{{goodDescri.good_id}}" name="mid">
+          <input class="btn btn-fill btn-primary" type="submit" id="book" value="购票"/>
+          <input class="btn btn-fill btn-warning" type="button" ng-click="cancel()" value="Cancel">
+       </form>
+      
+        
         </div>
+        

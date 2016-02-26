@@ -15,11 +15,16 @@
             <key column="userid" />  
             <many-to-many column="roleid" class="com.entity.Role" />  
         </set> 
-        <!-- 
+        <!-- 多对多生成了另一个表
          <set name="good" table="uservgood" >
          <key column="userid"> </key>
          <many-to-many column="good_id" class="com.entity.Goods"> </many-to-many>
          </set> -->
-        <one-to-one name="userInfo" cascade="all"/>   
+        <one-to-one name="userInfo" cascade="all"/>  
+   <!-- 与电影票一对多 -->
+<set name="tickets" table="ticket_info" cascade="all-delete-orphan" 
+            lazy="true" inverse="true">
+            <key column="user_id" /><!-- 确定关联的外键列 -->
+            <one-to-many class="com.entity.Ticket"  /></set>
     </class>  
 </hibernate-mapping>  

@@ -27,8 +27,10 @@ import com.dao.impl.SysUserDaoImpl;
 import com.db.DbConnect;
 import com.entity.BaseInfo;
 import com.entity.Goods;
+import com.entity.Hall;
 import com.entity.Play;
 import com.entity.Role;  
+import com.entity.Ticket;
 import com.entity.User;  
 import com.entity.UserInfo;
 import com.entity.UserVGood;
@@ -39,18 +41,17 @@ import com.tools.CacheClass;
 import com.tools.CheckId;
 import com.tools.Md5;
 import com.tools.MyDate;
-  
-public class CopyOfUserTest {  
-  
+public class CopyOfUserTest {
+	//恩  是我
     public static void main(String[] args) throws Exception {  
 String m="55344";
 CopyOfUserTest cy=new CopyOfUserTest();
 System.out.print(CheckId.checkId(m));
     Session session=cy.getSession();
 Transaction transaction=session.beginTransaction();
+MyDate date=new MyDate();
 /* 
 UserInfo userInfo=new UserInfo();
-
 userInfo.setContent("不是乱码");
 User user=(User) session.get(User.class, "402881845277a4ff015277a500770003");
 userInfo.setUser(user);
@@ -60,11 +61,6 @@ goods.getUserInfo().add(userInfo);
 userInfo.setUser(user);
 session.save(userInfo);
 transaction.commit();*/
-     DbConnect dbConnect=new DbConnect();
-     SysUserDaoImpl userDaoImpl=new SysUserDaoImpl();
-     
-     userDaoImpl.getContentById("4028818552e3f60c0152e3f60dae0001");
-     
   /* PreparedStatement psPreparedStatement= dbConnect.getPreparedStatemen("select distinct  content from uservgood where good_id=?");
    psPreparedStatement.setString(1, "4028818552e3f7720152e3f7746f0001");
    ResultSet rsResultSet=psPreparedStatement.executeQuery();
@@ -75,7 +71,7 @@ transaction.commit();*/
    dbConnect.closeconn();*/
 // 参考网址：http://www.cnblogs.com/wangchenyang/archive/2011/08/23/2150323.html
 //已知 表中的某行的信息，插入影片
-/*Goods goods=new Goods();
+/*Goods goods=new Goods(); //Goods 为多的一方 BaseInfo为一的一方
 goods.setSysname("什么啊");
 goods.setDescript("啊");
 //根据id 获取该信息
@@ -83,8 +79,8 @@ BaseInfo bseBaseInfo=(BaseInfo) session.get(BaseInfo.class,"40288183529bbd730152
 
 System.out.print(bseBaseInfo.getCountry()+" "+bseBaseInfo.getBase_id());
 
-goods.setBaseInfo(bseBaseInfo);
-bseBaseInfo.getGoods().add(goods);
+goods.setBaseInfo(bseBaseInfo); //多的一方添加少的一方 
+bseBaseInfo.getGoods().add(goods); //少的一方添加多的一方
 
 session.save(bseBaseInfo);
 transaction.commit();*/
@@ -100,27 +96,44 @@ goods.getPlay().add(play1);
 
 session.save(goods);
 transaction.commit();*/
-//当该表含有多个外键，则可只在一个多的外键的地方进行保存即可，如下：只保存hall即可 就不用session.save(其他了).
+//当该表含有多个外键，则可只在一个多的外键（即一的一方）的地方进行保存即可，如下：只保存hall即可 就不用session.save(其他了).
 /*Play play1=new Play();
 String timeString=new MyDate().toString();
 //获取少的一方的信息
-Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
+Goods goods=(Goods) session.get(Goods.class, "4028818552e3f7720152e3f7746f0001");
 
-
-play1.setPlay_time("2016-02-15 18:55");
+play1.setPlay_time("2016-02-23 09:55");
 play1.setGoods(goods);
 goods.getPlay().add(play1);
-Hall hall=new Hall();
-hall.setRoomname("2号厅");
+Hall hall=(Hall) session.get(Hall.class, 1);
 play1.setHall(hall);
-//hall.getPlay().add(play1);
+hall.getPlay().add(play1);
 //session.save(goods);
 session.save(hall);
-transaction.commit();
-*/
+transaction.commit();*/
+//增加电影票  一个场次可发放多张电影票，一个用户可买多张电影票   当每增加一张票的时候，play表中的 sell_num 也应加1，即卖出去的电影票
+  /*   Ticket ticket1=new Ticket();
+     ticket1.setTicket_id(date.getYMDHMS()+date.getRandomN());
+     ticket1.setCode(date.getYMDHMS()+date.getRandomN());
+     ticket1.setCurrPrice(70.0);
+     ticket1.setU_seat("B2");
+     //获取场次 
+     Play play1=(Play) session.get(Play.class, "40288183530bccce01530bcccff80001");//星球大战
+     //获取用户
+     User user1=(User) session.get(User.class, "402881845277b20f015277b210430001");//lanqian
+     ticket1.setPlay(play1);
+     play1.getTickets().add(ticket1);
+     ticket1.setUser(user1);
+     user1.getTickets().add(ticket1);
+     session.save(ticket1);
+    // session.save(play1);
+     transaction.commit();*/
+//查询已经被选位置时，是根据场次ID查询[该时间段]的[放映厅]所剩余的位置 
+String[] reserved;
+
+
 
 //分层
-String hqlString="select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?";
 //Goods goods=(Goods) session.get(Goods.class, "40288183529b5f4f01529b5f50840002");
     /*	
      CopyOfUserTest test = new CopyOfUserTest(); 
@@ -168,8 +181,6 @@ String hqlString="select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods 
 	 addUserToRole("student");
 }
  public User getUser(){
-	
-	 
 	 
 	 
 	 return null;

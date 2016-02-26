@@ -1,14 +1,22 @@
 package com.dao.impl;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.ws.rs.core.Application;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext; 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -19,6 +27,7 @@ import com.entity.Page;
 import com.entity.Play;
 import com.model.GoodVPlayVHall;
 import com.model.GoodsInfo;
+import com.model.PlayByMid;
 import com.tools.PulginsException;
 
 public class SysGoodsDaoImpl  implements SysGoodsDao {
@@ -53,10 +62,14 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 			}
 		}
 		);
-		
 	/*	分页*/
+		/*
+		 * 	ProjectionList projectionList=Projections.projectionList();
+		
+		projectionList.add(Projections.property("sysname"));
+		projectionList.add(Projections.property("good_id"));
+		projectionList.add(Projections.property("descript"));*/
 	   int rowcount=getCount(stamp);
-	   System.out.print("rowcount:"+rowcount);
 		criteria.setProjection(null);
 		criteria.setFirstResult((pageno-1)*pagesize);
 		criteria.setMaxResults(pagesize);
@@ -70,6 +83,9 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 			pagecount=rowcount/pagesize+1;
 		}
 		List<Goods> slist=criteria.list();
+		/*for (Goods goods : slist) {
+			System.out.println("影片ID"+goods.getGood_id());
+		}*/
 		 if (p==null) 
 			 {
 			 p=new Page(pagecount,pageno, pagesize, slist,rowcount);
@@ -99,12 +115,36 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?",temp);
 		return plays;
 	}
+	//查询单个商品的上映时间表 
+	public List getByMId(String mid,String stemp) {
+		// TODO Auto-generated method stub
+		//List<PlayByMid> plays=getHibernateTemplate().find("select new com.model.PlayByMid(g.sysname,p.play_time,p.price)  from Play p,Goods g where g.good_id=? and p.play_time like ?",mid,temp);
+		//把查询出来的存放在数据模型的PlayByMid 中
+		String hqlString="select  new com.model.PlayByMid(p.goods.sysname,p.play_time,p.price,p.hall.roomname,p.hall.version,p.goods.baseInfo.language,p.goods.good_id,p.play_id) from Play p where p.goods.good_id=? and p.play_time like ? group by p.play_time";
+		List<PlayByMid> plays=getHibernateTemplate().find(hqlString,mid,stemp);
+		return plays;
+	}
+	public List test() {
+		String hqlString="select t.u_seat from Ticket t  inner join  t.play tp inner join  tp.hall tph  where  tph.roomname=? and tp.play_time=?";
+		List plays=this.getHibernateTemplate().find(hqlString,"2号厅","2016-02-23 09:55:00");
+		return plays;
+	}
+	
+	public List findByProperty(String propertyName, Object value,String temp) {
+        try {
+            String queryString = "from "+temp+" as model where model."
+                    + propertyName + "= ?";
+            Query queryObject = ((Session) this.getHibernateTemplate()).createQuery(queryString);
+            queryObject.setParameter(0, value);
+             
+            return queryObject.list();
+        } catch (RuntimeException re) {
+            throw re;
+        }
+    }
 	@Override
 	public List getById() {
 		// TODO Auto-generated method stub
-		GoodVPlayVHall goodVPlayVHall=new GoodVPlayVHall();
-		//List<Play> plays=getHibernateTemplate().find("from Play p where p.play_time like ?","%2016-02-14%");
-		List<GoodVPlayVHall> plays=getHibernateTemplate().find("select goodVPlayVHall(g.sysname,h.roomname) from Play p,Goods g,Hall h  where p.good_id=g.good_id and p.hall_id=h.hall_id and  p.play_time like ?","%2016-02-17%");
-		return plays;
+		return null;
 	}
 }

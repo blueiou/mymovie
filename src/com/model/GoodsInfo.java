@@ -59,7 +59,23 @@ public class GoodsInfo implements Serializable{
 		this.type = type;
 	}
 	public GoodsInfo(){
-		
+		super();
+	}
+	public GoodsInfo(String sysname, int id, String descript, String type,
+			String showtime, String uploadtime) {
+		super();
+		this.sysname = sysname;
+		this.id = id;
+		this.descript = descript;
+		this.type = type;
+		this.showtime = showtime;
+		this.uploadtime = uploadtime;
+	}
+	public GoodsInfo(String sysname, int id, String descript) {
+		super();
+		this.sysname = sysname;
+		this.id = id;
+		this.descript = descript;
 	}
 	
 }

@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Role implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5777421367958269002L;
 	private String roleid;  
     private String rolename;  
     private Integer ordernum;  

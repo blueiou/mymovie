@@ -1,7 +1,6 @@
 package com.test;
 
 import com.db.DbConnect;
-import com.entity.Tb_datas;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.opensymphony.xwork2.Result;

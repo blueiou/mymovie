@@ -6,19 +6,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class User implements Serializable{
-	 private String email;
-
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1167724420743771563L;
+	private String email;
 	 private Date createDate;
-
 	 	private String userid;  
 	     private String username;  
 	     private String password;  
 	     private UserInfo userInfo;
-	     
-	
-
+	     //与角色 多对多
 		private Set roles = new HashSet(); 
+		private Set<Ticket> tickets;//与电影票一对多
 		
+		public Set<Ticket> getTickets() {
+			return tickets;
+		}
+		public void setTickets(Set<Ticket> tickets) {
+			this.tickets = tickets;
+		}
 		public UserInfo getUserInfo() {
 			return userInfo;
 		}

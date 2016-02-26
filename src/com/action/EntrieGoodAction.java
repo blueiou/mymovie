@@ -34,14 +34,12 @@ public class EntrieGoodAction extends AjaxActionSupport {
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
 	}
-
 		public Page getPage() {
 		return page;
 	}
 	public void setPage(Page page) {
 		this.page = page;
 	}
-	
 	public Goods getGoodDescri() {
 		return goodDescri;
 	}
@@ -74,6 +72,8 @@ public class EntrieGoodAction extends AjaxActionSupport {
 				return	exmapleById();
 			case Functions.GET_GOODS_OPERATION_PlayTime:
 				return play();
+				case Functions.GET_GOODS_OPERATION_PlayTime_ById:
+					return playByMid();
 		default: 
 			return ERROR;
 		}
@@ -114,7 +114,7 @@ public class EntrieGoodAction extends AjaxActionSupport {
 			return SUCCESS;
 		}
 	}
-	//获取某天放映的电影列表
+	//获取某天放映的全部电影列表
 	public String play() throws PulginsException{
 		List<Play> plays;
 		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
@@ -123,6 +123,17 @@ public class EntrieGoodAction extends AjaxActionSupport {
 		dataMap.put("reply", reply);
 		dataMap.put("success", true);
 		return SUCCESS;
+	}
+	//获取某天放映的<特定>的电影列表
+	public String playByMid() throws PulginsException{
+		List plays;
+		if (dataMap==null) 	dataMap=new HashMap<String, Object>();
+		plays=sGoods.findByTimeMid(request.getParameter("mid").trim(), request.getParameter("playTime").trim());
+		reply=plays;
+		dataMap.put("reply", reply);
+		dataMap.put("success", true);
+	return "playbyid";
+	//	return SUCCESS;
 	}
 	/*public String  测试*/
 	public void test(){

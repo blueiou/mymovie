@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+
+import com.tools.CacheClass;
+
 public class DelServlet extends HttpServlet {
 
 	/**
@@ -51,6 +55,7 @@ public class DelServlet extends HttpServlet {
 		out.println("</HTML>");
 		out.flush();
 		out.close();
+		
 	}
 
 	/**
@@ -67,13 +72,27 @@ public class DelServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		response.setContentType("text/html;charset='UTF-8'");
+		response.setCharacterEncoding("UTF-8");
+		
+	String aString=	request.getParameter("testSeats");
+	String[] cStrings=CacheClass.splitString(aString);
+	/*String bStrings=aString.substring(2,aString.length()-2);
+	String[] cStrings=bStrings.split("\",\"");
+	System.out.println(bStrings);*/
+	System.out.println("-------------------分割前------------------");
+	System.out.println(aString);
+	System.out.println("-------------------分割后------------------");
+	for (String string : cStrings) {
+		System.out.print(string);
+	}
+		
+		/*PrintWriter out = response.getWriter();
 		String[] checkall=request.getParameterValues("checkbox");
-		System.out.println("Ϊɶû�а�");
+		System.out.println("");
 		for (int i = 0; i < checkall.length; i++) {
 			System.out.println(checkall[i]);
-		}
+		}*/
 	}
 
 	/**

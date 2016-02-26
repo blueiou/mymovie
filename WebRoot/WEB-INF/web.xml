@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>mymovie</display-name>
+  <!-- 文件上传servlet -->
+  <servlet><servlet-name>upload</servlet-name>
+  <servlet-class>com.servlet.UpLoad</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>upload</servlet-name>
+  <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
   <servlet>
+  <!-- /文件上传servlet -->
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>JsonAction</servlet-name>
@@ -61,7 +70,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
-    <!-- 关联对象问题 -->
+    <!-- hinernate关联对象问题 -->
   <filter>
 <filter-name>openSessionInView</filter-name>
 <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
@@ -70,9 +79,6 @@
 <filter-name>openSessionInView</filter-name>
 <url-pattern>/*</url-pattern>
 </filter-mapping>
-  
-  
-  
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>

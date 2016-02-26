@@ -20,7 +20,6 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import com.dao.PagingDao;
 import com.entity.Goods;
 import com.entity.Page;
-import com.entity.Tb_datas;
 
 public class PagingDaoImpl implements PagingDao{
 	private HibernateTemplate hibernateTemplate;
