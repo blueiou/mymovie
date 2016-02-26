@@ -12,6 +12,8 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
@@ -61,6 +63,12 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 		}
 		);
 	/*	分页*/
+		/*
+		 * 	ProjectionList projectionList=Projections.projectionList();
+		
+		projectionList.add(Projections.property("sysname"));
+		projectionList.add(Projections.property("good_id"));
+		projectionList.add(Projections.property("descript"));*/
 	   int rowcount=getCount(stamp);
 		criteria.setProjection(null);
 		criteria.setFirstResult((pageno-1)*pagesize);
@@ -75,6 +83,9 @@ public class SysGoodsDaoImpl  implements SysGoodsDao {
 			pagecount=rowcount/pagesize+1;
 		}
 		List<Goods> slist=criteria.list();
+		/*for (Goods goods : slist) {
+			System.out.println("影片ID"+goods.getGood_id());
+		}*/
 		 if (p==null) 
 			 {
 			 p=new Page(pagecount,pageno, pagesize, slist,rowcount);

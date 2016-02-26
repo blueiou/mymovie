@@ -1,7 +1,7 @@
    var indexapp = angular.module('IndexApp', ["ui.router",'ngAnimate', 'ui.bootstrap','mv.service','mv.controller']);
    indexapp.config(function($stateProvider, $urlRouterProvider) {
       // For any unmatched url, send to /route1
-	   $urlRouterProvider.when("", "/showing");
+	   $urlRouterProvider.when("", "/#");
       $urlRouterProvider.otherwise("/#");
       $stateProvider
         //usermanage url
@@ -36,7 +36,7 @@
 	//显示在线选择座位
 	.state('bookseat',{
     	  url:'/bookseat/:id/:room/:time/:price',
-	templateUrl:'./movies/seats/test.html',
+	templateUrl:'./movies/baseInfo/bookseat.html',
 	controller:"chooseSeat",
 	/*resolve:{
 		basedata:"tmList",

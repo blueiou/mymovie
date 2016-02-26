@@ -3,13 +3,18 @@ package com.entity;
 import java.io.Serializable;
 import java.util.List;
 
+
 public class Page implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5824829857311771056L;
 private	int	pagecount ;//每页记录数
 private	int	 pageno ;//当前页
 private	int	 pagesize ;
 private	int	pagelast ;
 private	int	 pageNext ;
-private	List stulist;
+private	List<Goods> goodlist;
 private int rowcount;
 //private String sbB;
 
@@ -66,27 +71,28 @@ public int getPageNext() {
 public void setPageNext(int pageNext) {
 	this.pageNext = pageNext;
 }
-public List getStulist() {
-	return stulist;
+
+public List<Goods> getGoodlist() {
+	return goodlist;
 }
-public void setStulist(List stulist) {
-	this.stulist = stulist;
+public void setGoodlist(List<Goods> goodlist) {
+	this.goodlist = goodlist;
 }
-public Page( int pagecount ,int pageno,int pagesize,List stuList,int rowcount,String sb2){
+public Page( int pagecount ,int pageno,int pagesize,List<Goods> goodlist,int rowcount,String sb2){
 	super();
 	this.pagecount=pagecount;
 	this.pageno=pageno;
 	this.pagesize=pagesize;
-	this.stulist=stuList;
+	this.goodlist=goodlist;
 	this.rowcount=rowcount;
   this.sb2=sb2;
 }
-public Page(int pagecount, int pageno, int pagesize, List stulist, int rowcount) {
+public Page(int pagecount, int pageno, int pagesize, List<Goods> goodlist, int rowcount) {
 	super();
 	this.pagecount = pagecount;
 	this.pageno = pageno;
 	this.pagesize = pagesize;
-	this.stulist = stulist;
+	this.goodlist = goodlist;
 	this.rowcount = rowcount;
 }
 

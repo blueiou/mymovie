@@ -6,6 +6,7 @@ import com.dao.PagingDao;
 import com.dao.impl.PagingDaoImpl;
 import com.dao.impl.SysGoodsDaoImpl;
 import com.entity.Goods;
+import com.entity.IndexGoods;
 import com.entity.Page;
 import com.entity.Play;
 import com.model.GoodVPlayVHall;
@@ -39,7 +40,7 @@ public class SysGoodsService {
 		public Page findShowing(int pageno,int pagesize){
 	if (p==null)  p=new Page();
 	
-			p=sysGoodsDaoImpl.getPageList(pageno, pagesize, Goods.class,1);
+			p=sysGoodsDaoImpl.getPageList(pageno, pagesize, IndexGoods.class,1);
 			int pagecount=p.getPagecount();
 			if(pageno<=2||pageno>=pagecount) p.setPagelast(2);
 			else p.setPagelast(pageno);
@@ -51,16 +52,14 @@ public class SysGoodsService {
 		}
 		public Page findPrePage(int pageno,int pagesize){
 			if (p==null)  p=new Page();
-					p=sysGoodsDaoImpl.getPageList(pageno, pagesize, Goods.class,0);
+					p=sysGoodsDaoImpl.getPageList(pageno, pagesize, IndexGoods.class,0);
 					int pagecount=p.getPagecount();
 					if(pageno<=2||pageno>=pagecount) p.setPagelast(2);
 					else p.setPagelast(pageno);
 					if(pageno>=pagecount||pageno<0) p.setPageNext(pagecount-1);
 					else p.setPageNext(pageno);
-					
 					if (pageno>pagecount) p.setPageno(pagecount);
 					return p;
-
 				}
 	
 		public Goods findById(String id) throws PulginsException {

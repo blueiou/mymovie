@@ -92,6 +92,12 @@ public  class Goods implements Serializable{
 	public Goods() {
 		super();
 	}
+	public Goods(String sysname, String good_id, String descript) {
+		super();
+		this.sysname = sysname;
+		this.good_id = good_id;
+		this.descript = descript;
+	}
 	
 	
 }

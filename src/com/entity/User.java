@@ -6,7 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class User implements Serializable{
-	 private String email;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1167724420743771563L;
+	private String email;
 	 private Date createDate;
 	 	private String userid;  
 	     private String username;  

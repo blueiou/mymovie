@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Set;
 
 public class Play implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8626156594975319620L;
 	private String play_id;
 	private String play_time;
 	private double price;

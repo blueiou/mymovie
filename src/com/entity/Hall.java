@@ -1,8 +1,13 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class Hall {
+public class Hall implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2972907068930528292L;
 private int hall_id;
 private String roomname;
 private String version;//放映的版本 

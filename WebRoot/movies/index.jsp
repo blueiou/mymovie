@@ -31,7 +31,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
 </style>
   <body ng-app="IndexApp" >
+   <div class="main">
+   <div class="section">
+   <div class="container tim-container">
   <div class="container" style="margin-top: 50px;">
+  
      <%--     <div id="navbar">
                             <nav class="navbar navbar-default">
                               <div class="container-fluid">
@@ -70,37 +74,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </nav>
                         
                         </div><!--  end navbar --> --%>
+  
+   
+                       
+                        
+                        <!-- 左侧 -->
+                        <div class="row">
+                        <div class="col-md-10">
+                      
+                    
 <uib-tabset justified="true">
     <uib-tab heading="正在热映" >
     <div ng-controller="showing">
      <div style="margin-top: 45px;" >
          <!-- 单层获取值 -->          
-   <div ng-repeat="s in smvlist.stulist">
+   <div ng-repeat="s in smvlist.goodlist">
             <div class="col-md-4 portfolio-item">
              <a href="">
-                    <img class="img-responsive" src="{{s.playbillurl}}"  ng-click="open(s.good_id)">
+                    <img class="img-responsive" src="{{s.playbillurl}}"  ng-click="open(s.good_id)"> 
+                   <!--  <img class="img-responsive" src="http://placehold.it/700x400"  ng-click="open(s.good_id)">-->
                </a>
-                <h3>
+                <h5>
                     <a href="" ng-model="exmaple" ng-click="open(s.good_id)" >{{s.sysname}}</a>
                     
                    <!--  <a href="" ng-click="open('lg')" >{{s.baseInfo.base_id}}</a> -->
-                </h3>
+                </h5>
                <!--  <p ng-model="exmaple" ng-click="open(s.baseInfo.base_id)">点击了解更多</p> -->
             </div>
    </div> 
            </div> 
-           <center>
          <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
-    <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
-    </center>  
+<!--     <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>  -->
      </div>       
     </uib-tab>
     
     <uib-tab heading="预备上映" >
     <div ng-controller="prepara">
     <div  style="margin-top: 45px;"> 
-     <div ng-repeat="p in pmvlist.stulist" >
-            <div class="col-md-4 portfolio-item">
+     <div ng-repeat="p in pmvlist.goodlist" >
+            <div class="col-md-4">
                 <a href="#">
                     <img class="img-responsive" src="" alt="">
                 </a>
@@ -111,8 +123,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- <p>{{p.showtime}}</p> -->
             </div>
    </div>  </div> 
+   <div style="padding-top:120px">
    <uib-pagination ng-click="setPage(bigCurrentPage)" total-items="smvlist.pagecount*10" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages"></uib-pagination>
     <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre> 
+    </div>
    </div> 
     </uib-tab>
     <uib-tab heading="放映时刻表" >
@@ -125,15 +139,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </uib-tab>
   </uib-tabset>
 </div>
-  <center>
 
-    
-   </center>      
-            </div>
-          
-<hr />
+        <div class="col-md-2">
+        <div class="well">
+        <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
         </div>
-        
+        </div>
+        </div>
+        </div>
+         </div>
+   </div>
+   </div><!-- EDN container -->
         <hr />
   
 <input type="text" value="" id="clock" />
