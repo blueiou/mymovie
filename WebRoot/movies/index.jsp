@@ -185,6 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- App Script -->
     <script src="./script/app/app.js"></script>
     <script src="./script/app/service.js"></script>
+    <script src="./script/app/filter.js"></script>
     <script src="./script/app/controller.js"></script>
     <!-- other -->
     <script type="text/javascript" src="/mymovie/script/jquery1.8.js"></script>

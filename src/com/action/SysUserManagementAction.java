@@ -58,15 +58,18 @@ public void setsUser(SysUsersService sUser) {
 	}
 	//查看用户个人订单
 	public String getOrders(){
+		map=new HashMap<>();
 		HttpSession session=request.getSession();
 		String uidString=(String) session.getAttribute("uid");
 		if (!CacheClass.isEmpty(uidString)) {
-			
 			publicData=sUser.findOrderInfo(uidString);
-			System.out.println("publicData:"+publicData);
-			map.put("data", sUser.findOrderInfo(uidString));
+			map.put("data", publicData);
 			map.put("success", true);
 			return SUCCESS;
+		}
+		else {
+			map.put("data", null);
+			map.put("success", false);
 		}
 		return SUCCESS;
 	}

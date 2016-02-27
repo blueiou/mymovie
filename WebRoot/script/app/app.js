@@ -1,26 +1,16 @@
-   var indexapp = angular.module('IndexApp', ["ui.router",'ngAnimate', 'ui.bootstrap','mv.service','mv.controller']);
+   var indexapp = angular.module('IndexApp', ["ui.router",'ngAnimate', 'ui.bootstrap','mv.service','mv.filter','mv.controller']);
    indexapp.config(function($stateProvider, $urlRouterProvider) {
       // For any unmatched url, send to /route1
-	   $urlRouterProvider.when("", "/#");
+	   $urlRouterProvider.when("", "/userorder");
       $urlRouterProvider.otherwise("/#");
       $stateProvider
         //usermanage url
     //前台显示商品
-        .state('showing', {
+    .state('showing', {
 	    url: '/ShowMvIndex',
 	    templateUrl: './mtpls/ishowing.html',
 	    //template:"<div  style='position:absolute;top:65px;left:5px;right:5px;bottom:5px; '><ul class='nav nav-tabs' style='margin-left: -5px; margin-right: -5px;'>  <li ><a ui-sref='usermanage.student'> 学生用户</a> </li> </ul></div>",
 	    controller: 'showing'
-	})
-	.state('showing.descri',{
-		//templateUrl: './movies/baseInfo/goodsdescri.html',
-	    template:"<div  style='position:absolute;top:65px;left:5px;right:5px;bottom:5px; '><ul class='nav nav-tabs' style='margin-left: -5px; margin-right: -5px;'>  <li ><a ui-sref='usermanage.student'> 学生用户</a> </li> </ul></div>",
-	    //controller: 'ModalDemoCtrl'
-	})
-	.state('preparatory', {
-	    url: '/PreMvIndex',
-	    templateUrl: './mtpls/prepara.html',
-	    controller: 'prepara'
 	})
 	
 	.state('test',{
@@ -29,7 +19,7 @@
 	    controller:"chooseSeat",
 	    resolve:{
 	    	msggg:function(){
-	    		return "shenm ";
+	    		return "shenm";
 	    	}
 	    }
 	})
@@ -57,10 +47,17 @@
 		}
 	
 	}*/
-	
       });
    });
-/*var SeatApp=angular.module('SeatApp',['mv.controller']);*/
+var userapp=angular.module('UserApp',["ui.router",'ngAnimate', 'ui.bootstrap','mv.service','mv.filter','mv.controller']);
+userapp.config(function($stateProvider, $urlRouterProvider){
+	$urlRouterProvider.otherwise("/OrderIndex");
+	$stateProvider.state('userorder', {
+	    url: '/OrderIndex',
+	    templateUrl: './mtpls/user/showorder.html',
+	    controller: 'searchOrder'
+	})
+})
 
    
    

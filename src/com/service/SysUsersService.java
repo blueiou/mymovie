@@ -50,8 +50,10 @@ public class SysUsersService {
 	}
 		
 }
+
 	public PublicData findOrderInfo(String uid){
 		PublicData publicData=null;
+		
 		if (!CacheClass.isEmpty(uid)) {
 			publicData=new PublicData();
 			List<OrdersInfo> list=sysUserDaoImpl.searchOrder(uid);

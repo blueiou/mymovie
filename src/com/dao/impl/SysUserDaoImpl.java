@@ -57,11 +57,9 @@ private DbConnect dbConnect;
 
 	
 	public List<OrdersInfo> searchOrder(String uid){
-		String hqlString="select new com.model.OrdersInfo(t.play.goods.sysname,t.play.goods.showtime,t.statue) from Ticket t where t.user.userid=?";
-		
+		String hqlString="select new com.model.OrdersInfo(t.play.goods.sysname,t.play.play_time,t.statue) from Ticket t where t.user.userid=?";
 		List<OrdersInfo> orderlList=this.hibernateTemplate.find(hqlString,uid);
 		return orderlList;
-		
 	}
 	
 	

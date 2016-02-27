@@ -1,0 +1,21 @@
+<uib-tabset justified="true" >
+                           <uib-tab heading="我的订单" class="uib-tab ng-isolate-scope">
+                           <div style="margin-top:30px;">
+                           <table class="table table-hover">
+                        <tr class='success'>
+                        	<th>电影名称</th>
+                        	<th>播放时间</th>
+                        	<th>价格</th>
+                        	<th>操作</th>
+                        </tr>
+                           <tr ng-repeat="o in list.ordersInfo">
+                           <td>{{o.mv_name}}</td>
+                           <td>{{o.showtime | time:0}}</td>
+                           <td>{{o.statue | order}}</td>
+                           <td width="12%"><div>网上支付</div><div>取消订单</div></td>
+                           </tr>
+                           </table>
+                           </div>
+                           </uib-tab>
+                           <uib-tab heading="我的团购" class="uib-tab ng-isolate-scope active">tuangou </uib-tab>
+</uib-tabset>

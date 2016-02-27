@@ -1,10 +1,12 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.tools.CacheClass" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="../menu.jsp" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%
+if(CacheClass.isEmpty((String)session.getAttribute("uid"))) response.sendRedirect("login.jsp");
+%>
 <html>
   <head>
     <base href="<%=basePath%>">
@@ -25,8 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/ct-paper.css" />
-  <body ng-app="IndexApp">
-  <div class="container" ng-controller="showing">
+  <body ng-app="UserApp">
+  <div class="container" >
      <div class="space"></div>
       <div class="main">
         <div class="section section-nude">
@@ -46,16 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </div>
                    <div class="list-group" >
-                   <a  class="list-group-item" ui-sref="">我的订单</a>
+                   <a  class="list-group-item" ui-sref="userorder">我的订单</a>
                    <a  class="list-group-item">我的积分</a>
                    </div>         
-                            
                         </div>
-                        <div class="col-xs-10  col-sm-9 col-md-8 col-lg-8" style="background:#FFFFFF">
-                           <uib-tabset justified="true" >
-                           <uib-tab hreading="我的订单">订单</uib-tab>
-                           <uib-tab hreading="我的团购">团购</uib-tab>
-                           </uib-tabset>
+                        <div class="col-xs-10  col-sm-9 col-md-8 col-lg-8"  ui-view="">
                         </div>
                     </div>
                     <div class="row">
@@ -77,5 +74,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <!-- App Script -->
     <script src="./script/app/app.js"></script>
     <script src="./script/app/service.js"></script>
+      <script src="./script/app/filter.js"></script>
     <script src="./script/app/controller.js"></script>
 </html>

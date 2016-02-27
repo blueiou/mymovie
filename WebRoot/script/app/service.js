@@ -23,7 +23,7 @@ services.factory('usersListG',['$resource',function($resource){
 	        isArray:false,
 		}
 	
-	})
+	});
 	
 }]);
 //票务管理

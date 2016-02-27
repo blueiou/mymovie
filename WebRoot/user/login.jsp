@@ -68,7 +68,7 @@ body {
                                     <input id="uname" name="uname"  type="text" class="form-control" placeholder="用户名">
                                     <label>Password</label>
                                     <input id="upass" name="upass"  type="password" class="form-control" placeholder="密码">
-                                    <button class="btn btn-danger btn-block" onclick="loginSubmit()">登录</button>
+                                    <button class="btn btn-danger btn-block" id="loginSubmit">登录</button>
                                 </form>
                                 <div class="forgot">
                                     <a href="#" class="btn btn-simple btn-danger">Forgot password?</a>
@@ -85,7 +85,7 @@ body {
   </body>
 <script type="text/javascript" src="script/jquery1.8.js"></script>
   <script type="text/javascript" >
-  function loginSubmit(){
+$("#loginSubmit").click(function(){
 		var uname=$("#uname").val();
 		var upass=$("#upass").val();
 		$.ajax({
@@ -96,10 +96,13 @@ body {
 			/*  contentType:"jsonp", */
              cache:false, 
 			 data:"m=150&uname="+uname+"&upass="+upass, 
-			 //data: "m=1520&id=40288183529b5f4f01529b5f50840002", 
 			 success:function(result){
-			     if(result.success==true)
+			     if(result.success)
 			     {
+			    	 
+			    	 alert("合法用户");
+	                 window.location.href="movies/index.jsp"; 
+			    	 /* 
 			             var res =[];
 			             res = result.user.roles; 
 			             var str="generalUser";
@@ -107,10 +110,10 @@ body {
 			             if(str==str2)
 			              { 
 			                 alert("合法用户");
-			                 window.location.href="http://localhost:8080/mymovie/movies/index.jsp";
-			               }
+			                 window.location.href="movies/index.jsp";
+			               } */
 			    }
-			            if(result.success==false)
+			            if(!result.success)
 			            {
 			                 alert("用户名账户或密码错误");
 			             }
@@ -122,7 +125,7 @@ body {
 	        alert("连接服务器出错");
 	    }  
 		});
-  }
+  })
   
   
   </script>
