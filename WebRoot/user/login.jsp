@@ -48,7 +48,6 @@ body {
             <span class="icon-bar"></span>
           </button>
         </div>
-    
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navigation-example-2">
         </div><!-- /.navbar-collapse -->
@@ -70,6 +69,9 @@ body {
                                     <input id="upass" name="upass"  type="password" class="form-control" placeholder="密码">
                                     <button class="btn btn-danger btn-block" id="loginSubmit">登录</button>
                                 </form>
+                                <form action="sysuserm.action" id="form2" method="post">
+                                <input type="hidden" name="m" value="-1" />
+                                </form>
                                 <div class="forgot">
                                     <a href="#" class="btn btn-simple btn-danger">Forgot password?</a>
                                 </div>
@@ -85,47 +87,45 @@ body {
   </body>
 <script type="text/javascript" src="script/jquery1.8.js"></script>
   <script type="text/javascript" >
-$("#loginSubmit").click(function(){
+$(document).ready(function(){
+	$("#loginSubmit").click(function(){
 		var uname=$("#uname").val();
 		var upass=$("#upass").val();
 		$.ajax({
 			 type:"POST", 
-			 async:false,
+		/* 	 async:false, */
 			 url:"sysuserm.action", 
 			 dataType:"json",
 			/*  contentType:"jsonp", */
-             cache:false, 
+          /*    cache:false,  */
 			 data:"m=150&uname="+uname+"&upass="+upass, 
 			 success:function(result){
-			     if(result.success)
-			     {
-			    	 
-			    	 alert("合法用户");
-	                 window.location.href="movies/index.jsp"; 
-			    	 /* 
-			             var res =[];
-			             res = result.user.roles; 
-			             var str="generalUser";
-			             var str2=res[0].rolename;
-			             if(str==str2)
-			              { 
-			                 alert("合法用户");
-			                 window.location.href="movies/index.jsp";
-			               } */
-			    }
 			            if(!result.success)
 			            {
 			                 alert("用户名账户或密码错误");
 			             }
-	},error:function(data) {   
-	       /*  alert(XMLHttpRequest.status);  
-	        alert(XMLHttpRequest.readyState);  
-	        alert(textStatus);  */
-	        //请求出错处理
-	        alert("连接服务器出错");
-	    }  
+			            if(result.success)
+					     {
+					    	 $("#form2").submit();
+					    	  //alert("合法用户");
+					    	  /*  window.location.href="movies/index.jsp";  
+					    	 
+					             var res =[];
+					             res = result.user.roles; 
+					             var str="generalUser";
+					             var str2=res[0].rolename;
+					             if(str==str2)
+					              { 
+					                 alert("合法用户");
+					                 window.location.href="movies/index.jsp";
+					               } */
+					    }
+	}  
 		});
   })
+})  
+  
+
   
   
   </script>

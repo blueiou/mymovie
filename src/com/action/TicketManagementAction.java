@@ -54,7 +54,7 @@ public void setMap(Map<String, Object> map) {
 		case Functions.TICKET_OPERATION_SEARCH_SEAT:               //1710
 			return getSeats();
 		case Functions.TICKET_OPERATION_PRODUCED_ORDER:
-			return getOrder();                                    //1725 
+			return getOrder();                                    //1725 生成订单
 		default: 
 			return ERROR;
 		}

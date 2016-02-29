@@ -2,10 +2,17 @@ package com.model;
 
 
 public class OrdersInfo {
+	private String ticketid;
 private String mv_name;
 private String showtime;
 private int statue;
 
+public String getTicketid() {
+	return ticketid;
+}
+public void setTicketid(String ticketid) {
+	this.ticketid = ticketid;
+}
 public int getStatue() {
 	return statue;
 }
@@ -30,6 +37,13 @@ public OrdersInfo() {
 }
 public OrdersInfo(String mv_name, String showtime, int statue) {
 	super();
+	this.mv_name = mv_name;
+	this.showtime = showtime;
+	this.statue = statue;
+}
+public OrdersInfo(String ticketid, String mv_name, String showtime, int statue) {
+	super();
+	this.ticketid = ticketid;
 	this.mv_name = mv_name;
 	this.showtime = showtime;
 	this.statue = statue;

@@ -1,8 +1,9 @@
-   <div class="content" >
+   <div class="container" >
+   
     <h4 class="title">>选择座位</h4>
 
 
-    <table class="">
+    <table class="table" style="width: 30%">
         <tr>
             <td class="padding-bottom"></td>
             <td class="padding-bottom" ng-repeat="col in cols track by $index" ng-bind="col"></td>
@@ -18,9 +19,9 @@
     </table>
 
     <div class="legend">
-        <img src="images/seat/seat_available.png">  Available
-        <img src="images/seat/seat_reserved.png" class="padding-left">  Reserved
-        <img src="images/seat/seat_selected.png" class="padding-left">  Selected
+        <img src="images/seat/seat_available.png">可选的
+        <img src="images/seat/seat_reserved.png" class="padding-left">已售的
+        <img src="images/seat/seat_selected.png" class="padding-left">所选的
     </div>
 <pre>{{selected}} {{playid}} {{price}}</pre>
 <form action="tm.action" method="post">
@@ -28,11 +29,13 @@
 <input type="hidden" value="{{selected}}" name="seat"/>
 <input type="hidden" value="{{price}}" name="price"/>
 <input type="hidden" value="{{playid}}" name="playid"/>
-<input type="submit" value="提交"/>
+<input type="submit" class="btn btn-fill btn-primary" value="提交订单" />
+<button ng-click="clearSelected()" class="btn btn-fill btn-warning" type="button">清除所选</button>
 </form>
+
     <div class="buttons">
-        <button ng-click="clearSelected()">Clear</button>
-        <button ng-click="showSelected()">Show selected seats!</button>
+        
+     <!--    <button ng-click="showSelected()">Show selected seats!</button> -->
     </div>
 </div>
 

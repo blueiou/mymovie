@@ -50,10 +50,14 @@
       else{ %>   
               <li>
                        <a><%=uname %>，欢迎您</a>
+                    </li>
+                    <li >
+                        <a href="user/userinfo.jsp" target="" onclick="" class="glyphicon glyphicon-shopping-cart">我的订单</a>
                     </li> 
                     <li>
-                       <a href="loginout.action">退出</a>
+                       <a href="">退出</a>
                     </li> 
+                    
                       <%} %>                                                         
                 </ul>
             </div>

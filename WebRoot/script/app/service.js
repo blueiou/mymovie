@@ -4,9 +4,9 @@ services.factory('goodsList', ['$resource', function ($resource) {
     return $resource('allist.action', {}, {
         query: {
             method: 'GET',
-            params:{pageno:"",m:"",id:"",playTime:""},
+            /*params:{pageno:"",m:"",id:"",playTime:""},*/
             isArray: false,
-            //url:'smvlist.action?'
+            url:'allist.action',
         },
         update:{
         	method:'POST',
@@ -16,13 +16,18 @@ services.factory('goodsList', ['$resource', function ($resource) {
     });
 }]);
 services.factory('usersListG',['$resource',function($resource){
-	return $resource('sysuserm.action',{},{
+	return $resource('sysuserm.action/:uid/order/:oid',{uid:'402881845277b20f015277b210430001',oid:'2016022017160065'},{
 		query:{
 			method:'get',
-			Params:{m:"",mid:"",uname:"",pass:""},
+			/*Params:{m:"",mid:"",uname:"",pass:""},*/
 	        isArray:false,
-		}
-	
+	        url:'sysuserm.action',
+		},
+	  update:{
+      	method:'POST',
+      	isArray:false,
+      	url:'sysuserm.action',
+      }
 	});
 	
 }]);
@@ -53,12 +58,6 @@ services.factory('smv',function($resource)
 				        }
 				      }
 				    );
-		/*	 resource.retrievePerson = function () {
-				 return this.get(
-					        {
-					          //operation: "data.txt"
-					        });
-			    };*/
 			 resource.retrievePerson = function (pageno) {
 			      return this.get(
 			        {

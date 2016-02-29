@@ -52,6 +52,7 @@ MyDate date=new MyDate();
 		count++;
 		return count;
 	}
+	//添加电影票
 	public Ticket getTicket(String play_id,String u_id,String seat,double price){
 		Ticket ticket=new Ticket(date.getYMDHM()+MyDate.getRandomN());
 		ticket.setCode(date.getYMDHMS()+MyDate.getRandomN());

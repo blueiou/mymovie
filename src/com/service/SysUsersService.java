@@ -24,7 +24,6 @@ public class SysUsersService {
 		return sysUserDaoImpl.getContentById(mid);
 		
 	}
-	
 	public User findUserUnit(String na,String pa){
 		if (CacheClass.isEmpty(na)||CacheClass.isEmpty(pa)) {
 			new PulginsException("非法参数");
@@ -50,7 +49,6 @@ public class SysUsersService {
 	}
 		
 }
-
 	public PublicData findOrderInfo(String uid){
 		PublicData publicData=null;
 		
@@ -66,5 +64,13 @@ public class SysUsersService {
 			new PulginsException("非法参数");return null;
 		}
 		return null;
+	}
+	public void delOrder(String uid,String oid){
+		if (!CacheClass.isEmpty(uid)&&!CacheClass.isEmpty(oid)) {
+			sysUserDaoImpl.del(uid, oid);
+		}
+		else {
+			return;
+		}
 	}
 }

@@ -26,12 +26,12 @@ public class SysUserManagementAction extends AjaxActionSupport{
 public void setsUser(SysUsersService sUser) {
 	this.sUser = sUser;
 }
-
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		String mS=request.getParameter("m");
 		int m=-1;
+		
 		if (CacheClass.isEmpty(mS)||!CacheClass.checkId(mS)) {
 			m=1510;
 		} else {
@@ -45,6 +45,12 @@ public void setsUser(SysUsersService sUser) {
 			return getUser();
 		case Functions.USERINFO_OPERATION_QUERY_ORDER://200查询订单
 			return getOrders();
+		case Functions.USERINFO_OPERATION_INDEX: //-1返回首页
+			return getIndex();
+		case Functions.USERINFO_OPERATION_DEL_ORDER: //250删除订单
+			System.out.println("m");
+			delOrder();
+			break;
 		default:
 			break;
 		}
@@ -93,6 +99,28 @@ public void setsUser(SysUsersService sUser) {
 				return SUCCESS;
 			}
 			return SUCCESS;
+	}
+	public void delOrder(){
+		HttpSession session=request.getSession();
+		String uidString=(String) session.getAttribute("uid");
+		String oidString=request.getParameter("oid");
+		if (!CacheClass.isEmpty(uidString)&&!CacheClass.isEmpty(oidString)) {
+			System.out.println("进入删除");
+			sUser.delOrder(uidString, oidString);
+		}
+		
+		else {
+			return;
+		}
+	}
+	public String getIndex(){
+		return "uindex";
+	}
+	public Map<String, Object> getMap() {
+		return map;
+	}
+	public void setMap(Map<String, Object> map) {
+		this.map = map;
 	}
 	public String  testU(){
 		/*  HttpSession session=request.getSession();
@@ -149,12 +177,5 @@ public void setsUser(SysUsersService sUser) {
 			break;
 		}*/
 	//	return SUCCESS;
-	}
-	
-	public Map<String, Object> getMap() {
-		return map;
-	}
-	public void setMap(Map<String, Object> map) {
-		this.map = map;
 	}
 }

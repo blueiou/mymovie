@@ -21,7 +21,8 @@ public final int USERINFO_OPERATION = 100;   //用户基本信息
 public final int USERINFO_OPERATION_LOGIN=USERINFO_OPERATION+50;    //150用户登录
 public final int USERINFO_OPERATION_QUERY_ORDER=USERINFO_OPERATION+100; //200查询订单
 public final int USERINFO_OPERATION_ISSUE=USERINFO_OPERATION+10086; //10186用户影片评价 
-
+public final int USERINFO_OPERATION_INDEX=USERINFO_OPERATION-101;   //-1 返回首页
+public final int USERINFO_OPERATION_DEL_ORDER=USERINFO_OPERATION+150; //250 删除订单
 
 
 //*********************票务管理**********************************

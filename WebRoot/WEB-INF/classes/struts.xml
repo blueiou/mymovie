@@ -34,6 +34,7 @@
 <result type="json"> <param name="root">map</param></result><!-- return success 就会返回该map所包含的数据 -->
 <!--<result name="userlogin" type="redirect">movies/index.jsp</result> 成功登陆后返回界面 -->
 <result name="error">test.html</result>
+<result name="uindex">movies/index.jsp</result>
 </action>
 
 <action name="tm" class="TicketManagementAction">

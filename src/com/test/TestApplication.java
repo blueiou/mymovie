@@ -44,6 +44,8 @@ Play play1=(Play)sysTicketDaoImpl.getForeignkey(Play.class, "40288183530bccce015
 		System.out.println(info.getStatue());
 	}
 	System.out.println();*/
+sysUserDaoImpl.del("402881845277b20f015277b210430001", "2016022310531758");
+
 	}
 	
 	

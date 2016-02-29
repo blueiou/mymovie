@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ include file="../../menu.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -17,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   </head>
   <body ng-app="IndexApp">
   <div class="container">
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </table>
    </div>
    <div ui-view></div>
-   <%--  <script src="./script/angularjs/angular.js"></script> --%>
+  <script src="./script/angularjs/angular.js"></script> 
     <script src="./script/angularjs/angular.min.js"></script>
     <script src="./script/angularjs/angular-resource.js"></script>
   <script src="./script/angularjs/angular-animate.js"></script>
@@ -63,6 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- UI-Router -->
     <script src="./script/app/app.js"></script>
     <script src="./script/app/service.js"></script>
+    <script src="./script/app/filter.js"></script>
        <script src="./script/app/controller.js"></script>
   </body>
 </html>

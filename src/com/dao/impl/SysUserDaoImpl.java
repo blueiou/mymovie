@@ -8,10 +8,13 @@ import java.util.Set;
 
 
 
+
+
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.db.DbConnect;
 import com.entity.Role;
+import com.entity.Ticket;
 import com.entity.User;
 import com.entity.UserInfo;
 import com.model.OrdersInfo;
@@ -19,6 +22,8 @@ import com.model.SysGoodsData;
 import com.mysql.jdbc.PreparedStatement;
 import com.service.SysGoodsService;
 import com.tools.CacheClass;
+
+import freemarker.cache.StringTemplateLoader;
 
 public class SysUserDaoImpl {
 private DbConnect dbConnect;
@@ -30,7 +35,6 @@ private DbConnect dbConnect;
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
 /*	public User login(String na, String pa) {
 		   String f_name= "from User u where u.username=? and u.password=?"; 
 	List<User> userlist=	hibernateTemplate.find(f_name, new String[]{na,pa});
@@ -54,18 +58,20 @@ private DbConnect dbConnect;
 			return userlist;
 		
 	}
-
-	
 	public List<OrdersInfo> searchOrder(String uid){
-		String hqlString="select new com.model.OrdersInfo(t.play.goods.sysname,t.play.play_time,t.statue) from Ticket t where t.user.userid=?";
+		String hqlString="select new com.model.OrdersInfo(t.ticket_id,t.play.goods.sysname,t.play.play_time,t.statue) from Ticket t where t.user.userid=?";
 		List<OrdersInfo> orderlList=this.hibernateTemplate.find(hqlString,uid);
 		return orderlList;
 	}
-	
-	
-	
-	
-	
+	/*public Ticket tickets(String uid,String oid){
+		
+		String hqlString="select t.u_seat,t.currPrice";
+	}*/
+	/******************************UPDATE*/
+	public void del(String uid,String oid){
+		String hqlString="delete from Ticket t where t.user.userid=? and t.ticket_id=?";
+	 this.hibernateTemplate.bulkUpdate(hqlString,new String[]{uid,oid});
+	}
 	
 	
 	

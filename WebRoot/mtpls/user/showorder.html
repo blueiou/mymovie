@@ -12,10 +12,10 @@
                            <td>{{o.mv_name}}</td>
                            <td>{{o.showtime | time:0}}</td>
                            <td>{{o.statue | order}}</td>
-                           <td width="12%"><div>网上支付</div><div>取消订单</div></td>
+                           <td width="12%"><div>网上支付</div><div ><a href="" ng-click='del(o.mv_name)'>取消订单</a></div></td>
                            </tr>
                            </table>
                            </div>
                            </uib-tab>
-                           <uib-tab heading="我的团购" class="uib-tab ng-isolate-scope active">tuangou </uib-tab>
+                           <uib-tab heading="我的团购" class="">tuangou </uib-tab>
 </uib-tabset>
